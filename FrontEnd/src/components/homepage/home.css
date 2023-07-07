@@ -63,9 +63,9 @@ background-color:white ;
  }
 
 .about{
-  background-color: lightgray;
   position: relative;
-  left:100px
+  left:100px;
+  top: 10px
 }
 
 
@@ -334,8 +334,6 @@ left:50px
   padding-top: 20px;
 }
 
-
-
     
 
     /*MEDIA QUERIES*/
@@ -356,7 +354,9 @@ left:50px
       .about{
         position: relative;
         left:0px;
+        height:400px
       }
+ 
     .land3{
 height:1100px
 

@@ -29,15 +29,16 @@ function Home4() {
                         Start your journey with MIND PROBE  today!
              </b> </h></div> */}
        <Row>
-        
-       <MDBCard className='about' >
+        <div id='st' >
+       <MDBCard className='about' style={{backgroundColor:'lightgrey'}} >
       <MDBCardBody>
         <MDBCardText>
-        At MIND PROBE, we believe in unlocking the power of personality to transform lives and experiences. Our system  is designed to provide you with deep insights into your unique personality traits, helping you gain a better understanding of yourself and others around you. With our cutting-edge personality prediction system, you can explore different dimensions of your personality, uncover hidden strengths, and discover areas for personal growth. Join our community of individuals who are on a journey of self-discovery and personal growth. Explore your unique personality, unlock your full potential, and make meaningful connections with others who share similar traits. Discover the power of personality insights with our designed system and embark on a trans formative journey towards self-awareness and personal success.
-                        Start your journey with MIND PROBE  today! </MDBCardText>
+        At MIND PROBE, we believe in unlocking the power of personality to transform lives and experiences. Join our community of individuals who are on a journey of self-discovery and personal growth. Explore your unique personality, unlock your full potential, and make meaningful connections with others who share similar traits. Discover the power of personality insights with our designed system and embark on a trans formative journey towards self-awareness and personal success.
+                  <span> Start your journey with MIND PROBE today!</span>
+ </MDBCardText>
       </MDBCardBody>
     </MDBCard>
-        
+    </div>
         
         </Row>         
                

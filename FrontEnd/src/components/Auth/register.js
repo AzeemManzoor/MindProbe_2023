@@ -1,39 +1,47 @@
 import React from 'react';
-import Navbar from '../footer/footer.js'
-import Footer from '../navbar/navjs.js';
-function RegisterForm() {
+import reg from './reg.css'
+function SignUpForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your form submission logic here
   };
-
   return (
-    <div id="reg">
-        <Navbar/>
-      <form id="mail" action="/register" method="post" name="mail" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" className="form-control" id="name" name="name" />
+    <div className="container1">
+      <div className='secc'>
+      <div className="card">
+        <div className="card-image">
+          <h2 className="card-heading">
+            Get started
+            <small>Let us create your account</small>
+          </h2>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="text" className="form-control" id="email" name="email" />
+        <form action="/register" method="post" name="mail" onSubmit={handleSubmit} id="stripe-login" className="card-form">
+          <div className="input">
+            <input type="text" className="input-field" required />
+            <label className="input-label">Full name</label>
+          </div>
+          <div className="input">
+            <input type="text" className="input-field"  required />
+            <label className="input-label">Email</label>
+          </div>
+          <div className="input" id='input2' >
+            <input type="password" className="input-field" id='input-field2' required />
+            <span className="Eicon"></span>
+            <label className="input-label">Password</label>
+          </div>
+          <div className="action">
+            <button  type="submit" className="action-button" 
+            // onClick={handleSubmit} 
+            >Get started</button>
+          </div>
+        </form>
+        <div className="card-info">
+          <p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" className="form-control" id="password" name="password" />
-        </div>
-
-        <input type="submit" className="btn btn-info" value="Register" onClick={handleSubmit} />
-      </form>
-      <script src="/stylesheets/validate.js"></script>
-      <link rel="stylesheet" href="./stylesheets/homepage.css" />
-      <Footer/>
-
+      </div>
+      </div>
     </div>
   );
 }
 
-export default RegisterForm;
+export default SignUpForm;

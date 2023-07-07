@@ -1,17 +1,19 @@
 import React from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
 
 import {Button, Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
+
+
+import Home2 from './Land1.js';
+import Home3 from './Land2.js';
+import Home4 from './AboutUs.js';
+import Team from './team.js';
+
+
 function Home() {
   
     return (
-
+<div>
       <section className='sec1' >
          <grid fluid className="home-section" id="home">
           <grid className="home-content"> 
@@ -29,9 +31,10 @@ function Home() {
                 <h> We believe in unlocking the power of personality to transform lives and experiences. Our system  is designed to provide you with deep insights into your unique personality traits, helping you gain a better understanding of yourself and others around you
                 </h></div>
                 <div>
-                  <a to='/register' >
+                  <a href="/login" >
                 <Button className='btn1'  >  GET STARTED</Button>
                 </a>
+
                 
 </div>
 <div><h id='head2' ><b>Get your Personality Report now!</b> </h>
@@ -54,6 +57,12 @@ function Home() {
   
         </grid> 
       </section>
+      
+    <Home2/>
+    <Home3/>
+    <Team/>
+    <Home4/>
+      </div>
     );
   }
   

@@ -3,51 +3,47 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
-} from "react-router-dom";
+ } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 import Navbar from './components/navbar/navjs.js'
-import Footer from './components/footer/footer.js';
 import Home from './components/homepage/home.js';
-import Home2 from './components/homepage/Land1.js';
-import Home3 from './components/homepage/Land2.js';
-import Home4 from './components/homepage/AboutUs.js';
-import Team from './components/homepage/team.js';
+import Home4 from './components/homepage/AboutUs'
+import ContactForm from './components/contact/contact'
+import SignUpForm from './components/Auth/register'
+import SignInPage from './components/Auth/signin'
 
-
+import Assessment from './components/assessment/assessment'
+import Faq from "./components/faq/faq";
+import Footer from './components/footer/footer.js';
 function App() {
   return (
     <div id='body' className="App">
     <Navbar/>
-    <Home/> 
-    <Home2/>
-    <Home3/>
-    <Team/>
-    <Home4/>
-    <Footer/>
-{/* <router>
+    <Router>
 <Routes>
-            <Route path="/about" component={Signin} >   
-              <Home />
-            </Route>
-            <Route path="/users">
-              <Home2 />
-            </Route>
-            <Route path="/">
-              <Home3 />
-            </Route>
-            <Route path="/">
-              <Team />
-            </Route>
-            <Route path="/">
-              <Home4 />
-            </Route>
-  </Routes>
+            <Route exact path="/register" element={<SignUpForm/>} />         
+            <Route exact path="/" element={<Home/>} /> 
+            <Route exact path="/login" element={<SignInPage/>} />         
+            <Route exact path="/about" element={<Home4/>} />         
+            <Route exact path="/contactUs" element={<ContactForm/>} />         
+            <Route exact path="/FAQ's" element={<Faq/>} />         
 
-</router> */}
+
+   
+  </Routes>    
+</Router>
+    
+
+
+
+    <Footer/> 
+
+
+    <Assessment/>
+    {/* <FAQSection/> */}
 
     </div>
   );
