@@ -3,11 +3,11 @@ import React from 'react';
 import {Button, Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 
-
 import Home2 from './Land1.js';
 import Home3 from './Land2.js';
 import Home4 from './AboutUs.js';
 import Team from './team.js';
+import video from '../../Assets/video.mp4'
 
 
 function Home() {
@@ -18,7 +18,7 @@ function Home() {
          <grid fluid className="home-section" id="home">
           <grid className="home-content"> 
             <Row>
-              <Col md={7} className="home-header">
+              <Col md={6} className="home-header">
                 <div>
                 <h2 style={{ paddingTop: 50 }} className="heading">
                 WELCOME TO
@@ -42,12 +42,14 @@ function Home() {
 </div>
               </Col>
               
-              <Col md={5} style={{  }}>
-             <div id='col2'>
-              <img id='img' className="img1"
-                  src={require("../../Assets/img1.png")}
-                  alt="add pic"
-                />
+              <Col md={6} style={{  }}>
+             <div className='col2'>
+                 <div>
+      <video
+        // style={{ width: '500px', height: '340px' }} className='player'
+         src={video} controls  autoplay muted
+        />
+    </div>
                 </div> 
               </Col>
   

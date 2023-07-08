@@ -9,7 +9,7 @@ import assessment from '../assessment/assessment.css'
 import { useHref } from 'react-router-dom';
 
 
-const Assessment = () => {
+const Test5 = () => {
   const [loremIpsum, setLoremIpsum] = useState('');
 
   const autoExpand = (event) => {
@@ -217,9 +217,9 @@ const Assessment = () => {
 
 <Row>
   <div  className="btn-div">
-<a href='/Assessment/Page2'> <button  type="submit" className="ac-btn2"
+<a href='/'> <button  type="submit" className="ac-btn2"
             // onClick={handleSubmit} 
-            >Continue to Next Page</button></a>
+            >Click for Submission</button></a>
 </div>
 
 </Row>
@@ -268,4 +268,4 @@ const Assessment = () => {
   )
 }
 
-export default Assessment
+export default Test5

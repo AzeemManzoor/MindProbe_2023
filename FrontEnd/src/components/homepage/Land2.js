@@ -38,7 +38,7 @@ function Home3() {
       <MDBCardImage className='crdimg1' src='https://mdbootstrap.com/img/new/standard/nature/182.webp' alt='...' position='top' />
         <MDBCardTitle>Shebi YT</MDBCardTitle>
         <MDBCardText>
-        AHAHAHAHAHA ......AHAHAHHA KI B**D MAAR LAII XDXD        </MDBCardText>
+        AHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHA        </MDBCardText>
         <MDBCardLink href='#'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
@@ -57,7 +57,7 @@ function Home3() {
       <MDBCardImage className='crdimg1' src='https://mdbootstrap.com/img/new/standard/nature/182.webp' alt='...' position='top' />
         <MDBCardTitle>Shebi YT</MDBCardTitle>
         <MDBCardText>
-        AHAHAHAHAHA ......AHAHAHHA KI B**D MAAR LAII XDXD        </MDBCardText>
+        AHAHAHAHAHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHA      </MDBCardText>
         <MDBCardLink href='#'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
@@ -75,7 +75,7 @@ function Home3() {
       <MDBCardImage className='crdimg1' src='https://mdbootstrap.com/img/new/standard/nature/182.webp' alt='...' position='top' />
         <MDBCardTitle>Shebi YT</MDBCardTitle>
         <MDBCardText>
-        AHAHAHAHAHA ......AHAHAHHA KI B**D MAAR LAII XDXD        </MDBCardText>
+        AHAHAHAHAHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHA    </MDBCardText>
         <MDBCardLink href='#'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
@@ -94,7 +94,7 @@ function Home3() {
       <MDBCardImage className='crdimg1' src='https://mdbootstrap.com/img/new/standard/nature/182.webp' alt='...' position='top' />
         <MDBCardTitle>Shebi YT</MDBCardTitle>
         <MDBCardText>
-        AHAHAHAHAHA ......AHAHAHHA KI B**D MAAR LAII XDXD        </MDBCardText>
+        AHAHAHAHAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHAAHAHAHAHAHAAHAHAHHA       </MDBCardText>
         <MDBCardLink href='#'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>

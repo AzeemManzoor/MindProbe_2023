@@ -6,10 +6,9 @@ Col,
 } from "react-bootstrap";
 
 import assessment from '../assessment/assessment.css'
-import { useHref } from 'react-router-dom';
 
 
-const Assessment = () => {
+const Test2 = () => {
   const [loremIpsum, setLoremIpsum] = useState('');
 
   const autoExpand = (event) => {
@@ -17,7 +16,7 @@ const Assessment = () => {
   };
 
   return (
-    <div  className='main'  >
+                                       <div  className='main'  >
 <Row>
 <div className='headT' >
 <h1>Free Personality Test</h1>
@@ -217,7 +216,7 @@ const Assessment = () => {
 
 <Row>
   <div  className="btn-div">
-<a href='/Assessment/Page2'> <button  type="submit" className="ac-btn2"
+  <a href='/Assessment/Page3'> <button  type="submit" className="ac-btn2"
             // onClick={handleSubmit} 
             >Continue to Next Page</button></a>
 </div>
@@ -268,4 +267,4 @@ const Assessment = () => {
   )
 }
 
-export default Assessment
+export default Test2
