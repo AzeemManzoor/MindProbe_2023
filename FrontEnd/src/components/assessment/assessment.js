@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState }from 'react';
+import  {useEffect} from 'react';
+
 import questions from '../../question.json';
 
 
@@ -10,8 +12,6 @@ Col,
 
 import assessment from '../assessment/assessment.css'
 import { useHref } from 'react-router-dom';
-
-
 const selectRandomQuestions = (data, count) => {
   const shuffledData = [...data];
   for (let i = shuffledData.length - 1; i > 0; i--) {
@@ -21,7 +21,10 @@ const selectRandomQuestions = (data, count) => {
   return shuffledData.slice(0, count);
 };
 
-const randomlySelectedQuestions = selectRandomQuestions(questions, 30);
+const firstTenQuestions = questions.slice(0, 10);
+const shuffledQuestions = selectRandomQuestions(firstTenQuestions, 6);
+
+console.log(shuffledQuestions);
 
 
 
@@ -31,6 +34,7 @@ const Assessment = () => {
   const autoExpand = (event) => {
     // Add your logic for auto expanding the textarea here
   };
+
 
   return (
     <div  className='main'  >
@@ -79,17 +83,26 @@ const Assessment = () => {
 
 </Col>
 </Row>
+<Row>
+<div className='newHead ' >
+<h2>SECTION A</h2>
+{/* <h4>By MindProbe</h4> */}
+</div>
+</Row>
+
+
 
 <div className='qa'>
-  {questions.map((question) => (
+  {shuffledQuestions.map((question) => (
     <div key={question.id}>
       <Row>
-        <h2 className='qs'>{question.question}</h2>
+        <h5 className='qs'> {question.question}</h5>
       </Row>
       <Row className='ta'>
         <div>
           <label className='label'>Your Answer</label>
-          <textarea
+          <form action="/store" method="POST">
+          <textarea  id="textareaValue" name="textareaValue" required
             className='area'
             onKeyUp={autoExpand}
             placeholder="Answer"
@@ -99,10 +112,23 @@ const Assessment = () => {
               Submit
             </button>
           </div>
+          </form>
         </div>
       </Row>
+
+
     </div>
   ))}
+
+
+<Row>
+  <div  className="btn-div">
+<a href='/Assessment/Page2'> <button  type="submit" className="ac-btn2"
+            // onClick={handleSubmit} 
+            >Continue to Next Page</button></a>
+</div>
+
+</Row>
 </div>
 
 

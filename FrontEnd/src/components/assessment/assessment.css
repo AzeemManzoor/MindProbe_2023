@@ -8,6 +8,17 @@ background-color: rgb(202, 228, 252);
 
 }
 
+.newHead{
+
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(218, 237, 255);
+
+}
+
+
 .label{
 
 
@@ -54,7 +65,7 @@ height:100px
 
     .qs{
 
-
+font-weight: 600;
         padding-top: 50px;
     }
 
@@ -99,6 +110,7 @@ height: 230px;
 textarea {
     height:120px;
     max-width:600px;
+    max-height: 130px;
     color: #2b2b2b;;
     font-weight:400;
     font-size:30px;
@@ -168,7 +180,7 @@ textarea {
 
     @media (max-width:768px) {
      .main{
-        height:2850px;
+        height:2880px;
         /* background-color: #6658d3; */
      }
     }
@@ -188,19 +200,19 @@ textarea {
 
        @media (max-width:623px) {
         .main{
-            height:2850px;
+            height:2880px;
             /* background-color: yellow; */
         }
        }
        @media (max-width:622px) {
         .main{
-            height:3050px;
+            height:3100px;
             /* background-color: green; */
         }
        }
        @media (max-width:526px) {
         .main{
-            height:3200px;
+            height:3130px;
             /* background-color: blue; */
         }
        }

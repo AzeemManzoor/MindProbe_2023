@@ -1,13 +1,12 @@
 import React from 'react';
-import {Button,Col, Row } from "react-bootstrap";
+import {Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 import {
     MDBCardImage,
     MDBCard,
     MDBCardBody,
     MDBCardTitle,
-    MDBCardText,
-    MDBBtn,
+  
   } from 'mdb-react-ui-kit';
 
 function Team() {
@@ -33,7 +32,7 @@ function Team() {
 <Col md={4} > 
 <MDBCard >
       <MDBCardBody>
-      <MDBCardImage className='cir1' src={require('../../Assets/imgg2.jpeg')} position='top' alt='...' />
+      <MDBCardImage className='cir1' src={require('../../Assets/Muaz.jpeg')} position='top' alt='...' />
         <MDBCardTitle>Ch Muaz Ijaz</MDBCardTitle>
       </MDBCardBody>
     </MDBCard>
@@ -42,7 +41,7 @@ function Team() {
 <Col md={4} > 
 <MDBCard>
       <MDBCardBody>
-      <MDBCardImage className='cir1'  src={require("../../Assets/imgg3.jpeg")} position='top' alt='...' />
+      <MDBCardImage className='cir1'  src={require("../../Assets/Azeem.jpeg")} position='top' alt='...' />
 
         <MDBCardTitle>Azeem Manzoor</MDBCardTitle>
       </MDBCardBody>
@@ -55,7 +54,7 @@ function Team() {
 <Col md={4} > 
 <MDBCard>
       <MDBCardBody>
-      <MDBCardImage className='cir1'  src={require("../../Assets/imgg1.jpeg")} position='top' alt='...' />
+      <MDBCardImage className='cir1'  src={require("../../Assets/Sarmad.jpeg")} position='top' alt='...' />
 
         <MDBCardTitle>Sarmad Waheed</MDBCardTitle>
       </MDBCardBody>

@@ -4,9 +4,30 @@ Row,
 Col,
 
 } from "react-bootstrap";
+import questions from '../../question.json';
 
 import assessment from '../assessment/assessment.css'
 import { useHref } from 'react-router-dom';
+
+const selectRandomQuestions = (data, count) => {
+  const shuffledData = [...data];
+  for (let i = shuffledData.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledData[i], shuffledData[j]] = [shuffledData[j], shuffledData[i]];
+  }
+  return shuffledData.slice(0, count);
+};
+
+const firstTenQuestions = questions.slice(31, 40);
+const shuffledQuestions = selectRandomQuestions(firstTenQuestions, 6);
+
+console.log(shuffledQuestions);
+
+
+
+
+
+
 
 
 const Test4 = () => {
@@ -64,156 +85,40 @@ const Test4 = () => {
 </Col>
 </Row>
 
+<Row>
+<div className='newHead ' >
+<h2>SECTION D</h2>
+</div>
+</Row>
+
+
 {/* Questions Area */}
 <div className='qa'>
-<Row>
-
-<h2 className='qs' >You regularly make new friends.</h2>
-
-</Row>
-<Row className='ta' >
-<div>
-<label className='label' >Your Answer</label>
-<textarea
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
-
+  {shuffledQuestions.map((question) => (
+    <div key={question.id}>
+      <Row>
+      <h5 className='qs'> {question.question}</h5>
+      </Row>
+      <Row className='ta'>
+        <div>
+          <label className='label'>Your Answer</label>
+          <textarea
+            className='area'
+            onKeyUp={autoExpand}
+            placeholder="Answer"
+          ></textarea>
+          <div className='ac'>
+            <button type='submit' className='ac-btn'>
+              Submit
+            </button>
+          </div>
+        </div>
+      </Row>
 
 
-{ /*NEW ROW*/ }
-<Row>
+    </div>
+  ))}
 
-<h2 className='qs' >You regularly read books.</h2>
-
-</Row>
-<Row className='ta' >
-<div>
-<label className='label'  >Your Answer</label>
-<textarea         
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
-
-
-
-{ /*NEW ROW*/ }
-<Row>
-
-<h2 className='qs' >You regularly make new friends.</h2>
-
-</Row>
-<Row className='ta' >
-<div>
-<label className='label' >Your Answer</label>
-<textarea
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
-
-
-
-
-{ /*NEW ROW*/ }
-<Row>
-
-<h2 className='qs' >You regularly make new friends.</h2>
-
-</Row>
-<Row className='ta' >
-<div>
-<label  className='label' >Your Answer</label>
-<textarea
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
-
-
-{ /*NEW ROW*/ }
-<Row>
-
-<h2 className='qs' >You regularly make new friends.</h2>
-
-</Row>
-<Row className='ta' >
-<div>
-<label  className='label' >Your Answer</label>
-<textarea
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
-
-
-
-
-
-{ /*NEW ROW*/ }
-<Row>
-
-<h2 className='qs' >You regularly make new friends.</h2>
-
-</Row>
-<Row className='ta  ab'  >
-<div>
-<label  className='label' >Your Answer</label>
-<textarea
-        className='area'
-        onKeyUp={autoExpand}
-        placeholder="Answer"
-      ></textarea>
-              <div  className="ac" >
-              <button  type="submit" className="ac-btn" 
-            // onClick={handleSubmit} 
-            >Submit</button>
-              </div>
-</div>
-
-</Row>
 
 <Row>
   <div  className="btn-div">
@@ -227,7 +132,6 @@ const Test4 = () => {
 
 
 
-{/* q/a finished */}
 </div>
 
 
