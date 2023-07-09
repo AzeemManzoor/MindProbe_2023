@@ -5,7 +5,6 @@ import {
     MDBCard,
     MDBCardBody,
     MDBCardTitle,
-    MDBCardSubTitle,
     MDBCardText,
     MDBCardLink
   } from 'mdb-react-ui-kit';

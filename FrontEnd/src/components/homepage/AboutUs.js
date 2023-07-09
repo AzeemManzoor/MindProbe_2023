@@ -1,13 +1,10 @@
 import React from 'react';
-import {Button,Col, Row } from "react-bootstrap";
+import {Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 import {
     MDBCard,
     MDBCardBody,
-    MDBCardTitle,
-    MDBCardImage,
-    MDBCardText,
-    MDBCardLink
+     MDBCardText,
   } from 'mdb-react-ui-kit';
 
 function Home4() {

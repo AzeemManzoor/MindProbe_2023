@@ -1,3 +1,7 @@
+// import{ useEffect, useState } from 'react';
+// import axios from 'axios';
+
+
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -7,7 +11,6 @@ import {
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-
 
 import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
@@ -22,7 +25,15 @@ import Test5 from "./components/assessment/test5";
 import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
+
+
+
+
+
+
+
 function App() {
+
   return (
     <div id='body' className="App">
     <Navbar/>
@@ -58,8 +69,13 @@ function App() {
 <Footer/>
 
 
+{/* <Questions/> */}
+
+
+
     </div>
   );
 }
+
 
 export default App;
