@@ -9,6 +9,7 @@ mongoose.connect('mongodb://localhost:27017/', {
   useUnifiedTopology: true,
 });
 
+
 // Define a schema for the data
 const dataSchema = new Schema({
   textareaValue: String,

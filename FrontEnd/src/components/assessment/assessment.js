@@ -21,7 +21,7 @@ const selectRandomQuestions = (data, count) => {
   return shuffledData.slice(0, count);
 };
 
-const firstTenQuestions = questions.slice(0, 10);
+const firstTenQuestions = questions.slice(0, 20);
 const shuffledQuestions = selectRandomQuestions(firstTenQuestions, 6);
 
 console.log(shuffledQuestions);
