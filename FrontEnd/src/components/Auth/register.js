@@ -15,7 +15,7 @@ function SignUpForm() {
             <small>Let us create your account</small>
           </h2>
         </div>
-        <form action="/register" method="post" name="mail" onSubmit={handleSubmit} id="stripe-login" className="card-form">
+        <form action="/register" method="Post" name="mail" id="stripe-login" className="card-form">
           <div className="input">
             <input type="text" className="input-field" required />
             <label className="input-label">Full name</label>
@@ -30,9 +30,11 @@ function SignUpForm() {
             <label className="input-label">Password</label>
           </div>
           <div className="action">
-            <button  type="submit" className="action-button" 
-            // onClick={handleSubmit} 
-            >Get started</button>
+            {/* <button  type="submit" className="action-button" 
+            onClick={handleSubmit} 
+            >Get started</button> */}
+            <input type="submit" name="submit" value="Get started" className="action-button" onClick={handleSubmit} 
+ />
           </div>
         </form>
         <div className="card-info">
