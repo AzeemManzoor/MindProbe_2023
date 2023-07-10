@@ -4,11 +4,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+  });
 
 // Define a schema for the data
 const dataSchema = new Schema({
@@ -34,7 +39,7 @@ app.post('/store', async (req, res) => {
 
     res.status(200).send('Data stored successfully');
   } catch (error) {
-    console.error(error);
+    console.error('Error storing data:', error);
     res.status(500).send('Error storing data');
   }
 });

@@ -1,9 +1,5 @@
 import React, { useState }from 'react';
-import  {useEffect} from 'react';
-
 import questions from '../../question.json';
-
-
 import{
 Row,
 Col,
@@ -11,7 +7,6 @@ Col,
 } from "react-bootstrap";
 
 import assessment from '../assessment/assessment.css'
-import { useHref } from 'react-router-dom';
 const selectRandomQuestions = (data, count) => {
   const shuffledData = [...data];
   for (let i = shuffledData.length - 1; i > 0; i--) {
@@ -29,13 +24,6 @@ console.log(shuffledQuestions);
 
 
 const Assessment = () => {
-  const [loremIpsum, setLoremIpsum] = useState('');
-
-  const autoExpand = (event) => {
-    // Add your logic for auto expanding the textarea here
-  };
-
-
   return (
     <div  className='main'  >
 <Row>
@@ -104,13 +92,14 @@ const Assessment = () => {
           <form action="/store" method="POST">
           <textarea  id="textareaValue" name="textareaValue" required
             className='area'
-            onKeyUp={autoExpand}
             placeholder="Answer"
           ></textarea>
           <div className='ac'>
-            <button type='submit' className='ac-btn'>
-              Submit
-            </button>
+            <input type='submit' className='ac-btn' value='Submit' />
+              {/* Submit */}
+            {/* </input > */}
+                        {/* <input type='submit' className='ac-btn' value="Submit"><input/> */}
+
           </div>
           </form>
         </div>
