@@ -1,44 +1,42 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+
+const app = express();
+
+// Middleware to parse JSON request body
+app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
 
-// Define a schema for the data
-const dataSchema = new Schema({
-  textareaValue: String,
-});
+    // Define a route to handle answer submission
+    app.post('/answer', (req, res) => {
+      const { answers } = req.body;
 
-const Data = mongoose.model('Data', dataSchema);
+      // Save the answers to the database
+      const Answer = mongoose.model('Answer', { answers: [String] });
 
-// Enable JSON parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+      const newAnswer = new Answer({ answers });
 
-// Handle POST request to store data
-app.post('/store', async (req, res) => {
-  try {
-    // Create a new data object
-    const newData = new Data({
-      textareaValue: req.body.textareaValue,
+      newAnswer.save()
+        .then(() => {
+          res.status(200).json({ message: 'Answers saved successfully' });
+        })
+        .catch((error) => {
+          res.status(500).json({ error: 'Failed to save answers' });
+        });
     });
 
-    // Save the data to the database
-    await newData.save();
-
-    res.status(200).send('Data stored successfully');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error storing data');
-  }
-});
-
-// Start the server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+     // Start the server
+     app.listen(4000, () => {
+      console.log('Server listening on port 4000');
+    });
+  })
+  .catch((error) => {
+    console.log('Error connecting to MongoDB', error);
+  });
