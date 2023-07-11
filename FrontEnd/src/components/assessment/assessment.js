@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import questions from '../../question.json';
-import {
-  Row,
-  Col,
-} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import assessment from '../assessment/assessment.css';
 
@@ -24,18 +22,39 @@ console.log(shuffledQuestions);
 const Assessment = () => {
   const [answers, setAnswers] = useState([]);
 
-  const handleSubmit = async () => {
+  useEffect(() => {
+    // Fetch the user ID from the server
+    axios
+      .get('http://localhost:4000/userId')
+      .then((response) => {
+        const userId = response.data.userId;
+        // Save the user ID in session storage
+        sessionStorage.setItem('userId', userId);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const emptyFields = shuffledQuestions.filter((_, index) => !answers[index]);
+
+    if (emptyFields.length > 0) {
+      alert('Please fill in all the fields.');
+      return;
+    }
+
     try {
-      const response = await fetch('/answer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ answers }),
+      const response = await axios.post('http://localhost:4000/answer', {
+        userId: sessionStorage.getItem('userId'),
+        answers,
       });
 
-      if (response.ok) {
-        // Handle success (e.g., show success message, redirect, etc.)
+      if (response.status === 200) {
+        // Redirect to Test2 page
+        window.location.href = '/Assessment/Page2';
       } else {
         // Handle error (e.g., show error message)
       }
@@ -46,107 +65,105 @@ const Assessment = () => {
 
   return (
     <div className='main'>
-      <Row>
-        <div className='headT'>
-          <h1>Free Personality Test</h1>
-          <h4>By MindProbe</h4>
+    <Row>
+      <div className='headT'>
+        <h1>Free Personality Test</h1>
+        <h4>By MindProbe</h4>
+      </div>
+    </Row>
+
+    <Row className='row2'>
+      <Col md={4} className='col'>
+        <div className='card   card1' style={{ width: '18rem' }}>
+          <img
+            src='https://www.16personalities.com/static/images/test-header-2.svg'
+            className='card-img-top1'
+            alt='...'
+          />
+          <div className='card-body'>
+            <p className='card-text'>
+              Be yourself and answer honestly to find out your personality type.
+            </p>
+          </div>
         </div>
-      </Row>
+      </Col>
 
-      <Row className='row2'>
-        <Col md={4} className='col'>
-          <div className='card   card1' style={{ width: '18rem' }}>
-            <img src="https://www.16personalities.com/static/images/test-header-2.svg" className="card-img-top1" alt="..." />
-            <div className="card-body">
-              <p className="card-text">
-                Be yourself and answer honestly to find out your personality type.
-              </p>
-            </div>
+      <Col className='col' md={4}>
+        <div className='card   card1' style={{ width: '18rem' }}>
+          <img
+            src='https://www.16personalities.com/static/images/academy/explorers/icons/theory.svg'
+            className='card-img-top1'
+            alt='...'
+          />
+          <div className='card-body'>
+            <p className='card-text'>
+              Learn how your personality type influences many areas of your life.
+            </p>
           </div>
-        </Col>
-
-        <Col className='col' md={4}>
-          <div className="card   card1" style={{ width: '18rem' }}>
-            <img src="https://www.16personalities.com/static/images/academy/explorers/icons/theory.svg" className="card-img-top1" alt="..." />
-            <div className="card-body">
-              <p className="card-text">
-                Learn how your personality type influences many areas of your life.
-              </p>
-            </div>
-          </div>
-        </Col>
-
-        <Col className='col' md={4}>
-          <div className="card   card1" style={{ width: '18rem' }}>
-            <img src="https://www.16personalities.com/static/images/academy/analysts/exercise.svg" className="card-img-top1" alt="..." />
-            <div className="card-body">
-              <p className="card-text">
-                Grow into the person you want to be with your optional Premium Guides.
-              </p>
-            </div>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
-        <div className='newHead '>
-          <h2>SECTION A</h2>
-          {/* <h4>By MindProbe</h4> */}
         </div>
-      </Row>
+      </Col>
 
-      <div className='qa'>
+      <Col className='col' md={4}>
+        <div className='card   card1' style={{ width: '18rem' }}>
+          <img
+            src='https://www.16personalities.com/static/images/academy/analysts/exercise.svg'
+            className='card-img-top1'
+            alt='...'
+          />
+          <div className='card-body'>
+            <p className='card-text'>
+              Grow into the person you want to be with your optional Premium Guides.
+            </p>
+          </div>
+        </div>
+      </Col>
+    </Row>
+
+    <Row>
+      <div className='newHead '>
+        <h2>SECTION A</h2>
+      </div>
+    </Row>
+
+    <div className='qa'>
+      <form id='myForm'>
         {shuffledQuestions.map((question, index) => (
           <div key={question.id}>
             <Row>
-              <h5 className='qs'> {question.question}</h5>
+              <h5 className='qs'>{question.question}</h5>
             </Row>
             <Row className='ta'>
               <div>
                 <label className='label'>Your Answer</label>
-                <form>
-                  <textarea
-                    id={`textareaValue${index}`}
-                    required
-                    className='area'
-                    placeholder='Answer'
-                  ></textarea>
-                  <div className='ac'>
-                    <button
-                      type='button'
-                      className='ac-btn'
-                      onClick={() => {
-                        const textareaValue = document.getElementById(
-                          `textareaValue${index}`
-                        ).value;
-                        const updatedAnswers = [...answers];
-                        updatedAnswers[index] = textareaValue;
-                        setAnswers(updatedAnswers);
-                      }}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
+                <textarea
+                  id={`textareaValue${index}`}
+                  required
+                  className='area'
+                  placeholder='Answer'
+                  onChange={(e) => {
+                    const updatedAnswers = [...answers];
+                    updatedAnswers[index] = e.target.value;
+                    setAnswers(updatedAnswers);
+                  }}
+                ></textarea>
               </div>
             </Row>
           </div>
         ))}
-      </div>
-
-      <Row>
-        <div className="btn-div">
-          <button
-            type='button'
-            className="ac-btn2"
-            onClick={handleSubmit}
-          >
-            Continue to Next Page
-          </button>
-        </div>
-      </Row>
+        <input
+          id='submitButton'
+          value='Submit'
+          type='submit'
+          className='ac-btn'
+          onClick={handleSubmit}
+        />
+      </form>
     </div>
+  </div>
+   
+
   );
 };
 
 export default Assessment;
+
