@@ -9,6 +9,17 @@ const Navbar = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
 
+  const handleButtonClick = (event) => {
+    event.preventDefault(); // Prevents the default anchor tag behavior
+
+    if (isAuthenticated) {
+      // Redirect to the ASSESSMENT page if the user is logged in
+      window.location.href = '/Assessment';
+    } else {
+      // Redirect to the login page if the user is not logged in
+      loginWithRedirect();
+    }
+  };
   return (
     <nav class="navbar">
 
@@ -22,44 +33,45 @@ const Navbar = () => {
       <div class="menu">
 
         <li><a href="/">Home</a></li>
-        <li><a href="/Assessment">Assessment</a></li>
-        <li><a href="/">Report</a></li>
+
+        <li><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
+
+
+
+        {/* <li><a href="/">Report</a></li> */}
         <li><a href="/about">About Us</a></li>
         <li><a href="/contactUs">Contact Us</a></li>
         <li><a href="/FAQ's">FAQ's</a></li>
-        
 
        
 
 {isAuthenticated && (
-  //  <li>
-<p> {user.name}</p>
-        // </li>
+<text> 
+Welcome <span className='user'>{user.name} </span>
+</text>
 )}
           { isAuthenticated ? (
+            
             <li>
-<button 
+
+<button  className='loginBtn'
 onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
 Log Out
 </button>
   </li>
 
           ) : (
-
+                  
 <li>
-<button onClick={() => loginWithRedirect()}>Log In</button>
+<button className='loginBtn' onClick={() => loginWithRedirect()}>Log In</button>
         
         </li>
-          
+         
 
           )}
         
 
-        {/* <li>
-        <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-      Log Out
-    </button>
-        </li> */}
+       
        
 
       

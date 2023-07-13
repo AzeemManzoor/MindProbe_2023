@@ -25,6 +25,7 @@ import Test5 from "./components/assessment/test5";
 import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
+import Result from "./components/assessment/result";
 
 
 
@@ -50,6 +51,7 @@ function App() {
             <Route exact path="/Assessment/Page3" element={<Test3/>} />         
             <Route exact path="/Assessment/Page4" element={<Test4/>} />         
             <Route exact path="/Assessment/Page5" element={<Test5/>} />         
+            <Route exact path="/Assessment/Result" element={<Result/>} />         
 
 
 

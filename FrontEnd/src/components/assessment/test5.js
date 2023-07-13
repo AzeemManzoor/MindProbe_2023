@@ -592,7 +592,7 @@ const Test5 = () => {
 
       if (response.status === 200) {
         // Redirect to Page3
-        window.location.href = '/';
+        window.location.href = '/Assessment/Result';
       } else {
         // Handle error (e.g., show error message)
       }

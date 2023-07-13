@@ -50,7 +50,8 @@ const Assessment = () => {
       alert('Please fill in all the fields.');
       return;
     }
-
+   
+    
     try {
       const response = await axios.post('http://localhost:4000/answer', {
         userId: sessionStorage.getItem('userId'),
