@@ -20,6 +20,14 @@ const Navbar = () => {
       loginWithRedirect();
     }
   };
+
+
+
+
+
+
+
+
   return (
     <nav class="navbar">
 
@@ -47,7 +55,7 @@ const Navbar = () => {
 
 {isAuthenticated && (
 <text> 
-Welcome <span className='user'>{user.name} </span>
+Welcome <span className='user'>{user.nickname} </span>
 </text>
 )}
           { isAuthenticated ? (
@@ -55,7 +63,8 @@ Welcome <span className='user'>{user.name} </span>
             <li>
 
 <button  className='loginBtn'
-onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+onClick={() => logout({logoutParams: { returnTo: window.location.origin } })}
+>
 Log Out
 </button>
   </li>
@@ -63,7 +72,7 @@ Log Out
           ) : (
                   
 <li>
-<button className='loginBtn' onClick={() => loginWithRedirect()}>Log In</button>
+<button className='loginBtn' onClick={() => loginWithRedirect()} >Log In</button>
         
         </li>
          

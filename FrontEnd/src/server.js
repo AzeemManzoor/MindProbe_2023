@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -51,22 +50,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
     }
   });
 
-app.get('/result', (req, res) => {
-  const { userId } = req.query;
-  Type.findOne({ user: userId })
-    .then((result) => {
-      if (result) {
-        res.json({ personalityType: result.PERSONALITY_TYPE });
-      } else {
-        res.status(404).json({ error: 'Personality type not found' });
-      }
+app.get('/personalityTypes', (req, res) => {
+  Type.find({}, 'userId PERSONALITY_TYPE')
+    .then((types) => {
+      res.json(types);
     })
     .catch((error) => {
-      console.error('Failed to fetch personality type', error);
+      console.error('Failed to fetch personality types', error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
-
 
 
   const generateUserId = (username) => {
@@ -85,9 +78,3 @@ app.get('/result', (req, res) => {
 
 
 
-
-
-// I have an "type" collection in which my "userId" and its "PERSONALITY_TYPE" is stored.
-// Now I want to get the "PERSONALITY_TYPE" of the user that is currently logged into the website 
-// here is my server.js file code :
-// NOTE: dont change the "answers" collection code
