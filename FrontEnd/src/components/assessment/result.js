@@ -47,9 +47,21 @@ const Result = () => {
     <div>
       <h1>Personality Type is: {personalityType}</h1>
       {/* <button onClick={handleShowResult}>SHOW RESULT</button> */}
+
+
+
+
+
+
+
+      <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
+       src={require('../../Assets/entj.png')} style={{width:"500px" , height:"750px"}} ></img>
+
     </div>
   );
 };
+
+
 
 export default Result;
 
