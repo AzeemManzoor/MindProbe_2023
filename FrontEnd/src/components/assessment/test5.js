@@ -81,7 +81,7 @@ const Test4 = () => {
       // Process the response data or update the UI accordingly
       if (response.status === 200) {
         // Redirect to Page3
-        window.location.href = '/Assessment/Result';
+        window.location.href = '/Assessment/report';
       } else {
         // Handle error (e.g., show error message)
       }

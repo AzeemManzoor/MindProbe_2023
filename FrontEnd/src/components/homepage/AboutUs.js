@@ -7,6 +7,10 @@ import {
      MDBCardText,
   } from 'mdb-react-ui-kit';
 
+
+
+
+
 function Home4() {
 
     return (
@@ -47,11 +51,11 @@ function Home4() {
 
 
 
-              <Col id='col3' className='blc2' md={6} style={{  }}>
-              <img id='img2' className="img2"
-                  src={require("../../Assets/img1.png")}
+              <Col id='col3' className='blc2' md={6} >
+              {/* <img id='img2' className="img2"
+                  src={require("../../Assets/POSTER.png")}
                   alt="add pic"
-                />
+                /> */}
               </Col>
   
  </Row>

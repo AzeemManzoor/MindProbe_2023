@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button,Col, Row } from "react-bootstrap";
+import {Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 import {
     MDBCard,
@@ -14,7 +14,7 @@ function Home3() {
 
     return (
 <div className='test' >
-<Row>
+<Row className='yup' >
 <div className='head3'>
                 <h3 style={{ paddingTop: 50 }} className="heading">
                 Testimonials
@@ -105,11 +105,7 @@ function Home3() {
 
 </Row>
 <Row className='mo' >
-    <Button className='btn3' >
-                        Try Now
-
-                </Button>
-
+  
 
                 </Row>
      </div>      

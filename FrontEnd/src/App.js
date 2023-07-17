@@ -1,8 +1,6 @@
-// import{ useEffect, useState } from 'react';
-// import axios from 'axios';
-
-
 import React from "react";
+import {useState} from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,6 +26,7 @@ import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
 
 
+import  { NavbarProvider} from './components/navbar/NavbarContext'
 
 
 
@@ -35,9 +34,19 @@ import Result from "./components/assessment/result";
 
 function App() {
 
+  const [showResult, setShowResult] = useState(false);
+
+
+
   return (
     <div id='body' className="App">
-    <Navbar/>
+   
+<NavbarProvider>
+  <Navbar/>
+  <div style={{ display: showResult ? 'block' : 'none' }}>
+        <Result />
+      </div>  </NavbarProvider>
+
     <Router>
 <Routes>
             <Route exact path="/register" element={<SignUpForm/>} />         
@@ -47,11 +56,11 @@ function App() {
             <Route exact path="/contactUs" element={<ContactForm/>} />         
             <Route exact path="/FAQ's" element={<Faq/>} />         
             <Route exact path="/Assessment" element={<Assessment/>} />         
-            <Route exact path="/Assessment/Page2" element={<Test2/>} />       
-            <Route exact path="/Assessment/Page3" element={<Test3/>} />         
-            <Route exact path="/Assessment/Page4" element={<Test4/>} />         
-            <Route exact path="/Assessment/Page5" element={<Test5/>} />         
-            <Route exact path="/Assessment/Result" element={<Result/>} />         
+            <Route exact path="/Assessment/sectionB" element={<Test2/>} />       
+            <Route exact path="/Assessment/sectionC" element={<Test3/>} />         
+            <Route exact path="/Assessment/sectionD" element={<Test4/>} />         
+            <Route exact path="/Assessment/sectionE" element={<Test5/>} />      
+            <Route exact path="/Assessment/report" element={<NavbarProvider><Result/></NavbarProvider>} />      
 
 
 
@@ -71,7 +80,6 @@ function App() {
 <Footer/>
 
 
-{/* <Questions/> */}
 
 
 

@@ -8,12 +8,26 @@ import {
     MDBCardText,
     MDBCardLink
   } from 'mdb-react-ui-kit';
+  import { useAuth0 } from '@auth0/auth0-react';
 
 function Home2() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
+  const handleButtonClick = () => {
+    if (isAuthenticated) {
+      // Redirect to the ASSESSMENT page if the user is logged in
+      window.location.href = '/Assessment';
+    } else {
+      // Redirect to the login page if the user is not logged in
+      loginWithRedirect();
+    }
+  };
+
+
 
     return (
 <div className='land1' >
-<Row>
+<Row className='yup' >
 <div className='head3'>
                 <h3 style={{ paddingTop: 50 }} className="heading">
                 OUR FEATURES
@@ -78,7 +92,7 @@ function Home2() {
 
 </Row>
 
-    <Button className='btn2' >
+   <Button className='btn2'  onClick={handleButtonClick}  >
                         Try Now
 
                 </Button>

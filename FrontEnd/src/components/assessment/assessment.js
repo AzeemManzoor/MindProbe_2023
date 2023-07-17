@@ -60,7 +60,7 @@ const Assessment = () => {
 
       if (response.status === 200) {
         // Redirect to Test2 page
-        window.location.href = '/Assessment/Page2';
+        window.location.href = '/Assessment/sectionB';
       } else {
         // Handle error (e.g., show error message)
       }

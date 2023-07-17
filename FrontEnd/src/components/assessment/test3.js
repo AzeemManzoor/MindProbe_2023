@@ -234,7 +234,7 @@ const Test3 = () => {
 
       if (response.status === 200) {
         // Redirect to Page3
-        window.location.href = '/Assessment/Page4';
+        window.location.href = '/Assessment/sectionD';
       } else {
         // Handle error (e.g., show error message)
       }

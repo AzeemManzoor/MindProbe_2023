@@ -1,12 +1,18 @@
-import React from 'react';
+import React,{useState} from 'react';
 import navcss from '../navbar/navcss.css'
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from 'axios';
+import {useEffect} from 'react';
+
+
+import { useNavbar } from './NavbarContext';
+
+
 
 const Navbar = () => {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
-  // const { isAuthenticated } = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
 
   const handleButtonClick = (event) => {
@@ -21,7 +27,32 @@ const Navbar = () => {
     }
   };
 
+/*extra*/
 
+const { navbarItems,  addNavbarItem } = useNavbar();
+useEffect(() => {
+  const fetchData = async () => {
+    if (isAuthenticated && user && user.name) {
+      console.log('Logged-in userId:', user.name);
+
+      try {
+        const response = await axios.get('http://localhost:4000/personalityTypes');
+        console.log('API Response:', response.data);
+
+        const matchingUser = response.data.find((data) => data.userId === user.name);
+        if (matchingUser) {
+          addNavbarItem(matchingUser.PERSONALITY_TYPE);
+        } else {
+          console.log('Personality type not found for the logged-in user.');
+        }
+      } catch (error) {
+        console.log('Error fetching personality type:', error);
+      }
+    }
+  };
+
+  fetchData();
+}, [isAuthenticated, user, addNavbarItem]);
 
 
 
@@ -46,12 +77,10 @@ const Navbar = () => {
 
 
 
-        {/* <li><a href="/">Report</a></li> */}
+        {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>REPORT</li></a>}
         <li><a href="/about">About Us</a></li>
         <li><a href="/contactUs">Contact Us</a></li>
         <li><a href="/FAQ's">FAQ's</a></li>
-
-       
 
 {isAuthenticated && (
 <text> 

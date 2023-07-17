@@ -1,19 +1,22 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
-import {
-    MDBCardImage,
-    MDBCard,
-    MDBCardBody,
-    MDBCardTitle,
-  
-  } from 'mdb-react-ui-kit';
+import '../homepage/team.css'
+
+
 
 function Team() {
 
+
+    const [isFlipped, setIsFlipped] = useState(false);
+  
+    const handleCardClick = () => {
+      setIsFlipped(!isFlipped);
+    };
+  
     return (
 <div className='team' >
-<Row>
+<Row className='yup' >
 <div className='head3'>
                 <h3 style={{ paddingTop: 50 }} className="heading">
                 OUR TEAM
@@ -29,44 +32,80 @@ function Team() {
 
   <Row className='person' >
 
-<Col md={4} > 
-<MDBCard >
-      <MDBCardBody>
-      <MDBCardImage className='cir1' src={require('../../Assets/Muaz.jpeg')} position='top' alt='...' />
-        <MDBCardTitle>Ch Muaz Ijaz</MDBCardTitle>
-      </MDBCardBody>
-    </MDBCard>
+<Col md={4} id='align'> 
+<div >
+<div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}  id='cir1' >
+      <div className="flip-card-inner ">
+        <div className="flip-card-front">
+          <img className="image"  src={require('../../Assets/Muaz.jpeg')} alt=""/>
+        </div>
+        <div className="flip-card-back">
+          <div className="content">
+            <h3>MUAZ IJAZ</h3>
+            <p>MERN Developer</p>
+            <div className="social-links">
+              <a className="social-link" href="https://www.facebook.com">Facebook</a>
+              <a className="social-link" href="https://www.github.com">LinkedIn</a>
+              <a className="social-link" href="https://www.github.com">GitHub</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 </Col>
 
-<Col md={4} > 
-<MDBCard>
-      <MDBCardBody>
-      <MDBCardImage className='cir1'  src={require("../../Assets/Azeem.jpeg")} position='top' alt='...' />
+<Col md={4} id='align' > 
 
-        <MDBCardTitle>Azeem Manzoor</MDBCardTitle>
-      </MDBCardBody>
-    </MDBCard>
+<div className= {`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
+      <div className="flip-card-inner">
+        <div className="flip-card-front">
+          <img className="image"  src={require('../../Assets/Azeem.jpeg')} alt="" />
+        </div>
+        <div className="flip-card-back">
+          <div className="content">
+            <h3>AZEEM MANZOR</h3>
+            <p>MERN Developer</p>
+            <div className="social-links">
+              <a className="social-link" href="https://www.facebook.com">Facebook</a>
+              <a className="social-link" href="https://www.github.com">LinkedIn</a>
+              <a className="social-link" href="https://www.github.com">GitHub</a>
 
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </Col>
 
 
-<Col md={4} > 
-<MDBCard>
-      <MDBCardBody>
-      <MDBCardImage className='cir1'  src={require("../../Assets/Sarmad.jpeg")} position='top' alt='...' />
+<Col md={4} id='align' > 
+ <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
+      <div className="flip-card-inner">
+        <div className="flip-card-front">
+          <img className="image"  src={require('../../Assets/Sarmad.jpeg')} alt=""/>
+        </div>
+        <div className="flip-card-back">
+          <div className="content">
+            <h3>SARMAD WAHEED</h3>
+            <p>MERN Developer</p>
+            <div className="social-links">
+              <a className="social-link" href="https://www.facebook.com">Facebook</a>
+              <a className="social-link" href="https://www.github.com">LinkedIn</a>
+              <a className="social-link" href="https://www.github.com">GitHub</a>
 
-        <MDBCardTitle>Sarmad Waheed</MDBCardTitle>
-      </MDBCardBody>
-    </MDBCard>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </Col>
   </Row>
-
-    {/* <Button className='btn2' >
-                        Try Now
-
-                </Button> */}
-
 
 
      </div>      
