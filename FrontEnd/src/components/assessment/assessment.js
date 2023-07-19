@@ -4,7 +4,6 @@ import axios from 'axios';
 import questions from '../../question.json';
 import { Row, Col } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
-
 import assessment from '../assessment/assessment.css';
 
 const selectRandomQuestions = (data, count) => {

@@ -134,14 +134,84 @@ textarea {
   }
   
 
-
+/*REPORT SECTION */
  
 
 
 
 
+.res1{
 
 
+    padding-top: 30px;
+    padding-bottom: 50px;
+    
+    
+    }
+    .res{
+        padding-bottom: 50px;
+        /* background-image: url('../../Assets/img1.png');
+        background-size: cover; */
+    /* height: 1500px; */
+    }
+    
+    
+    .per2{
+        /* background-image: url('../../Assets/img1.png');  */
+        background-size: cover; 
+    }
+    
+/* 
+    <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+
+ 
+
+ */
+.progress{
+/* display: inline; */
+          margin-bottom: 7px;
+
+}
+
+.user1{
+display: inline;
+}
+
+.clr{
+color:green
+
+}
+
+.conc{
+
+padding-top: 30px;
+padding-bottom: 30px;
+
+
+
+
+}
+
+    .txt{
+        color:teal
+    }
+    .info1{
+        text-align: justify;
+        line-height: 1.5;
+    }
+    
+    .info{
+
+
+        text-align: justify;
+        line-height: 1.5;
+        
+        }
+    
 
 
 
@@ -180,19 +250,29 @@ color:teal;
 
 
 
-.res1{
+
+.conc1{
 
 
-padding-top: 30px;
-padding-bottom: 50px;
-
-
+    text-align: justify;
 }
-.res{
-    padding-bottom: 50px;
+.roww{
 
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
 }
+
+.enclose{
+    background-color: rgb(231, 231, 231);
+border-radius: 15px;
+    width:800px; 
+}
+
+
+
+
 
 
 
@@ -243,5 +323,9 @@ padding-bottom: 50px;
             /* background-color: blue; */
         }
        }
+
+
+
+
 
 

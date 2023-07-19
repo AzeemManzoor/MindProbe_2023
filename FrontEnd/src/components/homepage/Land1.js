@@ -45,11 +45,11 @@ function Home2() {
 
 <Col md={5} >
     <MDBCard>
-      <MDBCardBody >
-        <MDBCardTitle >AI-Powered Analysis</MDBCardTitle>
+      <MDBCardBody>
+        <MDBCardTitle>AI-Powered Analysis</MDBCardTitle>
         <MDBCardText>
         Our AI analyzes your responses and predicts your personality.        </MDBCardText>
-        <MDBCardLink href="/Blog1">  Learn More <h id ='st1'>→</h></MDBCardLink>
+        <MDBCardLink href='/blog/Ai-powered-analysis'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
 
@@ -67,7 +67,7 @@ function Home2() {
         <MDBCardText>
         A video interview to understand your personality better.
         </MDBCardText>
-        <MDBCardLink href='/Blog2'>Learn More <h id ='st1'>→</h></MDBCardLink>
+        <MDBCardLink href='blog/Video-interview'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
     
@@ -86,7 +86,7 @@ function Home2() {
         <MDBCardText>
         Get a comprehensive report of your personality.
         </MDBCardText>
-        <MDBCardLink href='/Blog3'>Learn More <h id ='st1'>→</h></MDBCardLink>
+        <MDBCardLink href='/blog/Detailed-report'>Learn More <h id ='st1'>→</h></MDBCardLink>
       </MDBCardBody>
     </MDBCard>
 

@@ -54,12 +54,14 @@ useEffect(() => {
   fetchData();
 }, [isAuthenticated, user, addNavbarItem]);
 
+// dev-g6ysqb0dvdv8yxtk.us.auth0.com
+
+// USERNAME GETTING 
 
 
 
 
-
-  return (
+return (
     <nav class="navbar">
 
     <div class="logo"> <a id='mp' href='/'> MindProbe</a></div>

@@ -10,6 +10,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
+import  { NavbarProvider} from './components/navbar/NavbarContext'
 import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
 import Home4 from './components/homepage/AboutUs'
@@ -24,11 +25,10 @@ import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
-import Blog1  from  "./components/Blog/Blog1";
-import Blog2  from  "./components/Blog/Blog2";
-import Blog3  from  "./components/Blog/Blog3";
+import Blog1 from "./components/blog/blog1"
+import Blog2 from "./components/blog/blog2"
+import Blog3 from "./components/blog/blog3"
 
-import  { NavbarProvider} from './components/navbar/NavbarContext'
 
 
 
@@ -61,11 +61,11 @@ function App() {
             <Route exact path="/Assessment/sectionB" element={<Test2/>} />       
             <Route exact path="/Assessment/sectionC" element={<Test3/>} />         
             <Route exact path="/Assessment/sectionD" element={<Test4/>} />         
-            <Route exact path="/Assessment/sectionE" element={<Test5/>} />
-            <Route exact path="/Blog1" element={<Blog1/>} />
-            <Route exact path="/Blog2" element={<Blog2/>} />
-            <Route exact path="/Blog3" element={<Blog3/>} />
+            <Route exact path="/Assessment/sectionE" element={<Test5/>} />      
             <Route exact path="/Assessment/report" element={<NavbarProvider><Result/></NavbarProvider>} />      
+            <Route exact path="/blog/Ai-powered-analysis" element={<Blog1/>} />      
+            <Route exact path="/blog/Video-interview" element={<Blog2/>} />      
+            <Route exact path="/blog/Detailed-report" element={<Blog3/>} />      
 
 
 
@@ -85,7 +85,7 @@ function App() {
 <Footer/>
 
 
-
+{/* <Blog1/> */}
 
 
     </div>
