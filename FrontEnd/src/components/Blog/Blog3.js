@@ -1,4 +1,6 @@
 import React from 'react';
+import { Col, Row } from "react-bootstrap";
+
  import './Blog.css';
 
 
@@ -7,12 +9,21 @@ const Blog = () => {
 
   return (
      <div className="back">
-        
+       <Row>
+
+
+<Col
+ md={1}
+  className='col11' >
+</Col>
+
+<Col md={10} className='col22' >  
+     
    
     <div className="blog-container">
         <div className="set">   <img src={require('../../Assets/ai3.jpg')} alt="Random" /></div>
          <div className="center">
-      <h1 className="blog-title">Welcome to My Blog!</h1>
+      <h1 className="blog-title">Detailed Report</h1>
       <div className="blog-content">
         <div className="blog-image">
           
@@ -21,9 +32,7 @@ const Blog = () => {
 
       
         <div className="blog-text">
-          <h2>Detailed Report</h2>
           <div className="center-content">
-     <h1>Unveiling Your Inner Self: A Detailed Report from MindProbe's Personality Prediction Project </h1>
     
     <h4> Introduction</h4>
 
@@ -44,15 +53,15 @@ Once you complete the assessment, the data is anonymized and securely fed into t
 
 The MindProbe personality report is divided into several sections, each providing valuable insights into different dimensions of your personality:
 
-<h4>1. Trait Analysis: </h4>
+<h5>Trait Analysis: </h5>
 This section highlights your scores on the Big Five personality traits and their sub-traits. Understanding how you rank on openness to experience, conscientiousness, extraversion, agreeableness, and emotional stability can help you comprehend your behavioral tendencies and how you interact with the world around you.
- <h4>2. Cognitive Styles: </h4>Ever wondered how you process information or make decisions? MindProbe's cognitive style analysis explores your approach to learning, problem-solving, and decision-making, shedding light on your unique thinking patterns.
+ <h5>Cognitive Styles: </h5>Ever wondered how you process information or make decisions? MindProbe's cognitive style analysis explores your approach to learning, problem-solving, and decision-making, shedding light on your unique thinking patterns.
 
 
- <h4>3. Social Orientation: </h4> This part of the report examines your social behavior and how you interact with others. It covers aspects like social preferences, communication styles, and emotional empathy, enabling you to comprehend your social strengths and areas for growth.
- <h4>4. Emotional Intelligence: </h4> Emotional intelligence is a crucial aspect of personality. MindProbe's report assesses your emotional awareness, management, empathy, and social skills, offering valuable insights into your emotional well-being and relationships.
+ <h5>Social Orientation: </h5> This part of the report examines your social behavior and how you interact with others. It covers aspects like social preferences, communication styles, and emotional empathy, enabling you to comprehend your social strengths and areas for growth.
+ <h5>Emotional Intelligence: </h5> Emotional intelligence is a crucial aspect of personality. MindProbe's report assesses your emotional awareness, management, empathy, and social skills, offering valuable insights into your emotional well-being and relationships.
 
- <h4>5. Values and Motivations:  </h4>
+ <h5>Values and Motivations:  </h5>
  Our values and motivations shape our life choices. The report delves into your core values and what drives you, helping you align your actions with your deepest aspirations.
 <h4>Embracing Self-Improvement</h4>
 Receiving your MindProbe personality report is not just about gaining knowledge; it's an opportunity for personal growth and self-improvement. Armed with a comprehensive understanding of your personality, you can make informed decisions, recognize patterns that hinder your progress, and work towards enhancing your strengths and addressing weaknesses.
@@ -64,10 +73,7 @@ The MindProbe Personality Prediction Project opens a doorway to self-discovery, 
 
 Embark on this enlightening journey, and let MindProbe be your guide to unveiling the enigma within. Discover the depths of your personality, embrace your true self, and embark on a path of self-improvement and self-awareness like never before. The future of personality prediction is here, and it's waiting to unlock the secrets of your mind.
 </div>
-<div className="article-author">
-        <p>Article by SARMAD WAHEED </p>
-        <p>Published on July 18, 2023</p>
-      </div>
+
       </div>
         </div>
         
@@ -75,7 +81,12 @@ Embark on this enlightening journey, and let MindProbe be your guide to unveilin
 
      
     </div>
-
+    </Col>
+    <Col
+     md={1}
+      className='col33' >
+    </Col>
+    </Row>
     </div>
     
   );

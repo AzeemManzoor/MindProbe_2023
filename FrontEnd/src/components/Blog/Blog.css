@@ -1,55 +1,44 @@
 .center-content {
-    text-align: center;
-    margin: 0 auto; /* This will center the content horizontally */
+    text-align: justify;
+
   }
   
   .blog-container {
-    max-width: 900px;
-    margin: 0 auto;
+
     padding: 20px;
-    background-color: aliceblue;
   }
   
   .blog-title {
-    font-size: 24px;
-    margin: 0 auto;
+    font-size: 30px;
+    /* margin: 0 auto; */
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    padding-top: 10px;
+padding-bottom: 10px;
   }
   
-  .blog-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-  }
+  
   
   .blog-image {
-    flex: 1;
-    margin-right: 20px;
-    
+    flex: 1;    
   }
-  
-  .set {
+   
+ .set {
     flex: 1;
-    
-    
   }
   
   .blog-text {
     flex: 2;
-    margin: 0 auto;
-    text-align: center;
-   
+    text-align: justify;
+    flex: 1;    
+
   }
   
   .blog-text h2 {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
-    margin-left: 80px;
-    width: 600px;}
+    width: 800px;
+  }
   
   .blog-text p {
     font-size: 16px;
@@ -57,28 +46,62 @@
   }
   
   .blog-image img {
-    width: 100%;
-    height: auto;
+    width:600px ;
+    height: 400px;
   }
   
   .set img {
-    width: 100%;
-    height: auto;
+    width: 700px;
+    height: 500px;
   }
   
   .article-author {
-     margin-top: 20px;
-    text-align: center;
-    width: 600px;;
-    font-size: 14px;
+    text-align: justify;
+    
   }
+  .author{
+        font-size: 20px;
+font-weight: 600;
+padding-top: 10px;
+text-align: right;
+
+}
   
-  
-  
-  .center{
-   
-    margin-left: 70px;
-    width: 600px;
+
+
+  .col22{
+
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:800px
   }
-  /* Add additional styles as per your requirements */
+
+
+
+
+
+  /* For screens smaller than or equal to 768px (small devices) */
+@media (max-width: 768px) {
+  .blog-container {
+
+    width: 100%;
+  }
+  .set img  {
+
+    width: 100%;
+  }
+}
+
+
+
+
+.back{
+
+
+  padding-bottom: 50px;
+}
+
   
+ 

@@ -70,101 +70,101 @@ const Result = () => {
 
 <Row className='per2' >
 
-<Col md={6} >
-
+<Col md={6}
+//  className='colA'
+  >
+<div className='colA' >
 {personalityType === "ENFJ" && (
-  <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-  src={require('../../Assets/ENFJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+  <img className='image-i'
+  src={require('../../Assets/ENFJ.png')} ></img>      )}
 
     
 {personalityType === "ESFP" && (
   <img className=''
-  src={require('../../Assets/ESFP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+  src={require('../../Assets/ESFP.png')} ></img>      )}
 
 {personalityType === "ENTJ" && (
-  <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-  src={require('../../Assets/ENTJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+  <img className='image-i'
+  src={require('../../Assets/ENTJ.png')} ></img>      )}
 
 
   {personalityType === "ENTP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ENTP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ENTP.png')} ></img>      )}
 
 
 {personalityType === "ESFJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ESFJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ESFJ.png')} ></img>      )}
 
 
 {personalityType === "ENFP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ENFP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ENFP.png')} ></img>      )}
 
 
 
 {personalityType === "ESTJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ESTJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ESTJ.png')} ></img>      )}
 
 
 
 {personalityType === "ESTP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ESTP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ESTP.png')} ></img>      )}
 
 
 {personalityType === "INFJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/INFJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/INFJ.png')} ></img>      )}
 
 
 {personalityType === "INFP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/INFP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/INFP.png')} ></img>      )}
 
 
 {personalityType === "INTJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/INTJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/INTJ.png')} ></img>      )}
 
 
 
 {personalityType === "INTP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/INTP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/INTP.png')} ></img>      )}
 
 
 
 {personalityType === "ISFJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ISFJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ISFJ.png')} ></img>      )}
 
 
 {personalityType === "ISFP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ISFP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ISFP.png')} ></img>      )}
 
 
 {personalityType === "ISTJ" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ISTJ.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
+    <img className='image-i'
+    src={require('../../Assets/ISTJ.png')} ></img>      )}
 
 {personalityType === "ISTP" && (
-    <img className='wt-rounded image-overlay-img wt-vertical-center image-overlay-image--portrait wt-overlay--animation-done'
-    src={require('../../Assets/ISTP.png')} style={{width:"500px" , height:"650px"}} ></img>      )}
-
+    <img className='image-i'
+    src={require('../../Assets/ISTP.png')} ></img>      )}
+</div>
 </Col>
 
-<Col md={6} 
+
+
+
+
+<Col md={6}
+//  className='colB'
  >
-  
-
-
-
-
-
-
-
+<div className='colB'>
  {personalityType === "ISTJ" && (
   <div style={{width:"500px" , height:"650px" }}>   
 
@@ -1027,12 +1027,14 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
   
   
   )} 
-
+</div>
 </Col>
+
+
+
 </Row>
 
 <Row className='conc' >
-
 {personalityType === "ESTP" && (  
  <div>
 
@@ -1221,7 +1223,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 
 {/* rowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwajdjxbjcbidbcdbucbduivbjdzbvbxjvbjkbjxbvjxbvjbxjvbxv */}
 
-<Row>
+<Row className='rowww' >
 
 <h2>More About You:</h2>
 
@@ -1230,12 +1232,13 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 
 
 <Row className='roww'>
+{/* <div className='conclusion' > */}
 
 {personalityType === "ESTP" && (  
  <div   className='enclose' >
 
 <h6  className='conc1' >
-You are an ESTP, and your enthusiasm and drive are reflected in your tastes in food and pastimes. You like hearty, savory meals and frequently look for new, fascinating culinary experiences. You enjoy experimenting with other cuisines and trying new foods. Your interests are frequently physical and hands-on, whether they be sports, outdoor excursions, or thrill-seeking activities. You naturally like being in the present and taking pleasure in unplanned events. Due to your extraverted nature, you do best in social situations where you can engage with people and showcase your upbeat and charismatic personality. You are able to handle a variety of situations with ease since you are flexible and quick-witted. You can interact with a variety of individuals thanks to your outgoing personality, which also makes it easy for you to fully appreciate new situations.
+You are an ESTP, which means you have lots of energy and excitement. This shows in the kinds of foods and activities you enjoy. You love tasty, satisfying meals and are always on the lookout for new and interesting dishes to try. Trying out different cuisines and new foods is something you really enjoy. Your hobbies and interests are usually physical and hands-on, like sports, outdoor adventures, or thrilling activities. You like living in the moment and enjoying unplanned events. Since you're outgoing and social, you thrive in situations where you can interact with people and show off your positive and charming personality. You're good at handling different situations because you're adaptable and quick-thinking. Your friendly nature makes it easy for you to get along with all kinds of people and fully enjoy new experiences.
 
 </h6>
 
@@ -1247,8 +1250,7 @@ You are an ESTP, and your enthusiasm and drive are reflected in your tastes in f
  <div className='enclose' >
 
  <h6  className='conc1' >
- Your warm and nurturing temperament as an ESFJ affects your taste in cuisine and activities. You take pleasure in meals that promote social interaction and a sense of community, frequently choosing dishes that are tailored to the tastes and preferences of those who are there. You value eating together and fostering a friendly atmosphere. Your interests frequently center on helping others and fostering relationships, whether by volunteering, hosting events or participating in social gatherings. You enjoy interacting with others and being the life of the party because of your extraverted personality, which makes you flourish in social situations. You are a great listener and friend because of your sympathetic and empathic nature. You appreciate structure and order in your life, and you frequently work to create harmony and stability in your surroundings, which is indicated by your affinity for judging. You are a useful and well-liked member of any social gathering due to your kind and outgoing personality. 
- </h6>
+ Your ESFJ personality traits have a big impact on your food and activity choices. You really like meals that bring people together and create a sense of community. When you eat, you often pick dishes that suit the preferences of those around you. You value the idea of eating together and creating a friendly atmosphere. Your interests usually revolve around helping others and building relationships. This could mean doing volunteer work, hosting gatherings, or just being part of social events. Since you're an extravert, you thrive in social situations and enjoy being the life of the party. You're a good listener and friend because you're caring and understanding. You prefer having structure and order in your life, and you work hard to make sure things are peaceful and stable. People appreciate having you around at social gatherings because you're friendly and outgoing. </h6>
  
  
   </div>
@@ -1258,7 +1260,8 @@ You are an ESTP, and your enthusiasm and drive are reflected in your tastes in f
   <div className='enclose' >
 
   <h6  className='conc1' >
-  Your vibrant and expressive character as an ESFP affects your taste in food and pastimes. You choose delicious, vivid foods that please your taste buds and meals that stimulate your senses. You eagerly welcome the experience of trying out many new foods. Your interests are frequently social and interactive pursuits, whether it is dancing, performing arts, or recreational sports. You naturally have a gift for making others laugh and like being the center of attention. Because of your extraverted personality, you enjoy being among people and establishing new acquaintances effortlessly. You like to look for excitement and thrill in new situations since you are impulsive and adaptive. You can interact with others on a deeper level thanks to your warm and sympathetic attitude, and you respect the emotional bonds you forge with other people. You are a magnet for fun and excitement in any social setting thanks to your adventurous personality and love for life.  </h6>
+  Your lively and expressive nature as an ESFP affects the things you enjoy, like food and activities. You prefer tasty and colorful foods that make your taste buds happy and meals that excite your senses. You are always open to trying new foods and enjoy the experience. Your interests usually involve being social and doing interactive things, like dancing, performing arts, or sports for fun. You have a natural talent for making others laugh and enjoy being in the spotlight. Because you are outgoing, you love being around people and making new friends easily. You seek thrills and excitement in new situations since you are spontaneous and adaptable. Your warm and caring attitude helps you connect with others on a deeper level, and you value the emotional bonds you create with people. Your adventurous personality and zest for life make you a magnet for fun and excitement in any social gathering.
+    </h6>
   
   
    </div>
@@ -1278,8 +1281,8 @@ Your realistic and deliberate personality as an ESTJ is reflected in your tastes
   <div className='enclose' >
 
   <h6  className='conc1' >
-  Your vibrant and expressive character as an ESFP affects your taste in food and pastimes. You choose delicious, vivid foods that please your taste buds and meals that stimulate your senses. You eagerly welcome the experience of trying out many new foods. Your interests are frequently social and interactive pursuits, whether it is dancing, performing arts, or recreational sports. You naturally have a gift for making others laugh and like being the center of attention. Because of your extraverted personality, you enjoy being among people and establishing new acquaintances effortlessly. You like to look for excitement and thrill in new situations since you are impulsive and adaptive. You can interact with others on a deeper level thanks to your warm and sympathetic attitude, and you respect the emotional bonds you forge with other people. You are a magnet for fun and excitement in any social setting thanks to your adventurous personality and love for life.
-    </h6>
+  You are a lively and spirited individual as an ENFP, and your energy shines through in what you do and what you like to eat. You love the excitement of trying out new and interesting foods, and you prefer meals that have lots of flavors and variety. Your curious taste buds encourage you to try different types of food and enjoy the pleasures of the kitchen. Your hobbies often involve creative and imaginative activities, like writing, performing arts, or expressing yourself through art to connect with others on a deeper level. Since you're outgoing, being with people energizes you, and you're often the life of social gatherings. You have a charming and caring nature, always trying to understand and support those around you. Your flexibility and open-mindedness make you a great team player, and you're always eager to embrace new experiences and ideas. Your friends treasure you and find inspiration in your zest for life and the happiness you bring to everyone around you.
+      </h6>
    </div>
 )}
 
@@ -1287,8 +1290,8 @@ Your realistic and deliberate personality as an ESTJ is reflected in your tastes
  <div className='enclose' >
 
  <h6  className='conc1' >
- You have a nurturing and loving personality if you're an ISFJ, which is shown in your taste for warm, comforting cuisine like home-cooked meals. As a method to show your love and concern for others, you delight in preparing meals for them. You frequently gravitate towards pastimes like art, writing, or gardening because they let you connect with your emotions. You may find therapeutic value in spending time in nature and caring for plants. You are an excellent listener and encouraging friend because of your attention to detail and capacity for mindfulness of others' needs. While you may be conflict-avoidant and sensitive to criticism, you may also value peace and cooperation in your relationships.
-    </h6>
+ You identify as an ISFJ, it means you have a caring and loving personality. You enjoy eating warm and comforting foods, especially home-cooked meals. Cooking for others is a way for you to show your love and care for them. You also like doing things like art, writing, or gardening because they help you express your feelings. Spending time in nature and taking care of plants makes you feel better too. You're good at listening to others and being a supportive friend because you pay close attention to details and understand what they need. However, you might try to avoid conflicts and feel sensitive when people criticize you. Instead, you prefer having peaceful and cooperative relationships with others.
+     </h6>
   </div>
 )}
 
@@ -1298,8 +1301,8 @@ Your realistic and deliberate personality as an ESTJ is reflected in your tastes
  <div className='enclose' >
 
  <h6  className='conc1' >
- You identify as an ISTJ, your food preferences are probably straightforward and conventional. You might love comforting, recognizable dishes from the past and value their consistency. Your favorite foods are probably those that are satisfying, easily prepared, and useful. You might prefer to stick to what you know and appreciate rather than being overly adventurous when it comes to tasting new foods. You are drawn to hobbies like organizing your home, woodworking, or gardening because they appeal to your practical and analytical side. Your activities may reflect your thorough attention to detail and need for organization. You enjoy the process of honing your abilities and take excitement in developing and completing things.
-     </h6>
+ You identify as an ISTJ, you probably have simple and traditional food preferences. You likely enjoy familiar, comforting dishes from the past and prefer meals that are easy to make and satisfying. You might not be very adventurous when it comes to trying new foods, and instead, stick to what you already know and like. Your hobbies are likely practical and involve activities like organizing your home, working with wood, or gardening. These hobbies appeal to your analytical and methodical nature, as you enjoy paying close attention to detail and staying organized. You find joy in improving your skills and taking pride in completing projects.     </h6>
+
   </div>
 )}
 
@@ -1307,8 +1310,8 @@ Your realistic and deliberate personality as an ESTJ is reflected in your tastes
   <div className='enclose' >
 
 <h6  className='conc1' >
-You are an ISFP, which means that you are sensitive and expressive in both your culinary and leisure interests. You appreciate meals that provoke feelings and artistic flare because they allow you to savor the sensory experience of eating. Trying new foods and flavors, especially those that go along with your emotional relationship to food, may bring you joy. Your interests are frequently centered around artistic and creative activities that give you the chance to express yourself, including writing, music, or painting. You may find it therapeutic to spend time in nature or to participate in outdoor activities because it revitalizes and inspires you. You treasure deep and lasting ties with a select group of close friends who are aware of and respect your sensitive and adaptive nature. Your introverted nature implies that you value your personal space and time for introspection.
-    </h6>
+You are an ISFP, which means you are someone who feels things deeply and likes to express yourself through both your cooking and your leisure activities. When it comes to food, you enjoy meals that make you feel something and are made with creativity and artistry, as this allows you to fully enjoy the experience of eating. Trying out new foods and flavors, especially those that have a special emotional meaning to you, can make you happy. Your interests usually revolve around artistic and creative things that let you express yourself, such as writing, music, or painting. Spending time in nature or doing outdoor activities is something that energizes and inspires you. You value your close friendships a lot, and these friends understand and appreciate your sensitive and adaptable nature. Since you're introverted, you also like having time alone to think and reflect.    </h6>
+
  </div>
 )}
 
@@ -1318,7 +1321,7 @@ You are an ISFP, which means that you are sensitive and expressive in both your 
 
   <h6  className='conc1' >
   You have a lively and inquisitive temperament as an ENTP, which affects your taste in food and pastimes. You appreciate recipes that challenge your taste senses and provide new sensations, and you enjoy meals that are both intellectually interesting and distinctive. You are interested in experimenting with various cuisines and like the thrill of discovery. Your interests probably entail mental exercises that challenge you and let you investigate novel concepts, including debating, solving problems, or having philosophical talks. Because of your extraverted personality, you enjoy being among people and the center of lively talks. You also do well in social situations. You are good at connecting seemingly unconnected ideas because of your quick wit and intelligent nature. You can welcome change and approach problems with a feeling of curiosity and inventiveness because to your open-mindedness and adaptability. You are a motivating and intellectually fascinating presence in any group environment thanks to your energy and creative thinking.
-        </h6>
+          </h6>
    </div>
 )}
 
@@ -1326,8 +1329,8 @@ You are an ISFP, which means that you are sensitive and expressive in both your 
   <div className='enclose' >
 
 <h6  className='conc1' >
-You approach food and pastimes in a practical and hands-on manner if you identify as an ISTP. You appreciate uncomplicated, plain recipes that delight your palate without adding needless complexity. You might enjoy experimenting with new meals that appeal to your adventurous side, but you often prefer the efficiency and practicality of foods that are simple to make. Sports, outdoor excursions, or working with mechanical devices are a few examples of hobbies that frequently entail exploration and physical activity. You're good at solving problems and love learning how things operate. You treasure your alone time for meditation and renewal because you are an introvert, but you also value spending quality time with a small circle of friends who share your interests and respect your spontaneous and adaptable nature.
-      </h6>
+You approach food and pastimes in a practical and hands-on manner if you identify as an ISTP. You appreciate uncomplicated, plain recipes that delight your palate without adding needless complexity. You might enjoy experimenting with new meals that appeal to your adventurous side, but you often prefer the efficiency and practicality of foods that are simple to make. Sports, outdoor excursions, or working with mechanical devices are a few examples of hobbies that frequently entail exploration and physical activity. You're good at solving problems and love learning how things operate. You treasure your alone time for meditation and renewal because you are an introvert, but you also value spending quality time with a small circle of friends who share your interests and respect your spontaneous and adaptable nature.      </h6>
+
  </div>
 )}
 
@@ -1335,8 +1338,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  Your intensely introspective and inventive temperament as an INFP affects your taste in food and pastimes. You prefer to love meals that bring back memories and feelings, and you value foods that are significant to your culture or personal history. You may be intrigued by trying out unusual and creative culinary dishes because you value the sensory experience that food provides. Your interests are frequently centered on artistic endeavors that let you express your feelings and explore your rich inner world, such as writing, poetry, or other types of artistic expression. You must spend time in calm, serene settings, such as cozy areas or natural settings, in order to rejuvenate and find inspiration. You appreciate isolation and look for meaning and purpose in your experiences since you are an introverted person. Even though you could be reserved in large social gatherings, you value genuine connections with a select few people who share your beliefs and have an appreciation for creativity and emotional depth.
-          </h6>
+  Your personality as an INFP greatly influences your preferences for food and activities. You like meals that remind you of special memories or bring out strong emotions. Foods that are important to your culture or personal history hold a special place in your heart. You enjoy trying out unique and creative dishes because you love the way food can make you feel. You are drawn to artistic activities that allow you to express your feelings and explore your inner thoughts. Writing, poetry, and other forms of art are particularly appealing to you. To feel refreshed and inspired, you seek out peaceful and quiet places, like cozy corners or natural environments. You find value in spending time alone and often seek deeper meanings in your experiences, as you are introverted in nature. Although you might be reserved in large social gatherings, you cherish meaningful connections with a small group of people who share your values and appreciate creativity and emotional depth.
+            </h6>
    </div>
 )}
 
@@ -1345,8 +1348,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  You have an analytical and inquisitive personality type, which affects your diet and hobby preferences. You appreciate eating meals that let you experiment with new flavors and combinations. You frequently find excitement in trying out new foods and culinary methods. Your interests are centered on cerebral activities like reading, crossword puzzles, and complicated problem-solving. Your natural curiosity about how things work may inspire you to investigate numerous scientific or technology topics. Because of your introverted nature, you cherish your alone time for reflection and deep thinking, but you also love conversing and exchanging ideas with others who share your interests in thought-provoking conversation. You may approach new experiences and problems with a sense of curiosity and flexibility because to your versatile and open-minded nature.
-   </h6>
+  Your personality as an INFP greatly influences your preferences for food and activities. You like meals that remind you of special memories or bring out strong emotions. Foods that are important to your culture or personal history hold a special place in your heart. You enjoy trying out unique and creative dishes because you love the way food can make you feel. You are drawn to artistic activities that allow you to express your feelings and explore your inner thoughts. Writing, poetry, and other forms of art are particularly appealing to you. To feel refreshed and inspired, you seek out peaceful and quiet places, like cozy corners or natural environments. You find value in spending time alone and often seek deeper meanings in your experiences, as you are introverted in nature. Although you might be reserved in large social gatherings, you cherish meaningful connections with a small group of people who share your values and appreciate creativity and emotional depth.   </h6>
+
    </div>
 )}
 
@@ -1354,8 +1357,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  Your tastes in cuisine and pastimes are influenced by your charming and empathic character as an ENFJ. You take pleasure in meals that foster camaraderie and bring people together, frequently selecting dishes that satisfy the preferences and requirements of others. You enjoy entertaining guests and establishing a cozy atmosphere for your loved ones. Your interests are frequently centered around activities like mentoring, volunteering, or supporting social initiatives that benefit others. Because of your extraverted personality, you like social situations and are perceptive to the wants and feelings of others. You can connect and comprehend others on a deep level thanks to your insightful and intuitive personality. You appreciate harmony and order in your life, which is evident from your predilection for passing judgement. You also frequently work to establish a supportive environment for both yourself and those around you. You are a natural leader who people can look to for advice and support because of your sensitive and loving attitude.
-     </h6>
+Your personality, as an ENFJ, affects the things you like and do. You enjoy food and activities that bring people together and make them feel connected. You like having guests over and making your home a warm and welcoming place for your loved ones. Your interests often involve helping and supporting others, like mentoring or volunteering for social causes. Being an extravert, you enjoy social situations and can easily understand other people's feelings and needs. You have a caring and intuitive nature, which helps you connect deeply with others. You prefer a balanced and organized life and often offer support to those around you. People see you as a natural leader, seeking your guidance and love because of your kind and sensitive approach.     </h6>
+
    </div>
 )}
 
@@ -1364,8 +1367,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  You have a rational and strategic attitude, which is evident in how you approach eating and activities as an INTJ. You favor quick, easy meals that fit into your hectic schedule, frequently choosing healthy selections that increase your productivity. Even though cooking isn't your favorite pastime, you value a meal that is expertly made and appeals to both your senses of taste and intellect. Your interests tend to be in intellectual pursuits like reading, solving puzzles, or participating in discussions that test your critical thinking abilities. Your curiosity for new concepts and theories inspires you to look for deeper significance in a variety of spheres of life You enjoy your alone time for reflection, but you also value quality time with a small group of people who share your interests and intellectual ambitions.
-       </h6>
+  You identify as an INTJ. You have a sensible and thoughtful approach to eating and activities as an INTJ. You prefer quick and simple meals that fit well into your busy schedule, often choosing healthy options that help you stay productive. Although you may not love cooking, you appreciate well-prepared meals that are both delicious and intellectually satisfying. Your interests usually revolve around intellectual pursuits such as reading, solving puzzles, or engaging in discussions that challenge your critical thinking skills. You are always curious about new ideas and theories, and this curiosity leads you to find deeper meaning in various aspects of life. While you enjoy spending time alone for introspection, you also value being with a small group of like-minded individuals who share your interests and intellectual ambitions.       </h6>
+
    </div>
 )}
 
@@ -1374,8 +1377,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  You have a confident and strategic personality as an ENTJ, which affects your tastes in food and pastimes. You appreciate quick and easy meals, frequently choosing options that fit into your hectic schedule and give you the energy you need to stay alert and productive. You value structured and organized meal occasions. Your interests frequently center on intellectually demanding and assertive pursuits like taking on leadership responsibilities, strategizing, or participating in conversations. You enjoy interacting with others and are a natural leader in group settings because of your extraverted personality, which makes you thrive in social circumstances. You can comprehend complicated problems with ease and generate creative solutions because to your keen and insightful personality. You appreciate efficiency and order in your life, and you frequently work obstinately to attain your objectives, which is indicated by your fondness for judging. You command a powerful and commanding presence in any group environment thanks to your self-assurance and resolve.       </h6>
-   </div>
+You have a confident and strategic personality as an ENTJ, which affects your tastes in food and pastimes. You appreciate quick and easy meals, frequently choosing options that fit into your hectic schedule and give you the energy you need to stay alert and productive. You value structured and organized meal occasions. Your interests frequently center on intellectually demanding and assertive pursuits like taking on leadership responsibilities, strategizing, or participating in conversations. You enjoy interacting with others and are a natural leader in group settings because of your extraverted personality, which makes you thrive in social circumstances. You can comprehend complicated problems with ease and generate creative solutions because to your keen and insightful personality. You appreciate efficiency and order in your life, and you frequently work obstinately to attain your objectives, which is indicated by your fondness for judging. You command a powerful and commanding presence in any group environment thanks to your self-assurance and resolve.
+</h6>   </div>
 )}
 
 
@@ -1383,8 +1386,8 @@ You approach food and pastimes in a practical and hands-on manner if you identif
   <div className='enclose' >
 
   <h6  className='conc1' >
-  Because of your analytical personality and preference for serious interactions over idle banter, you are an INFJ. You value culinary creations that appeal to your senses and exhibit some originality. You're curious about trying out new foods and flavors, and you like learning about unusual dining situations. Your interests are frequently centered around creative activities that let you express your emotions, including writing, painting, or other forms of artistic expression. You must make time for solitude to rest and contemplate since doing so allows you to access your intuitive and sympathetic side. Nature can provide peace, and pursuits like hiking or meditation can help you regain equilibrium and re-establish contact with your inner self. Your strong capacity for empathy. You are a great listener and a helpful friend because of your empathy and compassion, but you may find it difficult to set limits and frequently put the needs of others before your own.
-  </h6>
+  You are an INFJ because you have a thoughtful and serious personality. You prefer deep conversations over small talk and like to analyze things. You enjoy trying new and unique foods that appeal to your senses. Unusual dining experiences interest you, and you like to explore different flavors. You have a creative side and enjoy activities like writing, painting, or expressing yourself through art. Taking time alone to rest and reflect is essential for you because it helps you tap into your intuitive and caring nature. Being in nature and doing things like hiking or meditation can bring you peace and help you connect with your inner self. Your strong empathy makes you a great listener and a caring friend. However, sometimes, you may struggle to set boundaries and prioritize others' needs over your own.
+    </h6>
      </div>
 )}
 
@@ -1472,7 +1475,7 @@ You approach food and pastimes in a practical and hands-on manner if you identif
 
 
 
-
+{/* </div> */}
 </Row>
 
 

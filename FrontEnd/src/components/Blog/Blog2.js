@@ -1,4 +1,6 @@
 import React from 'react';
+import { Col, Row } from "react-bootstrap";
+
  import './Blog.css';
 
 
@@ -7,12 +9,20 @@ const Blog = () => {
 
   return (
      <div className="back">
-        
+      <Row>
+
+
+<Col
+ md={1}
+  className='col11' >
+</Col>
+
+<Col md={10} className='col22' >  
    
     <div className="blog-container">
         <div className="set">   <img src={require('../../Assets/ai2.jpg')} alt="Random" /></div>
          <div className="center">
-      <h1 className="blog-title">Welcome to My Blog!</h1>
+      <h1 className="blog-title">Video Interview</h1>
       <div className="blog-content">
         <div className="blog-image">
           
@@ -21,9 +31,7 @@ const Blog = () => {
 
       
         <div className="blog-text">
-          <h2>Video Interview</h2>
           <div className="center-content">
-     <h1> Unveiling the Essence: Exploring Personality Prediction through Video Interviews with MindProbe</h1>
     
     <h4> Introduction</h4>
 
@@ -38,30 +46,24 @@ Non-verbal cues, such as facial expressions, body language, tone of voice, and e
 <h4>The MindProbe Project</h4>
 MindProbe is at the forefront of leveraging video interviews to advance the field of personality prediction. The project has developed cutting-edge AI algorithms that analyze various aspects of a person's video interview to unravel the intricacies of their personality traits. These traits encompass the well-established Big Five Personality Model, which includes openness, conscientiousness, extraversion, agreeableness, and neuroticism.
 
-<h4>THow MindProbe Works</h4>
 
 
 
-<h4>Natural Language Processing (NLP):</h4>
-MindProbe's NLP capabilities enable it to transcribe and interpret the spoken content of video interviews. This process extracts valuable information about the interviewee's thoughts, interests, and preferences.
- <h4>Facial and Emotional Recognition: </h4>By employing advanced facial recognition technology, MindProbe analyzes facial expressions and micro-expressions, providing valuable insights into emotions, social tendencies, and cognitive processes.
+<h5>Facial and Emotional Recognition: </h5>By employing advanced facial recognition technology, MindProbe analyzes facial expressions and micro-expressions, providing valuable insights into emotions, social tendencies, and cognitive processes.
 
 
- <h4>Tone and Voice Analysis:</h4> he tone of voice carries significant emotional cues. MindProbe's voice analysis algorithms decipher patterns in pitch, pace, and intonation, contributing to the understanding of the interviewee's emotional state and personality traits.
+ <h5>Tone and Voice Analysis:</h5> he tone of voice carries significant emotional cues. MindProbe's voice analysis algorithms decipher patterns in pitch, pace, and intonation, contributing to the understanding of the interviewee's emotional state and personality traits.
 
- <h4>Body Language Decoding:</h4> Understanding body language is crucial in comprehending social behavior. MindProbe's sophisticated algorithms assess body movements, gestures, and posture, providing a deeper comprehension of an individual's social dynamics.
+ <h5>Body Language Decoding:</h5> Understanding body language is crucial in comprehending social behavior. MindProbe's sophisticated algorithms assess body movements, gestures, and posture, providing a deeper comprehension of an individual's social dynamics.
 
- <h4>The Potential Impact </h4>
+ <h5>The Potential Impact </h5>
  The implications of MindProbe's work are immense. By employing video interviews as a tool for personality prediction, we can gain profound insights into human behavior, leading to advancements in various domains. From personalized therapy approaches to optimized career counseling, the applications are diverse and transformative.
 
 
 <h4>Conclusion </h4>
 The fusion of technology and psychology has paved the way for innovative approaches to understanding human personality better. MindProbe's trailblazing use of video interviews promises to unlock new dimensions of human behavior, facilitating a deeper understanding of ourselves and others. As the project progresses and AI continues to evolve, we can look forward to a future where personality prediction becomes an invaluable tool in fostering personal growth, well-being, and societal harmony.
 </div>
-<div className="article-author">
-        <p>Article by SARMAD WAHEED </p>
-        <p>Published on July 18, 2023</p>
-      </div>
+
       </div>
         </div>
         
@@ -69,7 +71,12 @@ The fusion of technology and psychology has paved the way for innovative approac
 
      
     </div>
-
+    </Col>
+    <Col
+     md={1}
+      className='col33' >
+    </Col>
+    </Row>
     </div>
     
   );

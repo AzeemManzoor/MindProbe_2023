@@ -1,17 +1,14 @@
-.body{
-  background-color:white ;
-}
+
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content:space-between;
+  /* padding: 20px; */
   background-color: rgb(0, 128, 128);
   color: #fff;
   scroll-behavior: auto;
   position: sticky;
-  /* text-decoration: none;
-  list-style-type: none; */
+
 }
 
 .nav-links a {
@@ -19,11 +16,8 @@
 }
 .user{
 
-/* align-items: center; */
 color: #2b2b2b;
 font-weight: 500;
-/* position: relative; */
-/* top:7px */
 }
 .loginBtn{
 
@@ -53,10 +47,6 @@ font-weight: 500;
   transform: translateY(1px);
 }
 
-
-
-
-/* LOGO */
 .logo {
   font-size: 32px;
   text-decoration: none;
@@ -65,7 +55,8 @@ font-weight: 500;
   text-decoration: none;
   color: white;
 }
-/* NAVBAR MENU */
+
+
 .menu {
   display: flex;
   gap: 1em;
@@ -81,32 +72,9 @@ font-weight: 500;
 }
 
 .menu li {
-  padding: 5px 14px;
   list-style:none;
-  align-items: center;
-  text-decoration: none;
+  text-decoration: none; 
 
-}
-
-/* DROPDOWN MENU */
-.services {
-  position: relative; 
-}
-
-.dropdown {
-   display: none;
-  border-radius: 8px;
-  top: 35px;
-} 
-
-
-
-.dropdown li:hover {
-  background-color: #4c9e9e;
-}
-
-.services:hover .dropdown {
-  display: block;
 }
 
 
@@ -114,7 +82,8 @@ input[type=checkbox] {
   display: none;
 } 
 
-/* HAMBURGER MENU */
+
+
 .hamburger {
   display: none;
   font-size: 24px;
@@ -125,29 +94,23 @@ input[type=checkbox] {
 
   background: none;
   border: none;
-  padding: 0;
   font-family: inherit;
   font-size: inherit;
   color: inherit;
   cursor: pointer;
   display: inline-block;
-  margin-right: 10px;  
 }
 
 
 
-/* APPLYING MEDIA QUERIES */
-@media (max-width: 768px) {
+@media (max-width: 775px) {
  .menu {
     display:none;
-    position: relative;
     background-color:teal;
-    right: 100px;
-    text-align: center;
-
-
 
   }
+
+
   menu.logo{
 
     position:relative;
@@ -163,7 +126,13 @@ input[type=checkbox] {
   }
 
   .menu li + li {
-    margin-top: 12px;
+    margin-top: 10px;
+ 
+
+  }
+  .navbar-container{
+
+/* padding-right: 80px; */
   }
 
   input[type=checkbox]:checked ~ .menu {
@@ -178,62 +147,23 @@ input[type=checkbox] {
   }
 
   
-  .dropdown li:hover {
-    background-color: #4c9e9e;
-  }
 }
 
 
 
+@media (min-width: 775px) and (max-width:1025px) {
+  .navbar{
+   width: 100%;
+  justify-content: center;
+
+}
+.navbar-container{
+  position:relative;
+  right:10px
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

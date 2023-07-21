@@ -155,13 +155,21 @@ textarea {
     /* height: 1500px; */
     }
     
-    
-    .per2{
-        /* background-image: url('../../Assets/img1.png');  */
-        background-size: cover; 
+
+    .colA{
+        /* flex-basis: 100%;*/
+        display: flex; 
+        /* align-items: center;  */
+        justify-content: center;
+
     }
-    
-/* 
+    .colB{
+        /* flex-basis: 100%; */
+        display: flex; 
+ justify-content: center;
+
+    }
+/*
     <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
@@ -191,7 +199,8 @@ color:green
 padding-top: 30px;
 padding-bottom: 30px;
 
-
+display: flex;
+        align-items: center;
 
 
 }
@@ -270,18 +279,12 @@ border-radius: 15px;
     width:800px; 
 }
 
+.image-i{
 
+height: 650px;
+width: 500px;
 
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -290,12 +293,16 @@ border-radius: 15px;
         height:2880px;
         /* background-color: #6658d3; */
      }
+
+   
     }
+
     @media (max-width:625px) {
         .main{
            height:2820px;
            /* background-color: black; */
         }
+
        }
        @media (max-width:620px) {
         .main{
@@ -324,8 +331,43 @@ border-radius: 15px;
         }
        }
 
+ @media (min-width: 767px) and (max-width:908px) {
+     
+
+        .colA {
+           order: 1;
+   height:750px;
+   
+         }
+         .image-i{
+           height: 750px;
+       }
+         .colB {
+           order: 2;
+           width:100%;
+   background-color: white;
+   height:750px;
+
+         }
+   
+ 
+   
+   .conc{
+   
+   padding-top: -20px;
+   
+   
+   }
+   
+   
+}
 
 
 
 
 
+         @media (max-width:768px) {
+           
+       
+          
+           }         

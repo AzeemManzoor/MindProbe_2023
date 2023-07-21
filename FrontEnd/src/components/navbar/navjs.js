@@ -27,7 +27,6 @@ const Navbar = () => {
     }
   };
 
-/*extra*/
 
 const { navbarItems,  addNavbarItem } = useNavbar();
 useEffect(() => {
@@ -54,9 +53,7 @@ useEffect(() => {
   fetchData();
 }, [isAuthenticated, user, addNavbarItem]);
 
-// dev-g6ysqb0dvdv8yxtk.us.auth0.com
 
-// USERNAME GETTING 
 
 
 
@@ -65,7 +62,7 @@ return (
     <nav class="navbar">
 
     <div class="logo"> <a id='mp' href='/'> MindProbe</a></div>
-    
+    <div class="navbar-container">
     <ul class="nav-links">
 
       <input type="checkbox" id="checkbox_toggle" />
@@ -74,16 +71,12 @@ return (
       <div class="menu">
 
         <li><a href="/">Home</a></li>
-
         <li><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
-
-
-
         {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>REPORT</li></a>}
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contactUs">Contact Us</a></li>
+        <li><a href="/about">AboutUs</a></li>
+        <li><a href="/contactUs">ContactUs</a></li>
         <li><a href="/FAQ's">FAQ's</a></li>
-
+<li></li>
 {isAuthenticated && (
 <text> 
 Welcome <span className='user'>{user.nickname} </span>
@@ -112,11 +105,12 @@ Log Out
         
 
        
-       
 
       
       </div>
     </ul>
+    </div>  
+
   </nav>
   );
 };

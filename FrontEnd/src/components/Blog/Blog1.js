@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Row } from "react-bootstrap";
  import './Blog.css';
 
 
@@ -9,29 +10,32 @@ const Blog = () => {
    
      <div className="back">
         
-   
+   <Row>
+
+
+    <Col
+     md={1}
+      className='col11' >
+    </Col>
+
+    <Col md={10} className='col22' >
+  
     <div className="blog-container">
         <div className="set">   <img src={require('../../Assets/ai.jpg')} alt="Random" /></div>
          <div className="center">
-      <h1 className="blog-title">Welcome to My Blog!</h1>
+      <h1 className="blog-title">AI-POWERED ANALYSIS</h1>
       <div className="blog-content">
         <div className="blog-image">
-          
-         
         </div>
-
-      
         <div className="blog-text">
-          <h2>AI-POWERED ANALYSIS</h2>
           <div className="center-content">
-     <h1> Unlocking Personality Insights with MindProbe</h1>
     
     <h4> Introduction</h4>
 
 In the realm of psychology and human behavior analysis, understanding and predicting personality traits has always been a fascinating challenge. The advent of artificial intelligence (AI) has brought new possibilities to this field, enabling researchers and experts to delve deeper into the intricacies of human personality. One such project that has garnered attention is MindProbe, an AI-powered analysis tool designed to predict and analyze personality traits with remarkable accuracy.
 
 
- <h4>The Birth of MindProbe</h4>
+ <h4>Birth of MindProbe</h4>
 
 MindProbe emerged from a collaboration between leading psychologists, data scientists, and AI experts. The objective was to leverage the power of machine learning algorithms and natural language processing (NLP) to develop an advanced system capable of deciphering complex personality traits based on individuals' digital footprints.
 
@@ -47,14 +51,15 @@ Next, the system utilizes a pre-trained model to predict personality traits base
 
 The implications of MindProbe are vast, with potential applications in various domains:
 
-<h4>1. Psychological Research:</h4>
+<h5>Psychological Research:</h5>
  MindProbe offers researchers an invaluable tool for studying human behavior on a large scale. It enables them to gather data from diverse populations quickly, facilitating the exploration of correlations between personality traits and other factors such as demographics, lifestyle, and preferences.
 
- <h4>2. Personalized Marketing:</h4> By analyzing individual personality profiles, MindProbe empowers marketers to tailor their strategies and campaigns more effectively. Understanding customers' personalities allows for targeted messaging and product recommendations that resonate with their specific traits and preferences.
+ <h5>Personalized Marketing:</h5> 
+By analyzing individual personality profiles, MindProbe empowers marketers to tailor their strategies and campaigns more effectively. Understanding customers' personalities allows for targeted messaging and product recommendations that resonate with their specific traits and preferences.
+ 
+ <h5>Career Counseling and Recruitment:</h5> MindProbe has the potential to revolutionize career counseling and recruitment processes. By analyzing personality traits, it can provide valuable insights into suitable career paths, potential strengths and weaknesses, and compatibility with specific work environments.
 
- <h4>3. Career Counseling and Recruitment:</h4> MindProbe has the potential to revolutionize career counseling and recruitment processes. By analyzing personality traits, it can provide valuable insights into suitable career paths, potential strengths and weaknesses, and compatibility with specific work environments.
-
- <h4>4. Personal Development:</h4> Individuals can benefit from MindProbe by gaining a deeper understanding of their own personality traits. This self-awareness can aid personal growth, relationship building, and decision-making, empowering individuals to align their choices with their strengths and values.
+ <h5>Personal Development:</h5> Individuals can benefit from MindProbe by gaining a deeper understanding of their own personality traits. This self-awareness can aid personal growth, relationship building, and decision-making, empowering individuals to align their choices with their strengths and values.
 
  <h4>Ethical Considerations and Privacy Concerns </h4>
 
@@ -66,10 +71,7 @@ MindProbe represents a significant milestone in AI-powered personality analysis.
 
 However, it is essential to approach such technology with caution and ensure that ethical considerations and privacy concerns are addressed adequately. With responsible usage, MindProbe can revolutionize the way we perceive ourselves, interact with others, and make informed decisions in various aspects of life.
 </div>
-<div className="article-author">
-        <p>Article by SARMAD WAHEED </p>
-        <p>Published on July 18, 2023</p>
-      </div>
+
       </div>
         </div>
         
@@ -77,7 +79,12 @@ However, it is essential to approach such technology with caution and ensure tha
 
      
     </div>
-
+    </Col>
+    <Col
+     md={1}
+      className='col33' >
+    </Col>
+    </Row>
     </div>
     
   );
