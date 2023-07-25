@@ -150,16 +150,13 @@ textarea {
     }
     .res{
         padding-bottom: 50px;
-        /* background-image: url('../../Assets/img1.png');
-        background-size: cover; */
-    /* height: 1500px; */
+        
     }
     
 
     .colA{
         /* flex-basis: 100%;*/
         display: flex; 
-        /* align-items: center;  */
         justify-content: center;
 
     }
@@ -180,8 +177,7 @@ textarea {
 
  */
 .progress{
-/* display: inline; */
-          margin-bottom: 7px;
+    margin-bottom: 7px;
 
 }
 
@@ -242,6 +238,9 @@ display: flex;
     color: #FFF;
     border: 0;
   }
+
+
+
 
 .btn-div{
     padding-top: 70px;
@@ -371,3 +370,34 @@ width: 500px;
        
           
            }         
+
+
+
+
+/* PRE-ASSES */
+.ac-btn3 {
+    font: inherit;
+    font-size: 1.25rem;
+    width: 30%;
+    height: 50px;
+    font-weight: 500;
+    background-color: teal;
+    /* background-color: #6658d3; */
+    border-radius: 6px;
+    color: #FFF;
+    border: 0;
+  }
+
+
+  .tag1{
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .tag2{
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+  }

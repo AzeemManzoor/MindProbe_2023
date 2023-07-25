@@ -96,14 +96,14 @@ export default function Footer() {
             <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
             <p>
               <MDBIcon color='secondary' icon='home' className='me-2' />
-              Jranwala, USA
+              Model town, Lahore
             </p>
             <p>
               <MDBIcon color='secondary' icon='envelope' className='me-3' />
-              MP@gmail.com
+              mindprobepredict@gmail.com
             </p>
             <p>
-              <MDBIcon color='secondary' icon='phone' className='me-3' /> +923360481777
+              <MDBIcon color='secondary' icon='phone' className='me-3' /> +92 0000000000
             </p>
             <p>
               <MDBIcon color='secondary' icon='print' className='me-3' />

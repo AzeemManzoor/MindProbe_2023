@@ -15,8 +15,6 @@ import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
 import Home4 from './components/homepage/AboutUs'
 import ContactForm from './components/contact/contact'
-import SignUpForm from './components/Auth/register'
-import SignInPage from './components/Auth/signin'
 import Test2 from "./components/assessment/test2";
 import Test3 from "./components/assessment/test3";
 import Test4 from "./components/assessment/test4";
@@ -28,8 +26,9 @@ import Result from "./components/assessment/result";
 import Blog1 from "./components/blog/blog1"
 import Blog2 from "./components/blog/blog2"
 import Blog3 from "./components/blog/blog3"
+import EmotionDetection from "./components/assessment/EmotionDetection"
 
-
+import PRE from "./components/assessment/preAsses"
 
 
 
@@ -51,9 +50,7 @@ function App() {
 
     <Router>
 <Routes>
-            <Route exact path="/register" element={<SignUpForm/>} />         
             <Route exact path="/" element={<Home/>} /> 
-            <Route exact path="/login" element={<SignInPage/>} />         
             <Route exact path="/about" element={<Home4/>} />         
             <Route exact path="/contactUs" element={<ContactForm/>} />         
             <Route exact path="/FAQ's" element={<Faq/>} />         
@@ -66,6 +63,10 @@ function App() {
             <Route exact path="/blog/Ai-powered-analysis" element={<Blog1/>} />      
             <Route exact path="/blog/Video-interview" element={<Blog2/>} />      
             <Route exact path="/blog/Detailed-report" element={<Blog3/>} />      
+            <Route exact path="/pre-assessment" element={<PRE/>} />   
+            <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
+   
+
 
 
 

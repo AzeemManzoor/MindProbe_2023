@@ -18,7 +18,12 @@ app.use(
 
 const Answer = mongoose.model('Answer', { userId: String, answers: [String], PERSONALITY_TYPE: String });
 
-const Type = mongoose.model('Type', { PERSONALITY_TYPE: String });
+const Type = mongoose.model('Type', { PERSONALITY_TYPE: String , emotions: String  });
+
+// NEW COLLECTION
+const Emotion = mongoose.model('Emotion', { userId: String,  emotions: String  });
+// NEW COLLECTION
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
   useNewUrlParser: true,

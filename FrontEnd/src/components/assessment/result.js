@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
-import {Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import assessment from '../assessment/assessment.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useNavbar } from '../navbar/NavbarContext';
