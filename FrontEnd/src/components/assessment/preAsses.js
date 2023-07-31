@@ -107,9 +107,9 @@ function PRE() {
 <h5>bdjsbjbjsbjkjgb</h5>
 <h5>bdjsbjbjsbjkjgb</h5>
 
-<a href='/Video-assessment' ><button 
+{/* <a href='/Video-assessment' ><button 
 className='ac-btn3'
->With Video</button></a>
+>With Video</button></a> */}
 
 </Col>
 
@@ -128,23 +128,20 @@ className='ac-btn3'
 <h5>bdjsbjbjsbjkjgb</h5>
 <h5>bdjsbjbjsbjkjgb</h5>
 
- <a  href='/Assessment' ><button  
- className='ac-btn3'
->Without Video</button></a>
-
 </Col>
-
-
-
-
-
 
 </Row>
 
 
 
 
+<Row>
 
+
+<a  href='/Assessment' ><button  
+ className='ac-btn3'
+>Start Assessment</button></a>
+</Row>
 
 
 

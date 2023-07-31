@@ -14,30 +14,18 @@ import { Container } from 'react-bootstrap/lib/Tab';
 const Result = () => {
   const { user, isAuthenticated } = useAuth0();
   const [personalityType, setPersonalityType] = useState('');
-
   const { addNavbarItem } = useNavbar();
-
-
-
-
   useEffect(() => {
     const fetchData = async () => {
       if (isAuthenticated && user && user.name) {
-        console.log('Logged-in userId:', user.name); // Log the logged-in user's userId
-
+        // console.log('Logged-in userId:', user.name); // Log the logged-in user's userId
         try {
           const response = await axios.get('http://localhost:4000/personalityTypes');
-          console.log('API Response:', response.data);
-
+          // console.log('API Response:', response.data);
           const matchingUser = response.data.find(data => data.userId === user.name);
           if (matchingUser) {
             setPersonalityType(matchingUser.PERSONALITY_TYPE);
-
             addNavbarItem('REPORT');
-
-
-
-
           } else {
             console.log('Personality type not found for the logged-in user.');
           }
@@ -46,15 +34,44 @@ const Result = () => {
         }
       }
     };
-
     fetchData();
   }, [isAuthenticated, user , addNavbarItem]);
 
-/* PROGRESS BAR */
 
 
-
-
+  const [allEmotions, setAllEmotions] = useState([]);
+  const [averageEmotion, setAverageEmotion] = useState('');
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isAuthenticated && user && user.name) {
+        try {
+          const response = await axios.get('http://localhost:4000/emotions', {
+            params: {
+              userId: user.name
+            }
+          });
+          console.log('Emotions API Response:', response.data);
+          const matchingUser = response.data;
+          if (matchingUser) {
+            setAllEmotions(matchingUser.all_emotions); // Adjusted property name
+            setAverageEmotion(matchingUser.average_emotion); // Adjusted property name
+          } else {
+            console.log('Emotions not found for the logged-in user.');
+          }
+        } catch (error) {
+          console.log('Error fetching Emotions:', error);
+        }
+      }
+    };
+  
+    fetchData();
+  }, [isAuthenticated, user]);
+  
+  
+  
+  // const averageEmotionValue = averageEmotion || 'N/A';
+  // const allEmotionsValue = allEmotions.length > 0 ? allEmotions.join(', ') : 'N/A';
 
   return (
     <div className='res'>
@@ -85,7 +102,7 @@ const Result = () => {
 
 {personalityType === "ENTJ" && (
   <img className='image-i'
-  src={require('../../Assets/entj.png')} ></img>      )}
+  src={require('../../Assets/ENTJ.png')} ></img>      )}
 
 
   {personalityType === "ENTP" && (
@@ -192,7 +209,7 @@ Thinking
 </h4>
  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
 
-<h6 className='info' >This shows that instead of being predominantly influenced by emotions, the individual tends to base their decisions on logic, reason, and unbiased analysis. Fairness, constancy, and sincerity are important to them.</h6>
+<h6 className='info' >This shows that instead of being predominantly influenced by emotions, the individual tends to base their decisions on logic, reason, and unbiased analysis.</h6>
 
 <h4 className='info1'>   
 
@@ -200,7 +217,7 @@ Judging
 </h4> 
 <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true} className='progress' />
 
-<h6 className='info' >The judging element suggests that the subject favors a regimented and orderly way of living. They enjoy making plans, keeping to schedules, and reaching conclusions about things. Judges frequently favor consistency and predictability.</h6>
+<h6 className='info' >The judging element suggests that the subject favors a regimented and orderly way of living. They enjoy making plans, keeping to schedules, and reaching conclusions about things.</h6>
 
 </div>
   )}
@@ -1080,7 +1097,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
  </div>
 )}
 
-{personalityType === "ENFP " && (  
+{personalityType === "ENFP" && (  
  <div>
 
 <h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
@@ -1277,7 +1294,7 @@ Your realistic and deliberate personality as an ESTJ is reflected in your tastes
  </div>
 )}
 
-{personalityType === "ENFP " && (  
+{personalityType === "ENFP" && (  
   <div className='enclose' >
 
   <h6  className='conc1' >
@@ -1391,96 +1408,34 @@ You have a confident and strategic personality as an ENTJ, which affects your ta
      </div>
 )}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* </div> */}
 </Row>
 
 
 
 
+<div>
+{isAuthenticated && allEmotions.length > 0 && averageEmotion !== '' && (
+<div >
+
+<h2  className='inter'> Interview Analysis</h2>
+
+<div  style={{backgroundColor:'aliceblue' }}>
+          <h4>Your Emotions Throughout the Interview:</h4>
+          <ul className='emotion emotion-columns' >
+            {allEmotions.map((emotion, index) => (
+              <li key={index}>{emotion}</li>
+            ))}
+          </ul>
+        <div style={{display:'flex' , textAlign:'center' , justifyContent:'center'}}>  <h3>Average Emotion:</h3>  
+        <h3 style={{color:'teal' }}>
+        {averageEmotion} 
+        </h3>
+        </div>
+        </div>
+        
+        </div>
+      )}
+</div>
 
 
 
@@ -1494,6 +1449,101 @@ You have a confident and strategic personality as an ENTJ, which affects your ta
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
     </div>
   );
 };

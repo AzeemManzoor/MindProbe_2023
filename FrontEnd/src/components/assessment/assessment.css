@@ -219,9 +219,17 @@ display: flex;
     
 
 
+.emotion{
 
+list-style: none;
+text-decoration: none;
+}
 
+.inter{
+padding-top: 40px;
+padding-bottom: 20px;
 
+}
 
 
 
@@ -277,6 +285,17 @@ color:teal;
 border-radius: 15px;
     width:800px; 
 }
+
+.conc{
+
+padding-top: 60px;
+
+}
+
+.emotion-columns {
+    column-count: 3; /* Adjust the number of columns as needed */
+    column-gap: 20px; /* Add some gap between columns */
+  }
 
 .image-i{
 

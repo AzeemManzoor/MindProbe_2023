@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "question": "How do you like to spend time with others and interact socially?"
+  },
+  {
+    "id": 2,
+    "question": "What do you think about before making a difficult decision?"
+  },
+  {
+    "id": 3,
+    "question": "How would you describe your energy level and how it affects your social activities and alone time?"
+  },
+  {
+    "id": 4,
+    "question": "How do you solve problems? Explain your process or mindset."
+  },
+  {
+    "id": 5,
+    "question": "How do you express your creativity and share your ideas?"
+  },
+  {
+    "id": 6,
+    "question": "How do you follow rules or guidelines in different situations?"
+  },
+  {
+    "id": 7,
+    "question": "When you feel stressed or pressured, how does it usually affect you, and how do you cope with it?"
+  },
+  {
+    "id": 8,
+    "question": "How do you prefer to plan and organize your daily activities?"
+  },
+  {
+    "id": 9,
+    "question": "In a group setting, what role do you usually take on and why?"
+  },
+  {
+    "id": 10,
+    "question": "What factors have the most influence on your decision-making and why?"
+  },
+  {
+    "id": 11,
+    "question": "How do you handle conflicts or disagreements with others?"
+  },
+  {
+    "id": 12,
+    "question": "Describe your ideal work environment and what helps you be productive."
+  },
+  {
+    "id": 13,
+    "question": "What inspires or motivates you the most?"
+  },
+  {
+    "id": 14,
+    "question": "How do you adapt to changes in your personal or professional life?"
+  },
+  {
+    "id": 15,
+    "question": "Describe how you approach learning new skills or acquiring knowledge."
+  },
+  {
+    "id": 16,
+    "question": "How do you usually handle unexpected challenges or obstacles?"
+  },
+  {
+    "id": 17,
+    "question": "What methods do you use to manage your time and priorities?"
+  },
+  {
+    "id": 18,
+    "question": "Describe your communication style and how you express your thoughts and ideas."
+  },
+  {
+    "id": 19,
+    "question": "How do you respond to criticism or feedback from others?"
+  },
+  {
+    "id": 20,
+    "question": "How do your emotions influence your decision-making process?"
+  },
+  {
+    "id": 21,
+    "question": "Describe your approach to taking risks or trying new experiences."
+  },
+  {
+    "id": 22,
+    "question": "How do you relax and recharge after a long day or week?"
+  },
+  {
+    "id": 23,
+    "question": "Describe your approach to working in a team or collaborating with others."
+  },
+  {
+    "id": 24,
+    "question": "How do you deal with uncertainty or ambiguity in different situations?"
+  },
+  {
+    "id": 25,
+    "question": "What methods do you use to seek personal growth or self-improvement?"
+  },
+  {
+    "id": 26,
+    "question": "Describe your ability to handle multiple responsibilities or multitask."
+  },
+  {
+    "id": 27,
+    "question": "How do you approach long-term planning or setting goals for the future?"
+  },
+  {
+    "id": 28,
+    "question": "What factors impact your motivation or engagement in tasks or projects?"
+  },
+  {
+    "id": 29,
+    "question": "How do you handle feedback or criticism of your work?"
+  },
+  {
+    "id": 30,
+    "question": "Describe your decision-making process when faced with conflicting information or opinions."
+  },
+  {
+    "id": 31,
+    "question": "How do you handle and resolve conflicts or disagreements with others?"
+  },
+  {
+    "id": 32,
+    "question": "What role does intuition play in your decision-making process?"
+  },
+  {
+    "id": 33,
+    "question": "Describe your approach to generating new ideas or brainstorming."
+  },
+  {
+    "id": 34,
+    "question": "How do you handle unexpected changes or disruptions to your plans?"
+  },
+  {
+    "id": 35,
+    "question": "What methods do you use to manage stress and maintain work-life balance?"
+  },
+  {
+    "id": 36,
+    "question": "Describe your approach to giving and receiving instructions or directions."
+  },
+  {
+    "id": 37,
+    "question": "How do you manage your emotions in challenging situations?"
+  },
+  {
+    "id": 38,
+    "question": "What methods do you use to gather information or conduct research?"
+  },
+  {
+    "id": 39,
+    "question": "Describe your ability to adapt and be flexible in different environments."
+  },
+  {
+    "id": 40,
+    "question": "How do you approach and resolve ethical or moral dilemmas?"
+  },
+  {
+    "id": 41,
+    "question": "How do you like to spend time with others or interact socially?"
+  },
+  {
+    "id": 42,
+    "question": "What do you think about before making a difficult decision?"
+  },
+  {
+    "id": 43,
+    "question": "How would you describe your energy level and how it affects your socializing and alone time?"
+  },
+  {
+    "id": 44,
+    "question": "How do you solve problems? Explain your process or mindset."
+  },
+  {
+    "id": 45,
+    "question": "How do you express your creativity or communicate your ideas?"
+  },
+  {
+    "id": 46,
+    "question": "How do you navigate and respond to rules or guidelines in different situations?"
+  },
+  {
+    "id": 47,
+    "question": "When you experience stress or pressure, how does it typically manifest and how do you cope with it?"
+  },
+  {
+    "id": 48,
+    "question": "Describe your preferred approach to planning and organizing your daily activities."
+  },
+  {
+    "id": 49,
+    "question": "In group settings, what role do you usually find yourself taking on and why?"
+  },
+  {
+    "id": 50,
+    "question": "When making decisions, what influences your choices the most, and why?"
+  },
+  {
+    "id": 51,
+    "question": "How do you handle conflicts or disagreements with others?"
+  },
+  {
+    "id": 52,
+    "question": "Describe your ideal work environment and what factors contribute to your productivity."
+  },
+  {
+    "id": 53,
+    "question": "What are your main sources of motivation or inspiration?"
+  },
+  {
+    "id": 54,
+    "question": "How do you handle and adapt to change in your personal or professional life?"
+  },
+  {
+    "id": 55,
+    "question": "Describe your approach to learning new skills or acquiring knowledge."
+  },
+  {
+    "id": 56,
+    "question": "How do you typically deal with unexpected challenges or obstacles?"
+  },
+  {
+    "id": 57,
+    "question": "What are your preferred methods for managing your time and priorities?"
+  },
+  {
+    "id": 58,
+    "question": "Describe your communication style and how you express your thoughts and ideas."
+  },
+  {
+    "id": 59,
+    "question": "How do you react to criticism or feedback from others?"
+  },
+  {
+    "id": 60,
+    "question": "What role do emotions play in your decision-making process?"
+  },
+  {
+    "id": 61,
+    "question": "Describe your approach to risk-taking or trying new experiences."
+  },
+  {
+    "id": 62,
+    "question": "How do you recharge and rejuvenate yourself after a long day or week?"
+  },
+  {
+    "id": 63,
+    "question": "Describe your approach to teamwork and collaboration."
+  },
+  {
+    "id": 64,
+    "question": "How do you handle ambiguity or uncertainty in different situations?"
+  },
+  {
+    "id": 65,
+    "question": "What are your preferred methods for seeking personal growth or self-improvement?"
+  },
+  {
+    "id": 66,
+    "question": "Describe your ability to multitask and handle multiple responsibilities."
+  },
+  {
+    "id": 67,
+    "question": "How do you approach long-term planning or setting goals for the future?"
+  },
+  {
+    "id": 68,
+    "question": "What factors influence your level of motivation or engagement in tasks or projects?"
+  },
+  {
+    "id": 69,
+    "question": "How do you handle feedback or criticism of your work?"
+  },
+  {
+    "id": 70,
+    "question": "Describe your decision-making process when faced with conflicting information or opinions."
+  },
+  {
+    "id": 71,
+    "question": "How do you handle and resolve conflicts or disagreements with others?"
+  },
+  {
+    "id": 72,
+    "question": "What role does intuition play in your decision-making process?"
+  },
+  {
+    "id": 73,
+    "question": "Describe your approach to brainstorming and generating new ideas."
+  },
+  {
+    "id": 74,
+    "question": "How do you handle unexpected changes or disruptions to your plans?"
+  },
+  {
+    "id": 75,
+    "question": "What are your preferred methods for managing stress or maintaining work-life balance?"
+  },
+  {
+    "id": 76,
+    "question": "Describe your approach to giving and receiving instructions or directions."
+  },
+  {
+    "id": 77,
+    "question": "How do you handle and manage your emotions in challenging situations?"
+  },
+  {
+    "id": 78,
+    "question": "What are your preferred methods for gathering information or conducting research?"
+  },
+  {
+    "id": 79,
+    "question": "Describe your ability to adapt and be flexible in different environments or circumstances."
+  },
+  {
+    "id": 80,
+    "question": "How do you typically approach and resolve ethical or moral dilemmas?"
+  },
+  {
+    "id": 81,
+    "question": "How do you handle and manage conflicts within a team or group setting?"
+  },
+  {
+    "id": 82,
+    "question": "Describe your approach to learning new concepts or acquiring knowledge in unfamiliar areas."
+  },
+  {
+    "id": 83,
+    "question": "How do you handle and recover from failures or setbacks?"
+  },
+  {
+    "id": 84,
+    "question": "What factors influence yourlevel of comfort or preference when it comes to socializing or interacting with others?"
+  },
+  {
+    "id": 85,
+    "question": "How do external factors influence your decision-making when it comes to taking risks?"
+  },
+  {
+    "id": 86,
+    "question": "Describe your preferred leadership style and how you motivate others."
+  },
+  {
+    "id": 87,
+    "question": "How do you handle and respond to feedback or suggestions for improvement?"
+  },
+  {
+    "id": 88,
+    "question": "Describe your approach to organizing and prioritizing your personal or professional life."
+  },
+  {
+    "id": 89,
+    "question": "How do you handle and adapt to changes in your routine or plans?"
+  },
+  {
+    "id": 90,
+    "question": "What role does empathy play in your interactions with others?"
+  },
+  {
+    "id": 91,
+    "question": "Describe your approach to problem-solving when faced with complex or challenging situations."
+  },
+  {
+    "id": 92,
+    "question": "How do you approach and make decisions when there are multiple options or alternatives?"
+  },
+  {
+    "id": 93,
+    "question": "What factors contribute to your sense of fulfillment and satisfaction in life?"
+  },
+  {
+    "id": 94,
+    "question": "How do you handle and navigate conflicts between your personal values and external expectations?"
+  },
+  {
+    "id": 95,
+    "question": "Describe your approach to brainstorming and generating innovative ideas."
+  },
+  {
+    "id": 96,
+    "question": "How do you handle and manage stress during high-pressure situations or deadlines?"
+  },
+  {
+    "id": 97,
+    "question": "What role does intuition play in your decision-making and problem-solving processes?"
+  },
+  {
+    "id": 98,
+    "question": "Describe your approach to providing constructive criticism or feedback to others."
+  },
+  {
+    "id": 99,
+    "question": "How do you handle and balance personal goals with the needs and expectations of others?"
+  },
+  {
+    "id": 100,
+    "question": "What strategies do you employ to maintain motivation and perseverance in long-term projects or goals?"
+  }
+]

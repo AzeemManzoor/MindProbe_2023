@@ -81,7 +81,8 @@ const Test4 = () => {
       // Process the response data or update the UI accordingly
       if (response.status === 200) {
         // Redirect to Page3
-        window.location.href = '/Assessment/report';
+        window.location.href= '/pre-report';
+        // '/Assessment/report';
       } else {
         // Handle error (e.g., show error message)
       }
@@ -190,9 +191,11 @@ const Test4 = () => {
     />
   </form>
 </div>
+
+
 <div  className="btn-div">
-<a  > <button  type="submit" className="ac-btn2"
-onClick={ runMachineLearning}
+<a href='/pre-report' > <button  type="submit" className="ac-btn2"
+// onClick={ runMachineLearning}
 >Submission</button></a>
 </div> 
 </div>

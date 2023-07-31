@@ -32,11 +32,11 @@ const { navbarItems,  addNavbarItem } = useNavbar();
 useEffect(() => {
   const fetchData = async () => {
     if (isAuthenticated && user && user.name) {
-      console.log('Logged-in userId:', user.name);
+      // console.log('Logged-in userId:', user.name);
 
       try {
         const response = await axios.get('http://localhost:4000/personalityTypes');
-        console.log('API Response:', response.data);
+        // console.log('API Response:', response.data);
 
         const matchingUser = response.data.find((data) => data.userId === user.name);
         if (matchingUser) {
