@@ -304,6 +304,57 @@ width: 500px;
 
 }
 
+.acc{
+
+padding-bottom: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+
+
+.buttonA{
+
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+.buttonB{
+
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+
+.r1{
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @media (max-width:768px) {
@@ -408,12 +459,119 @@ width: 500px;
   }
 
 
-  .tag1{
 
-    padding-top: 30px;
-    padding-bottom: 30px;
+   /* .textrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   
+  .textt1{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 7px 0;
+    text-align: center;
+  }
+  
+  .textt2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6f00;
+    margin: 20px 0;
+    text-align: center;
+  }  */
+
+  /* .Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    
+  } */
+  
+  .Sidebar {
+    width: 99%;
+     /* You can adjust this max-width as per your preference */
+    /* max-width: 500px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    /* max-height: calc(100vh - 40px); */
+    max-height: calc(96vh - 40px);
+
+  }
+    
+  .Sidebar h5 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 8px 0;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .textt22 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ff6f00;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #1a1a1a;
+
+  }
+
+  .textt2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff6f00;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #1a1a1a;
+  }
+  
+
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+   .tag1{
+    color: #ff6f00;
+    background-color: #1a1a1a;
+    margin-bottom: 0px;
+
+  }
+  
+.tag1-1{
+padding-top: 50px;
+    
+}
+
+
   .tag2{
 
     padding-top: 30px;

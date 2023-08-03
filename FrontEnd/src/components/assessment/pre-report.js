@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import assessment from '../assessment/assessment.css';
 
 const   Video = () => {
 
@@ -26,32 +27,81 @@ const   Video = () => {
   };
 
 
+  const analysis = async () => {
 
+    window.location.href = '/Video-assessment';
 
-
-
+  };
 
 
   return (
     <div>
 
+<Row className='row2'>
+  <Col md={4} className='col'>
+    <div className='card   card1' style={{ width: '18rem' }}>
+      <img
+        src='https://www.16personalities.com/static/images/test-header-2.svg'
+        className='card-img-top1'
+        alt='...'
+      />
+      <div className='card-body'>
+        <p className='card-text'>
+          Be yourself and answer honestly to find out your personality type.
+        </p>
+      </div>
+    </div>
+  </Col>
 
-<Row>
+  <Col className='col' md={4}>
+    <div className='card   card1' style={{ width: '18rem' }}>
+      <img
+        src='https://www.16personalities.com/static/images/academy/explorers/icons/theory.svg'
+        className='card-img-top1'
+        alt='...'
+      />
+      <div className='card-body'>
+        <p className='card-text'>
+          Learn how your personality type influences many areas of your life.
+        </p>
+      </div>
+    </div>
+  </Col>
+
+  <Col className='col' md={4}>
+    <div className='card   card1' style={{ width: '18rem' }}>
+      <img
+        src='https://www.16personalities.com/static/images/academy/analysts/exercise.svg'
+        className='card-img-top1'
+        alt='...'
+      />
+      <div className='card-body'>
+        <p className='card-text'>
+          Grow into the person you want to be with your optional Premium Guides.
+        </p>
+      </div>
+    </div>
+  </Col>
+</Row>
+
+
+<Row className='r1' >
   <h2>Do you want to use our Video Interview Feature?</h2>
 </Row>
 
 
 
 
-<Row>
+<Row  className='buttonA' >
 
-<a  href='/Video-assessment' ><button  
+<button  
+onClick={analysis}
  className='ac-btn3'
->Go to Video Analysis Page</button></a>
+>Go to Video Interview Page </button>
 
 </Row>
 
-<Row>
+<Row   className='buttonB'    >
 
 <button  
 onClick={ runMachineLearning}
@@ -59,7 +109,6 @@ onClick={ runMachineLearning}
 >Continue to Report Page</button>
 
 </Row>
-
 
 
 

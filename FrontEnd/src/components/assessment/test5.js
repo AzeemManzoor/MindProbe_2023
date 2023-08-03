@@ -20,7 +20,9 @@ const shuffledQuestions = selectRandomQuestions(secondTenQuestions, 6);
 
 console.log(shuffledQuestions);
 
-const Test4 = () => {
+
+
+const Test5 = () => {
   const [answers, setAnswers] = useState([]);
   const { user } = useAuth0(); // Get the authenticated user information from useAuth0
 
@@ -39,6 +41,8 @@ const Test4 = () => {
         console.error('Failed to fetch user ID', error);
       });
   }, [user]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +63,9 @@ const Test4 = () => {
       if (response.status === 200) {
         // Redirect to Page3
         // window.location.href = '/Assessment/Page5';
-        alert('Congratulations! You have completed the assessment. Now click the Submission Button for your Report');
+        alert('Congratulations! You have completed the assessment. Now click on the Submission Button.');
+        setIsDisabled(true);
+
 
       } else {
         // Handle error (e.g., show error message)
@@ -69,29 +75,13 @@ const Test4 = () => {
     }
   };
 
+ 
+  const [text, setText] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
-
-  const runMachineLearning = async () => {
-    try {
-      // Make a POST request to the Flask API endpoint
-      const response = await axios.post('http://localhost:5000/api/model');
-      console.log('Machine learning process completed!');
-      console.log(response.data); // Log the response data
-
-      // Process the response data or update the UI accordingly
-      if (response.status === 200) {
-        // Redirect to Page3
-        window.location.href= '/pre-report';
-        // '/Assessment/report';
-      } else {
-        // Handle error (e.g., show error message)
-      }
-    } catch (error) {
-      console.error('Error executing machine learning process:', error);
-      // Handle the error and display an error message
-    }
+  const Change = (event) => {
+    setText(event.target.value);
   };
-  // runMachineLearning();
 
 
 
@@ -169,6 +159,7 @@ const Test4 = () => {
             <label className='label'>Your Answer</label>
             <textarea
               id={`textareaValue${index}`}
+              disabled={isDisabled}
               required
               className='area'
               placeholder='Answer'
@@ -176,6 +167,7 @@ const Test4 = () => {
                 const updatedAnswers = [...answers];
                 updatedAnswers[index] = e.target.value;
                 setAnswers(updatedAnswers);
+                setText(e.target.value);
               }}
             ></textarea>
           </div>
@@ -195,11 +187,10 @@ const Test4 = () => {
 
 <div  className="btn-div">
 <a href='/pre-report' > <button  type="submit" className="ac-btn2"
-// onClick={ runMachineLearning}
 >Submission</button></a>
 </div> 
 </div>
   );
 };
 
-export default Test4;
+export default Test5;

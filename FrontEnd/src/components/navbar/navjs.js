@@ -72,7 +72,7 @@ return (
 
         <li><a href="/">Home</a></li>
         <li><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
-        {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>REPORT</li></a>}
+        {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>Report</li></a>}
         <li><a href="/about">AboutUs</a></li>
         <li><a href="/contactUs">ContactUs</a></li>
         <li><a href="/FAQ's">FAQ's</a></li>

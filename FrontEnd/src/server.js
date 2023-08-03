@@ -20,9 +20,6 @@ const Answer = mongoose.model('Answer', { userId: String, answers: [String], PER
 
 const Type = mongoose.model('Type', { PERSONALITY_TYPE: String ,average_emotion: String , all_emotions:[String]  });
 
-// NEW COLLECTION
-// const Emotion = mongoose.model('Emotion', { userId: String,  emotions: String  });
-// NEW COLLECTION
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
@@ -34,11 +31,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
 app.post('/answer', (req, res) => {
   const {  userId, answers,all_emotions,average_emotions } = req.body;
   const newAnswer = new Answer({ userId, answers,all_emotions,average_emotions });
-
-
-  // app.post('/answer', (req, res) => {
-  //   const { userId, answers } = req.body;
-  //   const newAnswer = new Answer({ userId, answers });
 
     newAnswer.save()
       .then(() => {
@@ -70,18 +62,6 @@ app.get('/personalityTypes', (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
-
-
-// app.get('/emotions', (req, res) => {
-//   Type.find({}, 'userId all_emotions average_emotion')
-//     .then((types) => {
-//       res.json(types);
-//     })
-//     .catch((error) => {
-//       console.error('Failed to fetch Emotion', error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     });
-// });
 
 
 app.get('/emotions', (req, res) => {
