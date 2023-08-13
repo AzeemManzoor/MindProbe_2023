@@ -24,13 +24,15 @@ import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
-import Blog1 from "./components/blog/blog1"
-import Blog2 from "./components/blog/blog2"
-import Blog3 from "./components/blog/blog3"
+
+import Blog1 from "./components/blog/Blog1"
+import Blog2 from "./components/blog/Blog2"
+import Blog3 from "./components/blog/Blog3"
 import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
 import Insights from "./components/insights/insights"
+import NotFound from "./components/Page_Not_Found/NotFound";
 
 
 
@@ -71,6 +73,8 @@ function App() {
             <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
             <Route exact path="/pre-report" element={<Video/>} />      
             <Route exact path="/insights" element={<Insights/>} />      
+            <Route exact path="/insights" element={<Insights/>} /> 
+            <Route path="*" element={<NotFound />} />     
 
 
 
