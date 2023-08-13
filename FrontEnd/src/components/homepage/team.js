@@ -3,17 +3,43 @@ import {Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 import '../homepage/team.css'
 
+function FlipCard({ name, role,role1,role2, imageSource }) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  return (
+    <Col md={4} id='align'> 
+      <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            <img className="image" src={imageSource} alt="" />
+          </div>
+          <div className="flip-card-back">
+            <div className="content">
+              <h3>{name}</h3>
+              <p>{role}</p>
+              <p className='role1' >{role1}</p>
+              <p>{role2}</p>
+              <div className="social-links">
+                <a className="social-link" href="https://www.facebook.com">Facebook</a>
+                <a className="social-link" href="https://www.github.com">LinkedIn</a>
+                <a className="social-link" href="https://www.github.com">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Col>
+  );
+}
 
 function Team() {
 
 
-    const [isFlipped, setIsFlipped] = useState(false);
-  
-    const handleCardClick = () => {
-      setIsFlipped(!isFlipped);
-    };
-  
+ 
     return (
 <div className='team' >
 <Row className='yup' >
@@ -30,83 +56,29 @@ function Team() {
 </div>
 </Row>
 
-  <Row className='person' >
 
-<Col md={4} id='align'> 
-<div >
-<div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}  id='cir1' >
-      <div className="flip-card-inner ">
-        <div className="flip-card-front">
-          <img className="image"  src={require('../../Assets/Muaz.jpeg')} alt=""/>
-        </div>
-        <div className="flip-card-back">
-          <div className="content">
-            <h3>MUAZ IJAZ</h3>
-            <p>MERN Developer</p>
-            <div className="social-links">
-              <a className="social-link" href="https://www.facebook.com">Facebook</a>
-              <a className="social-link" href="https://www.github.com">LinkedIn</a>
-              <a className="social-link" href="https://www.github.com">GitHub</a>
+<Row className='person'>
+      <FlipCard
+        name="MUAZ IJAZ"
+        role="MERN Developer"
+        role1="Machine learning Engineer"
+        imageSource={require('../../Assets/Muaz.jpeg')}
+      />
+      <FlipCard
+        name="AZEEM MANZOR"
+        role="MERN Developer"
+        role1="Machine learning Engineer"
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-</Col>
+        imageSource={require('../../Assets/Azeem.jpeg')}
+      />
+      <FlipCard
+        name="SARMAD WAHEED"
+        role="MERN Developer"
+        role1="Machine learning Engineer"
 
-<Col md={4} id='align' > 
-
-<div className= {`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img className="image"  src={require('../../Assets/Azeem.jpeg')} alt="" />
-        </div>
-        <div className="flip-card-back">
-          <div className="content">
-            <h3>AZEEM MANZOR</h3>
-            <p>MERN Developer</p>
-            <div className="social-links">
-              <a className="social-link" href="https://www.facebook.com">Facebook</a>
-              <a className="social-link" href="https://www.github.com">LinkedIn</a>
-              <a className="social-link" href="https://www.github.com">GitHub</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-</Col>
-
-
-<Col md={4} id='align' > 
- <div className={`flip-card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img className="image"  src={require('../../Assets/Sarmad.jpeg')} alt=""/>
-        </div>
-        <div className="flip-card-back">
-          <div className="content">
-            <h3>SARMAD WAHEED</h3>
-            <p>MERN Developer</p>
-            <div className="social-links">
-              <a className="social-link" href="https://www.facebook.com">Facebook</a>
-              <a className="social-link" href="https://www.github.com">LinkedIn</a>
-              <a className="social-link" href="https://www.github.com">GitHub</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-</Col>
-  </Row>
-
+        imageSource={require('../../Assets/Sarmad.jpeg')}
+      />
+    </Row>
 
      </div>      
     );

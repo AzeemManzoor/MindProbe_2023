@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Button, Col, Row } from "react-bootstrap";
 import '../homepage/home.css'
 
@@ -9,7 +8,7 @@ import Home4 from './AboutUs.js';
 import Team from './team.js';
 import video from '../../Assets/video.mp4'
 import { useAuth0 } from '@auth0/auth0-react';
-
+import VideoPlayer from "react-video-js-player"
 
 function Home() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -56,9 +55,17 @@ function Home() {
               <Col md={6} style={{  }}>
              <div className='col2'>
                  <div>
-      <video
-         src={video} controls  autoplay muted
+      <video className='videohome'
+         src={video} 
+        //  src={require('../../Assets/video.mp4')}
+         controls 
+         muted
+         preload="none"
+         playsInline
+         poster=''
+
         />
+
     </div>
                 </div> 
               </Col>

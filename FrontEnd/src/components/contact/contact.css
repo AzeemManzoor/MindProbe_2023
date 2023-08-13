@@ -42,12 +42,18 @@ padding-top: 30px;
     
     
 }
+#formm{
+height:385px
+}
 .container2 form{
-  padding: 30px 0 0 0;
+  /* padding: 30px 0 0 0; */
+  padding: 0;
 }
 .container2 form .form-row{
   display: flex;
-  margin: 32px ;
+  /* margin: 32px ; */
+  margin: 25px ;
+
 }
 form .form-row .input-data{
   width: 100%;

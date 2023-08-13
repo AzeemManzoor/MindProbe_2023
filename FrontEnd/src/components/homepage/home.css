@@ -13,7 +13,7 @@ height:200px;
   .sec1{
 
   height:450px;
-  background-color:lightgray;
+  /* background-color:lightgray; */
 
   
  }
@@ -54,14 +54,14 @@ height:200px;
 
 /*BACKGROUNG-COLOR*/
       .land1{
-        height:660px;
-background-color:white ;
+        height:650px;
+background-color:whitesmoke ;
 
       }
      
               .test{
-                height:680px;
-                  background-color: rgb(202, 228, 252);
+                height:630px;
+                  /* background-color: whitesmoke ; */
 
               }
               .land3{
@@ -78,7 +78,8 @@ background-color:white ;
 
                       }
  .blc{
-  background-color: pink;
+  /* background-color: pink; */
+  background-color: white;
  }
 
 
@@ -374,8 +375,7 @@ background-color:white ;
       }
       
       .team{
-        height: 1050px;
-
+        height: 950px;
 
 
       }
@@ -398,7 +398,7 @@ height:1100px
     } 
     .land1{
 
-      height:850px;
+      height:840px;
      
     }
     
@@ -409,12 +409,12 @@ height:1100px
       
       .test{
 
-        height:1130px;
+        height:1040px;
       }
       .sec1 {
         
 
-        height:800px;
+        height:750px;
       
         
         

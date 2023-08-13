@@ -3,64 +3,69 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
+import video from '../../Assets/interview.mp4'
+import {Button, Col, Row } from "react-bootstrap";
 
 
 
 
 const EmotionDetection = () => {
-  const canvasRef = useRef(null);
-  const [isVideoVisible, setIsVideoVisible] = useState(true);
-  const [is1MinuteOver, setIs1MinuteOver] = useState(false);
+  const [showVideo, setShowVideo] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [buttonVisible, setButtonVisible] = useState(true);
+  const videoRef = useRef(null);
 
-  useEffect(() => {
+
+
+  const [isPopupOpen, setIsPopupOpen] = useState(true); // Set to true initially
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+  // You can also use useEffect to automatically close the popup after a certain time
+  // useEffect(() => {
+  //   // const timeout = setTimeout(() => {
+  //     closePopup();
+  //   // }, 5000); // Close the popup after 5 seconds (adjust as needed)
+
+  //   // return () => clearTimeout(timeout);
+  // }, []);
+
+
+
+
+
     // Function to start the emotion analysis on the Flask server
     const startEmotionAnalysis = async () => {
+      setMuted(false);
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+      setButtonVisible(false); // Hide the button
       try {
         await fetch('http://localhost:5001/analyze_webcam');
-        // After 1 minute, set is1MinuteOver to true
-        setTimeout(() => {
-          setIs1MinuteOver(true);
-        }, 60000);
+                // After 1 minute, hide the video and show the H1 tag
+                // setTimeout(() => {
+                //   setShowVideo(false);
+                // }, 60000); // 1 minute in milliseconds
       } catch (error) {
         console.error(error);
       }
+
+
+          /* remove video after time */
+          const timeout = setTimeout(() => {
+            setShowVideo(false);
+          }, 60000); // 1 minute in milliseconds
+      
+          // Clear the timeout if the component is unmounted before the 1 minute
+          return () => clearTimeout(timeout);
     };
 
-    // Start the emotion analysis as soon as the component is mounted
-    startEmotionAnalysis();
+  
 
-    // Connect to the Flask server using SocketIO
-    const socket = io('http://localhost:5001');
 
-    // Listen for frames sent by the Flask server
-    socket.on('frame', data => {
-      if (isVideoVisible && !is1MinuteOver) {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        const img = new Image();
-        img.src = `data:image/jpeg;base64,${data.image_data}`;
-        img.onload = () => {
-          // Draw the image onto the canvas
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        };
-      }
-    });
 
-    // Listen for any webcam access errors from the Flask server
-    socket.on('webcam_error', data => {
-      console.error('Webcam Error:', data.message);
-      // Handle the webcam error on the frontend if needed
-    });
-
-    // Clean up the socket connection and stop the video stream after 1 minute
-    const cleanupSocket = () => {
-      socket.disconnect();
-      setIsVideoVisible(false);
-    };
-
-    // Call the cleanup function after 1 minute
-    setTimeout(cleanupSocket, 60000);
-  }, [isVideoVisible, is1MinuteOver]);
 
 
 
@@ -106,25 +111,66 @@ const EmotionDetection = () => {
 
 
 
+ 
+
 
   return (
     <div>
-      <h1>Video Interview</h1>
-      {isVideoVisible ? (
+
+{isPopupOpen && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>Instructions</h2>
+
+            <p>Click the Start interview button to start</p>
+            <p>Only start when you are ready</p>
+            <p>Please sit in the bright room</p>
+            <p>Face towards the front camera</p>
+            <p>Don't refresh the page when you start the interview</p>
+            <p>There is no option to pause the interview</p>
+            <p>The duration of interview will be 10 minutes</p>
+
+  
+            <button onClick={closePopup}>Close</button>
+          </div>
+        </div>
+      )}
+
+
+      {showVideo ? (
+
         <div>
-          {/* <h2>Backend Webcam</h2> */}
-          <canvas ref={canvasRef} width="640" height="480" />
+      <h2 className='videoh1' >Video Interview</h2>
+
+        <video className='videoz' id='video'
+        src={video}
+        // controls
+        muted={muted}
+        ref={videoRef}
+        />
+
+<div>
+{buttonVisible && <button className='ac-btn3' onClick={ startEmotionAnalysis }>Start Interview</button>}
+</div>
+
+
+
         </div>
       ) : (
         <div>
-        <h1>Your analysis has been saved  </h1>
+
+<img className='interviewDone' src={require('../../Assets/interviewDone.png')} ></img>
+
+
+        <h3 className='space' >Your analysis has been saved  </h3>
         <button  
+ 
 onClick={ runMachineLearning}
  className='ac-btn3'
 >Continue to Report Page</button>
 </div>
       )}
-    </div>
+      </div>
   );
 };
 

@@ -29,7 +29,7 @@ const ContactForm = () => {
     <div className='secc2'>
       <div className='container2'>
         <div className='text'>Contact us Form</div>
-        <form ref={form} onSubmit={sendEmail}>
+        <form id='formm' ref={form} onSubmit={sendEmail}>
           <div className='form-row'>
             <div className='input-data'>
               <input type='text' required name='fname' id='fname' />

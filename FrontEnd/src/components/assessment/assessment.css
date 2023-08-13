@@ -1,3 +1,112 @@
+.videohome{
+  height:340px;
+  width:500px
+  
+  
+  
+  }
+
+
+
+.videoz{
+height:500px;
+width:1000px
+
+}
+
+
+.videoh1{
+padding-top: 20px;
+
+
+}
+
+.info2{
+
+
+  padding-top: 10px;
+}
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.popup-content button {
+  position: relative;
+  z-index: 1;
+}
+
+
+/*  report popup */ 
+.popup1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: white    ;
+  z-index: 9999;
+}
+
+.popup1-content1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timerr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.lasth2{
+
+
+  padding-top: 30px;
+}
+
+
+.space{
+
+padding-top: 20px;
+padding-bottom: 20px;
+
+
+
+}
+
+.interviewDone{
+height:400px;
+width:700px;
+padding-top: 30px;
+}
+
+
+
 .headT{
 /* display: flex; */
 justify-content: center;
@@ -36,6 +145,17 @@ padding-bottom: 40px;
 background-color: aliceblue;
 
 }
+
+
+.row2-1{
+
+
+  padding-top: 40px;
+  padding-bottom: 58px;
+  background-color: aliceblue;
+  
+  }
+
 
 .col{
     display: flex;
@@ -166,19 +286,17 @@ textarea {
  justify-content: center;
 
     }
+
 /*
     <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
     <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+*/
 
- 
-
- */
 .progress{
     margin-bottom: 7px;
-
 }
 
 .user1{
@@ -343,6 +461,24 @@ align-items: center;
 
 
 
+/* PRE-ASSES */
+
+.coli{
+display: flex;
+justify-content: center;
+text-align: left;
+}
+
+.coli1{
+padding-bottom: 20px;
+font-weight: 600;
+}
+
+.pre-row{
+padding-bottom: 30px;
+/* background-color: #f1e4e4; */
+
+}
 
 
 
@@ -351,21 +487,148 @@ align-items: center;
 
 
 
+.arm{
+
+  text-align: center;}
+
+.ac-btn3 {
+  font: inherit;
+  font-size: 1.25rem;
+  width: 30%;
+  height: 50px;
+  font-weight: 500;
+  background-color: teal;
+  /* background-color: #6658d3; */
+  border-radius: 6px;
+  color: #FFF;
+  border: 0;
+}
+
+
+
+.Sidebar {
+  width: 99%;
+   /* You can adjust this max-width as per your preference */
+  /* max-width: 500px; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  align-items: baseline;
+  padding: 20px;
+  /* background-color: #332020; */
+
+  /* color: #ffffff; */
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  /* max-height: calc(100vh - 40px); */
+  max-height: calc(96vh - 40px);
+
+
+  margin-top: -8px;
+}
+  
+.Sidebar h5 {
+  font-size: 18px;
+  font-weight: 400;
+  /* color: #ffffff; */
+  margin: 8px 0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.textt22 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ff6f00;
+  /* color:#2b2b2b ; */
+
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* background-color: #332020; */
+
+  padding-top: 10px;
+
+}
+
+.textt2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff6f00;
+  /* color:#2b2b2b ; */
+
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* background-color: #332020; */
+}
 
 
 
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+ .tag1{
+  color: #ff6f00;
+/* color:#2b2b2b ; */
+  /* background-color: #332020; */
+
+  margin-bottom: 0px;
+
+}
+
+.tag1-1{
+/* padding-top: 50px; */
+  padding: 0;
+}
+
+
+.tag2{
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+
+
+/*PRE-REPORT*/
+
+
+.ac-btn4 {
+  font: inherit;
+  /* font-size: 1.25rem; */
+  width: 28%;
+  height: 50px;
+  font-weight: 500;
+  background-color: teal;
+  /* background-color: #6658d3; */
+  border-radius: 6px;
+  color: #FFF;
+  border: 0;
+}
 
     @media (max-width:768px) {
      .main{
         height:2880px;
         /* background-color: #6658d3; */
      }
-
+.ac-btn3{
+height: 60px;
    
     }
-
+    
+  }
     @media (max-width:625px) {
         .main{
            height:2820px;
@@ -378,6 +641,7 @@ align-items: center;
            height:2900px;
            /* background-color: violet; */
         }
+     
        }
 
 
@@ -398,6 +662,7 @@ align-items: center;
             height:3130px;
             /* background-color: blue; */
         }
+
        }
 
  @media (min-width: 767px) and (max-width:908px) {
@@ -431,150 +696,3 @@ align-items: center;
    
 }
 
-
-
-
-
-         @media (max-width:768px) {
-           
-       
-          
-           }         
-
-
-
-
-/* PRE-ASSES */
-.ac-btn3 {
-    font: inherit;
-    font-size: 1.25rem;
-    width: 30%;
-    height: 50px;
-    font-weight: 500;
-    background-color: teal;
-    /* background-color: #6658d3; */
-    border-radius: 6px;
-    color: #FFF;
-    border: 0;
-  }
-
-
-
-   /* .textrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    padding: 20px;
-    background-color: #fcfcfc;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  .textt1{
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 7px 0;
-    text-align: center;
-  }
-  
-  .textt2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff6f00;
-    margin: 20px 0;
-    text-align: center;
-  }  */
-
-  /* .Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9;
-    
-  } */
-  
-  .Sidebar {
-    width: 99%;
-     /* You can adjust this max-width as per your preference */
-    /* max-width: 500px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    overflow-y: auto;
-    /* max-height: calc(100vh - 40px); */
-    max-height: calc(96vh - 40px);
-
-  }
-    
-  .Sidebar h5 {
-    font-size: 18px;
-    font-weight: 400;
-    color: #ffffff;
-    margin: 8px 0;
-    text-align: center;
-    line-height: 1.6;
-  }
-  
-  .textt22 {
-    font-size: 20px;
-    font-weight: 500;
-    color: #ff6f00;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-color: #1a1a1a;
-
-  }
-
-  .textt2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ff6f00;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-color: #1a1a1a;
-  }
-  
-
-
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-   .tag1{
-    color: #ff6f00;
-    background-color: #1a1a1a;
-    margin-bottom: 0px;
-
-  }
-  
-.tag1-1{
-padding-top: 50px;
-    
-}
-
-
-  .tag2{
-
-    padding-top: 30px;
-    padding-bottom: 30px;
-
-  }

@@ -30,6 +30,9 @@ import Blog3 from "./components/blog/blog3"
 import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
+import Insights from "./components/insights/insights"
+
+
 
 
 
@@ -67,7 +70,8 @@ function App() {
             <Route exact path="/pre-assessment" element={<PRE/>} />   
             <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
             <Route exact path="/pre-report" element={<Video/>} />      
-   
+            <Route exact path="/insights" element={<Insights/>} />      
+
 
 
 
@@ -88,7 +92,6 @@ function App() {
 <Footer/>
 
 
-{/* <Blog1/> */}
 
 
     </div>

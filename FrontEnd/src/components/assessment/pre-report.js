@@ -96,7 +96,7 @@ const   Video = () => {
 
 <button  
 onClick={analysis}
- className='ac-btn3'
+ className='ac-btn4'
 >Go to Video Interview Page </button>
 
 </Row>
@@ -105,7 +105,7 @@ onClick={analysis}
 
 <button  
 onClick={ runMachineLearning}
- className='ac-btn3'
+ className='ac-btn4'
 >Continue to Report Page</button>
 
 </Row>

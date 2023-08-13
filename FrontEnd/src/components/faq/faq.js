@@ -37,7 +37,7 @@ const Faq = () => {
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item">
         <h2 className="accordion-header" id="flush-headingOne">
-          <button  id=''
+          <button  
             className={`accordion-button ${activeAccordion === 0 ? '' : 'collapsed'}`}
             type="button"
             onClick={() => toggleAccordion(0)}

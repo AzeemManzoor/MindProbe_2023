@@ -16,7 +16,7 @@ function Home2() {
   const handleButtonClick = () => {
     if (isAuthenticated) {
       // Redirect to the ASSESSMENT page if the user is logged in
-      window.location.href = '/Assessment';
+      window.location.href = '/pre-assessment';
     } else {
       // Redirect to the login page if the user is not logged in
       loginWithRedirect();

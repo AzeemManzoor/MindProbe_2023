@@ -6,8 +6,22 @@ import assessment from '../assessment/assessment.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useNavbar } from '../navbar/NavbarContext';
 import { Container } from 'react-bootstrap/lib/Tab';
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 
+const renderTime = ({ remainingTime }) => {
+  if (remainingTime === 0) {
+    return <div className="timer">DONE...</div>;
+  }
+
+  return (
+    <div className="timer">
+      <div className="text">Remaining</div>
+      <div className="value">{remainingTime}</div>
+      <div className="text">seconds</div>
+    </div>
+  );
+};
 
 
 
@@ -69,13 +83,62 @@ const Result = () => {
   }, [isAuthenticated, user]);
   
   
-  
-  // const averageEmotionValue = averageEmotion || 'N/A';
-  // const allEmotionsValue = allEmotions.length > 0 ? allEmotions.join(', ') : 'N/A';
+
+  const [isPopupOpen, setIsPopupOpen] = useState(true); // Set to true initially
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  // You can also use useEffect to automatically close the popup after a certain time
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      closePopup();
+    }, 11000); // Close the popup after 8000 (mili)seconds (adjust as needed)
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+
+
 
   return (
     <div className='res'>
-      <Row className='res1' >
+
+
+{isPopupOpen && (
+        <div className="popup1">
+          <div className="popup1-content1">
+<div>
+
+
+<h2>Please Wait...</h2>
+
+<div className="timerr">
+      <div className="timer-wrapper">
+        <CountdownCircleTimer
+          isPlaying
+          duration={10}
+          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          onComplete={() => [true, 1000]}
+        >
+          {renderTime}
+        </CountdownCircleTimer>
+      </div>
+
+    </div>
+    <p className="info2">
+        We are getting your Report...
+      </p>
+
+</div>
+          </div>
+        </div>
+      )}
+
+
+
+
+<Row className='res1' >
       {isAuthenticated && (
 <div> 
 <h1 className='user1'>Dear</h1> <h1  className='user1 txt' > {user.nickname}</h1> <h1 className='user1 ' >here's  Your Personality Type </h1> 
@@ -1438,9 +1501,13 @@ You have a confident and strategic personality as an ENTJ, which affects your ta
 </div>
 
 
+<Row>
 
+<h5 className='lasth2' >
+Do you want to know how to improve your personality? Do check our personality insights to improve your personality. <a href="/insights" >click</a>
+</h5>
 
-
+</Row>
 
 
 
