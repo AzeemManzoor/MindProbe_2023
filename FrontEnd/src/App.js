@@ -25,9 +25,9 @@ import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
 
-import Blog1 from "./components/blog/Blog1"
-import Blog2 from "./components/blog/Blog2"
-import Blog3 from "./components/blog/Blog3"
+import Blog1 from "./components/Blog/Blog1"
+import Blog2 from "./components/Blog/Blog2"
+import Blog3 from "./components/Blog/Blog3"
 import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
