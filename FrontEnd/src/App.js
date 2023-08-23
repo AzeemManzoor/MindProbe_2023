@@ -15,7 +15,6 @@ import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
 import Home4 from './components/homepage/AboutUs'
 import ContactForm from './components/contact/contact'
-import SignInPage from './components/Auth/signin'
 import Test2 from "./components/assessment/test2";
 import Test3 from "./components/assessment/test3";
 import Test4 from "./components/assessment/test4";
@@ -24,7 +23,6 @@ import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
-
 import Blog1 from "./components/Blog/Blog1"
 import Blog2 from "./components/Blog/Blog2"
 import Blog3 from "./components/Blog/Blog3"
