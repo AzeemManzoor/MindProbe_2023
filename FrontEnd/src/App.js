@@ -31,6 +31,7 @@ import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
 import Insights from "./components/insights/insights"
 import NotFound from "./components/Page_Not_Found/NotFound";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 
 
@@ -72,6 +73,7 @@ function App() {
             <Route exact path="/pre-report" element={<Video/>} />      
             <Route exact path="/insights" element={<Insights/>} />      
             <Route exact path="/insights" element={<Insights/>} /> 
+            <Route exact path="/userprofile" element={<UserProfile/>} /> 
             <Route path="*" element={<NotFound />} />     
 
 

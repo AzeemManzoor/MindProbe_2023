@@ -76,6 +76,7 @@ return (
         <li><a href="/about">AboutUs</a></li>
         <li><a href="/contactUs">ContactUs</a></li>
         <li><a href="/FAQ's">FAQ's</a></li>
+        <li><a href="/userprofile">UserProfile</a></li>
 <li></li>
 {isAuthenticated && (
 <text> 
