@@ -8,7 +8,7 @@ const UserProfile = () => {
   const user = {
     name: 'Sarmad Waheed',
     email: 'sarmadwaheed157@gmail.com',
-    profilePicture: '/Assets/sarmad.jpeg',
+    profilePicture: '/src//Assets/sarmad.jpeg',
   };
 
   return (
