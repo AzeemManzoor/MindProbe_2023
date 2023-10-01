@@ -1,6 +1,8 @@
 import React from "react";
-import {useState} from "react";
-
+import {useState , useEffect} from "react";
+import axios from 'axios';
+import { Row, Col } from 'react-bootstrap';
+import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,14 +33,64 @@ import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
 import Insights from "./components/insights/insights"
-
-
+import Profile from "./components/profile/profile";
+import NotFound from "./components/Page_Not_Found/NotFound";
+import Community from "./components/community/community";
 
 
 
 function App() {
 
   const [showResult, setShowResult] = useState(false);
+
+
+
+  const { user } = useAuth0(); // Get the authenticated user information from useAuth0
+
+  useEffect(() => {
+    // Fetch the user ID from the server
+    axios
+      .get('http://localhost:4000/userId', {
+        params: { username: user?.email }, // Pass the username as a query parameter
+        // params:{name :user?.name}
+      })
+      .then((response) => {
+        const userId = response.data.userId;
+        // Save the user ID in session storage
+        sessionStorage.setItem('userId', userId);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
+      axios
+      .get('http://localhost:4000/Name', {
+        params: { name: user?.name }, // Pass the user's name as a query parameter
+      })
+      .then((response) => {
+        const Name = response.data.Name;
+        sessionStorage.setItem('Name', Name);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
+
+      axios
+      .get('http://localhost:4000/Picture', {
+        params: { picture: user?.picture }, // Pass the user's name as a query parameter
+      })
+      .then((response) => {
+        const Picture = response.data.Picture;
+        sessionStorage.setItem('Picture', Picture);
+        
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
+  }, [user]);
+
+
+
+
 
 
 
@@ -54,7 +106,6 @@ function App() {
     <Router>
 <Routes>
             <Route exact path="/" element={<Home/>} /> 
-            {/* <Route exact path="/login" element={<SignInPage/>} />          */}
             <Route exact path="/about" element={<Home4/>} />         
             <Route exact path="/contactUs" element={<ContactForm/>} />         
             <Route exact path="/FAQ's" element={<Faq/>} />         
@@ -71,12 +122,14 @@ function App() {
             <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
             <Route exact path="/pre-report" element={<Video/>} />      
             <Route exact path="/insights" element={<Insights/>} />      
+           <Route exact path="/profile" element ={<Profile/>} />
+           <Route exact path="/profile" element ={<Profile/>} />
+           <Route path="*" element={<NotFound />} /> 
+           <Route exact path="/Community" element ={<Community/>} />
+           
 
 
-
-
-
-
+           
             
   </Routes>    
 </Router>

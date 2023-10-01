@@ -204,7 +204,7 @@ const Test2 = () => {
     // Fetch the user ID from the server
     axios
       .get('http://localhost:4000/userId', {
-        params: { username: user?.name }, // Pass the username as a query parameter
+        params: { username: user?.email }, // Pass the username as a query parameter
       })
       .then((response) => {
         const userId = response.data.userId;
@@ -229,6 +229,9 @@ const Test2 = () => {
     try {
       const response = await axios.post('http://localhost:4000/answer', {
         userId: sessionStorage.getItem('userId'),
+        Name: sessionStorage.getItem('Name'),
+        Picture:sessionStorage.getItem('Picture'),
+
         answers,
       });
 

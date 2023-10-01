@@ -3,7 +3,8 @@ import axios from 'axios';
 import questions from '../../question.json';
 import { Row, Col } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import assessment from '../assessment/assessment.css';
 
 const selectRandomQuestions = (data, count) => {
@@ -30,7 +31,7 @@ const Test5 = () => {
     // Fetch the user ID from the server
     axios
       .get('http://localhost:4000/userId', {
-        params: { username: user?.name }, // Pass the username as a query parameter
+        params: { username: user?.email }, // Pass the username as a query parameter
       })
       .then((response) => {
         const userId = response.data.userId;
@@ -50,20 +51,22 @@ const Test5 = () => {
     const emptyFields = shuffledQuestions.filter((_, index) => !answers[index]);
 
     if (emptyFields.length > 0) {
-      alert('Please fill in all the fields.');
+      toast.warn('Please fill in all the fields.');
       return;
     }
 
     try {
       const response = await axios.post('http://localhost:4000/answer', {
         userId: sessionStorage.getItem('userId'),
+        Name: sessionStorage.getItem('Name'),
+        Picture:sessionStorage.getItem('Picture'),
         answers,
       });
 
       if (response.status === 200) {
         // Redirect to Page3
         // window.location.href = '/Assessment/Page5';
-        alert('Congratulations! You have completed the assessment. Now click on the Submission Button.');
+        toast.success('Congratulations! You have completed the assessment. Now click on the Submission Button.');
         setIsDisabled(true);
 
 
@@ -87,6 +90,7 @@ const Test5 = () => {
 
   return (
     <div className='main'>
+      <ToastContainer />
 <Row>
   <div className='headT'>
     <h1>Free Personality Test</h1>

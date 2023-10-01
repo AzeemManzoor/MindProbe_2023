@@ -63,20 +63,23 @@ function Team() {
         role="MERN Developer"
         role1="Machine learning Engineer"
         imageSource={require('../../Assets/Muaz.jpeg')}
+        role2='Portfolio'
+        
       />
+
       <FlipCard
         name="AZEEM MANZOR"
         role="MERN Developer"
         role1="Machine learning Engineer"
-
         imageSource={require('../../Assets/Azeem.jpeg')}
+        role2='Portfolio'
       />
       <FlipCard
         name="SARMAD WAHEED"
         role="MERN Developer"
         role1="Machine learning Engineer"
-
         imageSource={require('../../Assets/Sarmad.jpeg')}
+        role2='Portfolio'
       />
     </Row>
 

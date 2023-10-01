@@ -22,14 +22,6 @@ const EmotionDetection = () => {
   const closePopup = () => {
     setIsPopupOpen(false);
   };
-  // You can also use useEffect to automatically close the popup after a certain time
-  // useEffect(() => {
-  //   // const timeout = setTimeout(() => {
-  //     closePopup();
-  //   // }, 5000); // Close the popup after 5 seconds (adjust as needed)
-
-  //   // return () => clearTimeout(timeout);
-  // }, []);
 
 
 
@@ -141,20 +133,17 @@ const EmotionDetection = () => {
 
         <div>
       <h2 className='videoh1' >Video Interview</h2>
-
+<div className='video-container' >
         <video className='videoz' id='video'
         src={video}
         // controls
         muted={muted}
         ref={videoRef}
         />
-
-<div>
-{buttonVisible && <button className='ac-btn3' onClick={ startEmotionAnalysis }>Start Interview</button>}
 </div>
-
-
-
+<div>
+{buttonVisible && <button className='ac-btn3 marg' onClick={ startEmotionAnalysis }>Start Interview</button>}
+</div>
         </div>
       ) : (
         <div>
@@ -175,14 +164,6 @@ onClick={ runMachineLearning}
 };
 
 export default EmotionDetection;
-
-
-
-
-
-
-
-
 
 
 

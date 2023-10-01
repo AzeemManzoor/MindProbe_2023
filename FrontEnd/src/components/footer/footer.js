@@ -112,7 +112,7 @@ export default function Footer() {
         </MDBRow>
       </MDBContainer>
     </section>
-      <div className='text-center text-dark p-3' style={{ backgroundColor: 'teal' }}>
+      <div className='text-center text-dark p-3' style={{ backgroundColor: '#009688' }}>
         © 2024 Copyright:
         <a className='text-dark' href='https://mindprobe.com/'>
           MindProbe.com
