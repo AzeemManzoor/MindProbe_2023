@@ -28,7 +28,8 @@ const Assessment = () => {
     // Fetch the user ID from the server
     axios
       .get('http://localhost:4000/userId', {
-        params: { username: user?.name }, // Pass the username as a query parameter
+        params: { username: user?.email }, // Pass the username as a query parameter
+        // params:{name :user?.name}
       })
       .then((response) => {
         const userId = response.data.userId;
@@ -38,22 +39,51 @@ const Assessment = () => {
       .catch((error) => {
         console.error('Failed to fetch user ID', error);
       });
+
+
+      axios
+      .get('http://localhost:4000/Name', {
+        params: { name: user?.name }, // Pass the user's name as a query parameter
+      })
+      .then((response) => {
+        const Name = response.data.Name;
+        sessionStorage.setItem('Name', Name);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
+
+      axios
+      .get('http://localhost:4000/Picture', {
+        params: { picture: user?.picture }, // Pass the user's name as a query parameter
+      })
+      .then((response) => {
+        const Picture = response.data.Picture;
+        sessionStorage.setItem('Picture', Picture);
+        
+      })
+      .catch((error) => {
+        console.error('Failed to fetch user ID', error);
+      });
   }, [user]);
+
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const emptyFields = shuffledQuestions.filter((_, index) => !answers[index]);
-
     if (emptyFields.length > 0) {
       alert('Please fill in all the fields.');
       return;
     }
-   
-    
     try {
       const response = await axios.post('http://localhost:4000/answer', {
         userId: sessionStorage.getItem('userId'),
+        Name: sessionStorage.getItem('Name'),
+        Picture:sessionStorage.getItem('Picture'),
         answers,
       });
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef }  from 'react'
 import insights from './insights.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -6,6 +6,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Col, Row } from "react-bootstrap";
 import { Container } from 'react-bootstrap/lib/Tab';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+
+
+
 
 
 const renderTime = ({ remainingTime }) => {
@@ -29,12 +32,12 @@ const Insights = () => {
     const [personalityType, setPersonalityType] = useState('');
     useEffect(() => {
       const fetchData = async () => {
-        if (isAuthenticated && user && user.name) {
+        if (isAuthenticated && user && user.email) {
           // console.log('Logged-in userId:', user.name); // Log the logged-in user's userId
           try {
             const response = await axios.get('http://localhost:4000/personalityTypes');
             // console.log('API Response:', response.data);
-            const matchingUser = response.data.find(data => data.userId === user.name);
+            const matchingUser = response.data.find(data => data.userId === user.email);
             if (matchingUser) {
               setPersonalityType(matchingUser.PERSONALITY_TYPE);
             } else {
@@ -53,11 +56,11 @@ const Insights = () => {
     
     useEffect(() => {
       const fetchData = async () => {
-        if (isAuthenticated && user && user.name) {
+        if (isAuthenticated && user && user.email) {
           try {
             const response = await axios.get('http://localhost:4000/emotions', {
               params: {
-                userId: user.name
+                userId: user.email
               }
             });
             console.log('Emotions API Response:', response.data);
@@ -97,9 +100,11 @@ const Insights = () => {
 
 
 
-  return (
-    <div>
 
+
+  return (
+    <div className='inss1' >
+<div className='inss'   >
 
 {isPopupOpen && (
         <div className="popup1">
@@ -136,7 +141,7 @@ const Insights = () => {
 
 
 
-
+<div className='wrap1'>
 
     <Row className='ins1' >
 
@@ -1504,44 +1509,8 @@ Show appreciation and affection for your loved ones through your actions
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+</div>
     </div>
   )
 }

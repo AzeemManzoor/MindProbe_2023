@@ -1,18 +1,36 @@
 .videohome{
   height:340px;
-  width:500px
-  
-  
-  
-  }
+  width:500px;
 
+  
+  
+}
 
+.video-container {
+  display: flex;
+  justify-content: center; /* Center the video horizontally */
+  align-items: center; /* Center the video vertically */
+  max-width: 100%; /* Restrict the container's width to the viewport width */
+  margin: 0 auto; /* Center the container horizontally */
+}
 
 .videoz{
-height:500px;
-width:1000px
-
+/* height:500px;
+width:1000px; */
+/* pointer-events: none; */
+max-width: 100%; 
+height: auto;
+width: auto; 
+max-height: 100vh;
 }
+
+
+.marg {
+margin-top: 30px;
+
+  
+}
+
 
 
 .videoh1{
@@ -270,7 +288,8 @@ textarea {
     }
     .res{
         padding-bottom: 50px;
-        
+
+
     }
     
 
@@ -287,13 +306,6 @@ textarea {
 
     }
 
-/*
-    <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}   className='progress'  />
-    <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
-*/
 
 .progress{
     margin-bottom: 7px;
@@ -301,7 +313,14 @@ textarea {
 
 .user1{
 display: inline;
+/* color:teal */
 }
+
+.user2{
+  display: inline;
+  color:teal
+  }
+
 
 .clr{
 color:green
@@ -382,13 +401,15 @@ color:teal;
 
 }
 
+.gapp{
 
+  margin-top: 50px;
+}
 
 
 .conc1{
 
-
-    text-align: justify;
+    text-align:justify ;
 }
 .roww{
 
@@ -399,9 +420,11 @@ color:teal;
 }
 
 .enclose{
-    background-color: rgb(231, 231, 231);
+    /* background-color: rgb(231, 231, 231); */
 border-radius: 15px;
-    width:800px; 
+    width:1000px; 
+    /* height:300px; */
+
 }
 
 .conc{
@@ -541,8 +564,8 @@ padding-bottom: 30px;
 .textt22 {
   font-size: 20px;
   font-weight: 500;
-  color: #ff6f00;
-  /* color:#2b2b2b ; */
+  /* color: #ff6f00; */
+  color:#2b2b2b ;
 
   text-align: center;
   text-transform: uppercase;
@@ -556,8 +579,8 @@ padding-bottom: 30px;
 .textt2 {
   font-size: 22px;
   font-weight: 700;
-  color: #ff6f00;
-  /* color:#2b2b2b ; */
+  /* color: #ff6f00; */
+  color:#2b2b2b ;
 
   text-align: center;
   text-transform: uppercase;
@@ -580,8 +603,8 @@ padding-bottom: 30px;
 }
 
  .tag1{
-  color: #ff6f00;
-/* color:#2b2b2b ; */
+  /* color: #ff6f00; */
+color:#2b2b2b ;
   /* background-color: #332020; */
 
   margin-bottom: 0px;
@@ -618,6 +641,51 @@ padding-bottom: 30px;
   border: 0;
 }
 
+
+.button-89 {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  /* display: flex; */
+  /* margin-top: 50px; */
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
     @media (max-width:768px) {
      .main{
         height:2880px;
@@ -627,7 +695,11 @@ padding-bottom: 30px;
 height: 60px;
    
     }
-    
+    .dawn{
+
+margin-top: 30px;
+
+    }
   }
     @media (max-width:625px) {
         .main{
@@ -696,3 +768,23 @@ height: 60px;
    
 }
 
+
+
+.wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1050px) {
+  .wrap {
+    width: 100%;
+    padding: 10px;
+  }
+
+.conc{
+
+  margin-top:-30px
+}
+
+
+}

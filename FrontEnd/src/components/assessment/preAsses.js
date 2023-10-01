@@ -126,7 +126,7 @@ window.location.href ='/Assessment';
 </li>
 <li><h5>Convenient Interaction</h5>
 </li>
-<li><h5>Personality Prediction</h5>
+<li><h5>Personality Report</h5>
 </li>
 
 
@@ -151,7 +151,7 @@ window.location.href ='/Assessment';
 </li>
 <li><h5>Convenient Interaction</h5>
 </li>
-<li><h5>Personality Prediction</h5>
+<li><h5>Personality Report</h5>
 </li>
 <li><h5>Authentic Engagement</h5>
 </li>

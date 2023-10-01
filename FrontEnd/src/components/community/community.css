@@ -1,0 +1,54 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 30px;
+  }
+  
+
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle; /* Vertically center the content */
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .user-image-cell {
+    width: 100px; /* Adjust the width based on your image size */
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-image {
+    width: 60px;
+    height: 60px;
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto; /* Horizontally center the image within the cell */
+  }
+  
+.table-h1{
+padding-bottom: 30px;
+
+
+  }
+
+
+.picable{
+
+    padding-left: 35px;
+}
+

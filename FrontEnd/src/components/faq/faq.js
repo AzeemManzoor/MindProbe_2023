@@ -9,7 +9,7 @@ Col,
 import { MDBAccordion, MDBAccordionItem } from 'mdb-react-ui-kit';
 import faq from '../faq/faq.css'
 
-import { Accordion,Card } from "react-bootstrap";
+// import { Accordion,Card } from "react-bootstrap";
 
 const Faq = () => {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -33,7 +33,7 @@ const Faq = () => {
 
 
     </Row>
-    <div className='acc' >
+    <div className='accf' >
     <div className="accordion accordion-flush" id="accordionFlushExample">
       <div className="accordion-item">
         <h2 className="accordion-header" id="flush-headingOne">

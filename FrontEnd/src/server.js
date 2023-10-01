@@ -15,10 +15,13 @@ app.use(
   })
 );
 
-const Answer = mongoose.model('Answer', { userId: String, answers: [String], PERSONALITY_TYPE: String ,
+const Answer = mongoose.model('Answer', { userId: String, Name:String , Picture:String  ,answers: [String], PERSONALITY_TYPE: String ,
   average_emotion: String , all_emotions:[String]});
 
 const Type = mongoose.model('Type', { PERSONALITY_TYPE: String ,average_emotion: String , all_emotions:[String]  });
+const Share = mongoose.model('Share', { 
+  // PERSONALITY_TYPE: String ,average_emotion: String , all_emotions:[String]
+  });
 
 
 
@@ -29,8 +32,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
   console.log('Connected to MongoDB');
 // change
 app.post('/answer', (req, res) => {
-  const {  userId, answers,all_emotions,average_emotions } = req.body;
-  const newAnswer = new Answer({ userId, answers,all_emotions,average_emotions });
+  const {  userId, Name , Picture, answers,all_emotions,average_emotions } = req.body;
+  const newAnswer = new Answer({ userId,Name, Picture,answers,all_emotions,average_emotions });
 
     newAnswer.save()
       .then(() => {
@@ -51,6 +54,45 @@ app.post('/answer', (req, res) => {
       res.json({ userId });
     }
   });
+
+    const generateUserId = (username) => {
+      return username;
+    };
+
+
+
+    app.get('/Name', (req, res) => {
+      const { name } = req.query;
+      if (req.session.Name) {
+        res.json({ Name: req.session.Name });
+      } else {
+        const Name = generateUsername(name);
+        req.session.Name = Name;
+        res.json({ Name });
+      }
+    });
+    
+    const generateUsername = (name) => {
+      return name;
+    };
+
+
+
+    app.get('/Picture', (req, res) => {
+      const { picture } = req.query;
+      if (req.session.Picture) {
+        res.json({ Picture: req.session.Picture });
+      } else {
+        const Picture = generateUserpicture(picture);
+        req.session.Picture = Picture;
+        res.json({ Picture });
+      }
+    });
+    
+    const generateUserpicture = (picture) => {
+      return picture;
+    };
+
 
 app.get('/personalityTypes', (req, res) => {
   Type.find({}, 'userId PERSONALITY_TYPE')
@@ -97,12 +139,6 @@ app.get('/emotions', (req, res) => {
 
 
 
-
-
-
-  const generateUserId = (username) => {
-    return username;
-  };
 
   app.listen(4000, () => {
     console.log('Server listening on port 4000');

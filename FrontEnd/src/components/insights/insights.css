@@ -87,3 +87,15 @@ font-weight: 500;
 
 
 
+
+  .wrap1 {
+    width: 98%;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .wrap1 {
+      width: 100%;
+      padding: 10px;
+    }
+  }

@@ -8,7 +8,8 @@ import Home4 from './AboutUs.js';
 import Team from './team.js';
 import video from '../../Assets/video.mp4'
 import { useAuth0 } from '@auth0/auth0-react';
-import VideoPlayer from "react-video-js-player"
+
+
 
 function Home() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -52,21 +53,17 @@ function Home() {
 </div>
               </Col>
               
-              <Col md={6} style={{  }}>
+              <Col className='vidcol' md={6} style={{  }}>
              <div className='col2'>
-                 <div>
       <video className='videohome'
          src={video} 
-        //  src={require('../../Assets/video.mp4')}
          controls 
          muted
-         preload="none"
+        //  preload="none"
          playsInline
-         poster=''
-
+        //  poster=''
         />
 
-    </div>
                 </div> 
               </Col>
   

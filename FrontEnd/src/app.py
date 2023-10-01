@@ -45,7 +45,13 @@ def run_machine_learning():
             average_emotion = record.get('average_emotion', 'nope')
             record_all_emotions = record.get('all_emotions', [])  # Initialize as an empty list, not ['']
             all_emotions.extend(record_all_emotions)
-
+            
+            
+            Name=record.get('Name')
+            Picture=record.get('Picture')
+            
+            
+            
         # Remove the last empty emotion (if any)
         if all_emotions and all_emotions[-1] == '':
             all_emotions.pop()
@@ -54,7 +60,7 @@ def run_machine_learning():
         if all_emotions:
             average_emotion = max(set(all_emotions), key=all_emotions.count)
         else:
-            average_emotion = 'no_emotion_data'  # Or any default value if no emotions are available
+            average_emotion = 'Interview Pending'  # Or any default value if no emotions are available
 
         # Perform the machine learning part using the latest_answers
         entered_data = cv.transform(latest_answers).toarray()
@@ -63,12 +69,15 @@ def run_machine_learning():
 
         # Update the user's data in the types_collection using $set operator
         types_collection.update_one(
-            {'userId': user_id},
+            {'userId': user_id},          
             {
                 '$set': {
                     'PERSONALITY_TYPE': personality_type,
                     'average_emotion': average_emotion,
                     'all_emotions': all_emotions,
+                    'Name':Name,
+                    'Picture':Picture,
+
                 }
             },
             upsert=True  # Set upsert=True to insert if the document doesn't exist

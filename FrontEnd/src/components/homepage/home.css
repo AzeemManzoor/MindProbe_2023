@@ -1,14 +1,4 @@
-/* .player{
-  
-  width:400px;
-height:200px;
-} */
 
-
-
-
-
-/*BACKGROUNG-COLOR*/
 
   .sec1{
 
@@ -18,12 +8,6 @@ height:200px;
   
  }
 
-.col2{
-
-  padding-top: 50px;
-  /* background-color: #136469; */
-  height:450px
-  }
 
    
 
@@ -55,7 +39,7 @@ height:200px;
 /*BACKGROUNG-COLOR*/
       .land1{
         height:650px;
-background-color:whitesmoke ;
+/* background-color:whitesmoke ; */
 
       }
      
@@ -158,9 +142,35 @@ background-color:whitesmoke ;
             
 
          
+.blog_card33{
 
+width:95%;
+
+/* width: 300px; */
+/* padding: 20px; */
+border: 1px solid #ccc;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+background-color: #fff;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
           
-        
+.blog_card {
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}  
+.blog_card33:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}  
 
 
 /*BTN1*/
@@ -374,6 +384,7 @@ background-color:whitesmoke ;
 
       }
       
+
       .team{
         height: 950px;
 
@@ -424,12 +435,52 @@ height:1100px
   
       }
 
-      
-
      
     }
 
+
+
+    .vidcol {
+      width: 50%; /* Initial width for larger screens */
+      /* height:450px */
+      height:auto;
+    }
     
+
+    .col2{
+
+      padding-top: 50px;
+      /* height:450px 
+      */
+      height:auto;
+
+      }
+    
+
+
+    .videohome {
+      width: 100%; /* Make the video fill its container's width */
+      max-width: 100%; /* Ensure the video doesn't exceed its original size */
+      /* height: 450px; Automatically adjust the height to maintain aspect ratio */
+      height:auto;
+
+    }
+    
+    /* Media query for screens between 768px and 1060px */
+    @media (max-width: 1060px) {
+      .vidcol {
+        width: 100%; /* Expand the column to full width */
+      }
+    }
+
+
+
+    @media (min-width: 768px) and (max-width:1060px) {
+
+
+
+  }
+      
   
 /*beige*/
 

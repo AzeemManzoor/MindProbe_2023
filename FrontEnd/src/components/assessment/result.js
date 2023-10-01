@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef  } from 'react';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Col, Row } from "react-bootstrap";
@@ -7,7 +7,10 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { useNavbar } from '../navbar/NavbarContext';
 import { Container } from 'react-bootstrap/lib/Tab';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-
+import html2canvas from 'html2canvas';
+import Profile from '../profile/profile'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const renderTime = ({ remainingTime }) => {
   if (remainingTime === 0) {
@@ -26,20 +29,24 @@ const renderTime = ({ remainingTime }) => {
 
 
 const Result = () => {
+
+ 
+
+
   const { user, isAuthenticated } = useAuth0();
   const [personalityType, setPersonalityType] = useState('');
   const { addNavbarItem } = useNavbar();
   useEffect(() => {
     const fetchData = async () => {
-      if (isAuthenticated && user && user.name) {
-        // console.log('Logged-in userId:', user.name); // Log the logged-in user's userId
+      if (isAuthenticated && user && user.email) {
         try {
           const response = await axios.get('http://localhost:4000/personalityTypes');
           // console.log('API Response:', response.data);
-          const matchingUser = response.data.find(data => data.userId === user.name);
+          const matchingUser = response.data.find(data => data.userId === user.email);
           if (matchingUser) {
             setPersonalityType(matchingUser.PERSONALITY_TYPE);
             addNavbarItem('REPORT');
+            addNavbarItem('INSIGHTS');
           } else {
             console.log('Personality type not found for the logged-in user.');
           }
@@ -53,19 +60,20 @@ const Result = () => {
 
 
 
+
   const [allEmotions, setAllEmotions] = useState([]);
   const [averageEmotion, setAverageEmotion] = useState('');
   
   useEffect(() => {
     const fetchData = async () => {
-      if (isAuthenticated && user && user.name) {
+      if (isAuthenticated && user && user.email) {
         try {
           const response = await axios.get('http://localhost:4000/emotions', {
             params: {
-              userId: user.name
+              userId: user.email
             }
           });
-          console.log('Emotions API Response:', response.data);
+          // console.log('Emotions API Response:', response.data);
           const matchingUser = response.data;
           if (matchingUser) {
             setAllEmotions(matchingUser.all_emotions); // Adjusted property name
@@ -84,6 +92,15 @@ const Result = () => {
   
   
 
+
+
+
+
+
+
+
+
+
   const [isPopupOpen, setIsPopupOpen] = useState(true); // Set to true initially
   const closePopup = () => {
     setIsPopupOpen(false);
@@ -99,12 +116,144 @@ const Result = () => {
   }, []);
 
 
+  const divRef = useRef(null);
+  const handlePdfDownload = () => {
+    const divElement = divRef.current;
+  
+    // Set the fixed width for the captured image
+    const fixedWidth = 1300;
+  
+    // Selectors for elements to exclude from capturing
+    const elementsToExclude = ['.exclude-image', '#element-id-to-exclude'];
+  
+    // Hide the excluded elements temporarily
+    elementsToExclude.forEach(selector => {
+      const excludedElements = divElement.querySelectorAll(selector);
+      excludedElements.forEach(element => element.style.display = 'none');
+    });
+  
+    // Adjust the width of the content for capturing
+    divElement.style.width = `${fixedWidth}px`;
+  
+    html2canvas(divElement).then((canvas) => {
+      // Reset the width of the content
+      divElement.style.width = '';
+  
+      // Restore the visibility of excluded elements
+      elementsToExclude.forEach(selector => {
+        const excludedElements = divElement.querySelectorAll(selector);
+        excludedElements.forEach(element => element.style.display = '');
+      });
+  
+      const screenshotUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = 'Personality_report.png';
+      link.href = screenshotUrl;
+      link.click();
+    });
+  };
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const [loading, setLoading] = useState(false);
+  const share = async () => {
+    setLoading(true);
+    try {
+      const userId = sessionStorage.getItem('userId');
+  
+      if (userId) {
+        // Check if the user's data is already in the shares_collection
+        const response = await axios.post('http://localhost:5005/checkSharedData', { userId });
+  
+        if (response.data.shared) {
+          toast.success('Your Report is already shared');
+          await axios.post('http://localhost:5005/transferData', { userId });
+        } else {
+          // Call the backend API to transfer data
+          await axios.post('http://localhost:5005/transferData', { userId });
+          // Data transfer successful
+          toast.success('Your Report has been shared with the Community');
+        }
+      } else {
+        toast.success('User ID not found');
+      }
+    } catch (error) {
+      console.error('Error transferring data:', error);
+    } finally {
+      setLoading(false);
+      window.location.href = '/Community';
+
+    }
+  };
+ 
+  
+  
+  
+  
+  
+  // const share = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const userId = sessionStorage.getItem('userId');
+
+  //     if (userId) {
+  //       // Call the backend API to transfer data
+  //       await axios.post('http://localhost:5005/transferData', { userId });
+  //       // Data transfer successful
+  //       alert('User Report has been shared with the Community');
+  //     } else {
+  //       alert('User ID not found');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error transferring data:', error);
+  //   } finally {
+  //     setLoading(false);
+
+  //   }
+  // };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   return (
-    <div className='res'>
-
-
+<div className='wrap'>
+<ToastContainer />
+    <div className='res'>       
+{/* 
 {isPopupOpen && (
         <div className="popup1">
           <div className="popup1-content1">
@@ -134,14 +283,21 @@ const Result = () => {
           </div>
         </div>
       )}
+ */}
 
 
-
+<div 
+      ref={divRef}
+       > 
 
 <Row className='res1' >
+  
+
+
+
       {isAuthenticated && (
 <div> 
-<h1 className='user1'>Dear</h1> <h1  className='user1 txt' > {user.nickname}</h1> <h1 className='user1 ' >here's  Your Personality Type </h1> 
+<h1 className='user1'>Dear</h1> <h1  className='user2' > {user.name}!</h1> <h1 className='user1 ' >here's  Your Personality Type </h1> 
 <h1 className='type' >{personalityType}</h1>
 </div>
 )}
@@ -160,7 +316,7 @@ const Result = () => {
 
     
 {personalityType === "ESFP" && (
-  <img className=''
+  <img className='image-i'
   src={require('../../Assets/ESFP.png')} ></img>      )}
 
 {personalityType === "ENTJ" && (
@@ -246,13 +402,14 @@ const Result = () => {
  >
 <div className='colB'>
  {personalityType === "ISTJ" && (
-  <div style={{width:"500px" , height:"650px" }}>   
+  <div style={{width:"500px" , height:"650px" }}
+  >   
 
 <h4 className='info1'>  
    
    Introverted 
 </h4>
-<ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}   className='progress'   />
+<ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'   />
 
 
 <h6 className='info' >This character's primary source of energy is their inner world of ideas, reflections, and thoughts. Spending time alone or in small groups helps introverts refuel, and they may favor situations that are quieter and more conducive to concentration.</h6>
@@ -261,7 +418,11 @@ const Result = () => {
 
 Sensing
 </h4>
- <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}  className='progress' />
+
+
+   <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}  className='progress exclude-image' />
+
+
 
 
 <h6 className='info' >This trait indicates that the individual prefers to learn knowledge primarily through their five senses and concentrates on specific and real-world situations. They are aware of their surroundings and present-focused.</h6>
@@ -270,7 +431,7 @@ Sensing
 
 Thinking
 </h4>
- <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+ <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
 <h6 className='info' >This shows that instead of being predominantly influenced by emotions, the individual tends to base their decisions on logic, reason, and unbiased analysis.</h6>
 
@@ -278,7 +439,7 @@ Thinking
 
 Judging
 </h4> 
-<ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true} className='progress' />
+<ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true} className='progress exclude-image' />
 
 <h6 className='info' >The judging element suggests that the subject favors a regimented and orderly way of living. They enjoy making plans, keeping to schedules, and reaching conclusions about things.</h6>
 
@@ -292,7 +453,7 @@ Judging
       
    Extroverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
   
    <h6 className='info' >This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ESFPs typically have an outgoing personality and love connecting with people.</h6>
 
@@ -300,7 +461,7 @@ Judging
 
    Sensing
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
    
    
    <h6 className='info' >ESFPs tend to concentrate on specifics and real-world situations. They are aware of their immediate surroundings and frequently act quickly when anything happens.</h6>
@@ -309,7 +470,7 @@ Judging
    
    Feeling 
    </h4>
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >ESFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They value peaceful relationships and are sympathetic.</h6>
    
@@ -317,7 +478,7 @@ Judging
    
    Perceiving 
    </h4> 
-   <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >The perceiving element denotes a tendency for adaptation and flexibility. ESFPs frequently relish spontaneity and could favor maintaining a range of possibilities.</h6>
    
@@ -340,7 +501,7 @@ Judging
       
    Extroverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ENTJs typically have an outgoing personality and love connecting with people.</h6>
 
@@ -348,7 +509,7 @@ Judging
    
    Intuitive
    </h4>
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    
    <h6 className='info' >ENTJs gravitate towards patterns, possibilities, and abstract concepts. They are creative and frequently delve into the underlying significance of things that happen to them.</h6>
@@ -357,7 +518,7 @@ Judging
    
    Thinking 
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
    
    <h6 className='info' >ENTJs base their conclusions on reason, logic, and unbiased analysis. They prioritize efficiency and are frequently motivated by pragmatic factors.</h6>
    
@@ -365,7 +526,7 @@ Judging
    
    Judging 
    </h4> 
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >ENTJs want to make judgements quickly rather than deferring action because they like to have plans and routines.</h6>
    
@@ -386,7 +547,7 @@ Judging
        
     Extroverted  
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
     This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ENTPs typically have an outgoing personality and love connecting with people.    </h6>
@@ -395,7 +556,7 @@ Judging
     
     Intuitive
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
     
     <h6 className='info' >
@@ -405,7 +566,7 @@ Judging
     
     Thinking 
     </h4>
-    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
       ENTJs base their conclusions on reason, logic, and unbiased analysis. They prioritize efficiency and are frequently motivated by pragmatic factors.
@@ -415,7 +576,7 @@ Judging
     
     Perceiving  
     </h4> 
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
     The perceiving element denotes a tendency for adaptation and flexibility. ENTPs frequently relish spontaneity and could favor maintaining a range of possibilities.      </h6>
@@ -433,7 +594,7 @@ Judging
      
   Extroverted  
   </h4>
-  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
   
   <h6 className='info' >
   This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ESFPs typically have an outgoing personality and love connecting with people.  
@@ -445,7 +606,7 @@ Judging
   
   Sensing
   </h4>
-  <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
   
   <h6 className='info' >
@@ -457,7 +618,7 @@ Judging
   
   Feeling 
   </h4>
-  <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+  <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
   
   <h6 className='info' >
   ESFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They value peaceful relationships and are sympathetic.    
@@ -469,7 +630,7 @@ Judging
   
   Perceiving  
   </h4> 
-  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
   
   <h6 className='info' >
   The perceiving element denotes a tendency for adaptation and flexibility. ESFPs frequently relish spontaneity and could favor maintaining a range of possibilities.  
@@ -484,58 +645,38 @@ Judging
 
 
 {personalityType === "ENFP" && (
-    <div style={{width:"500px" , height:"650px" }}>   
+    <div
+     style={{width:"500px" , height:"650px" }}>   
 
     <h4 className='info1'>  
-       
     Extroverted  
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-    
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className=' progress exclude-image'  />
     <h6 className='info' >
     This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ENFPs typically have an outgoing personality and love connecting with people.
-
-    
       </h6>
-  
-    <h4 className='info1'>    
-    
-    Intuitive
+      <h4 className='info1'>    
+      Intuitive
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
-
-    
-    <h6 className='info' >
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
+      <h6 className='info' >
 ENFPs gravitate towards patterns, possibilities, and abstract concepts. They are creative and frequently delve into the underlying significance of things that happen to them.
-
       </h6>
-    
-    <h4 className='info1'>   
-    
+    <h4 className='info1'>    
     Feeling 
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     <h6 className='info' >
 ENFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They value peaceful relationships and are sympathetic.
-
-      
       </h6>
-    
     <h4 className='info1'>   
-    
     Perceiving  
     </h4> 
-    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
-    
+    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     <h6 className='info' >
 The perceiving element denotes a tendency for adaptation and flexibility. ENFPs frequently relish spontaneity and could favor maintaining a range of possibilities.
-
-    
     </h6>
-    
     </div>    
-  
     )}
 
 {/* other  */}
@@ -548,7 +689,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
       
    Extroverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
    This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ESTJs typically have an outgoing personality and love connecting with people.
@@ -560,7 +701,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
    
    Sensing
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
    
    <h6 className='info' >
@@ -572,7 +713,7 @@ This character trait denotes that the individual derives the majority of their e
    
    Thinking 
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    ESTJs base their conclusions on reason, logic, and unbiased analysis. They prioritize efficiency and are frequently motivated by pragmatic factors.
@@ -584,7 +725,7 @@ This character trait denotes that the individual derives the majority of their e
    
    Judging  
    </h4> 
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
    A preference for structure and organization is implied by the judging feature. ESTJs want to make judgements quickly rather than deferring action because they like to have plans and routines.
@@ -605,7 +746,7 @@ This character trait denotes that the individual derives the majority of their e
        
     Extroverted  
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
     <h6 className='info' >
     This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ESTPs typically have an outgoing personality and love connecting with people.
@@ -617,7 +758,7 @@ This character trait denotes that the individual derives the majority of their e
     
     Sensing
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
     
     <h6 className='info' >
@@ -629,7 +770,7 @@ As previously said, ESTPs tend to concentrate on specifics and real-world situat
     
     Thinking 
     </h4>
-    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
     <h6 className='info' >
 ESTPs base their conclusions on reason, logic, and unbiased analysis. They prioritize efficiency and are frequently motivated by pragmatic factors.
@@ -641,7 +782,7 @@ ESTPs base their conclusions on reason, logic, and unbiased analysis. They prior
     
     Perceiving  
     </h4> 
-    <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
     The perceiving element denotes a tendency for adaptation and flexibility. ESTPs frequently relish spontaneity and could favor maintaining a range of possibilities.
@@ -651,7 +792,6 @@ ESTPs base their conclusions on reason, logic, and unbiased analysis. They prior
     
     </div>  
      )}
-
 {/* other */}
 
 {personalityType === "INFJ" && (
@@ -661,7 +801,7 @@ ESTPs base their conclusions on reason, logic, and unbiased analysis. They prior
       
    Introverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    This denotes that the person draws most of their energy from their inner world of ideas, reflections, and thoughts. Because they are generally introspective, INFJs might require some alone time to refuel.
@@ -673,7 +813,7 @@ ESTPs base their conclusions on reason, logic, and unbiased analysis. They prior
    
    Intuitive
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
    
    <h6 className='info' >
@@ -685,7 +825,7 @@ Contrary to the "Sensing" tendency, INFJs favor concentrating on patterns, possi
    
    Feeling 
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    INFJs base their decisions on their moral principles, their capacity for empathy, and their awareness of the feelings of others. They strive for harmony in their relationships and have a great deal of compassion.
@@ -697,7 +837,7 @@ Contrary to the "Sensing" tendency, INFJs favor concentrating on patterns, possi
    
    Judging  
    </h4> 
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
 A preference for structure and organization is implied by the judging feature. INFJs enjoy making plans and tend to act quickly rather than keeping options open.
@@ -721,7 +861,7 @@ A preference for structure and organization is implied by the judging feature. I
       
    Introverted  
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
    <h6 className='info' >
    This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs have a tendency to be reticent and may relish alone time or intimate gatherings of close friends.
@@ -733,7 +873,7 @@ A preference for structure and organization is implied by the judging feature. I
    
    Intuitive
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
    
    <h6 className='info' >
@@ -745,7 +885,7 @@ Contrary to the "Sensing" tendency, INTJs favor concentrating on patterns, possi
    
    Feeling 
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    ISFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They cherish others' and their own sincerity and are sympathetic.
@@ -757,7 +897,7 @@ Contrary to the "Sensing" tendency, INTJs favor concentrating on patterns, possi
    
    Perceiving  
    </h4> 
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
 The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs frequently have an open mind and prefer to keep their alternatives open than making firm decisions.
@@ -779,7 +919,7 @@ The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs 
        
     Introverted  
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
  
     <h6 className='info' >
     This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs have a tendency to be reticent and may relish alone time or intimate gatherings of close friends.
@@ -792,7 +932,7 @@ The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs 
     
     Intuitive
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
     
     <h6 className='info' >
@@ -804,7 +944,7 @@ Contrary to the "Sensing" tendency, INTJs favor concentrating on patterns, possi
     
     Thinking 
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
  
     <h6 className='info' >
 INTJs base their conclusions on reason, logic, and unbiased analysis. Efficiency is a top priority, and data and proof are frequently what motivate them. 
@@ -816,7 +956,7 @@ INTJs base their conclusions on reason, logic, and unbiased analysis. Efficiency
     
     Judging  
     </h4> 
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
     A preference for structure and organization is implied by the judging feature. INTJs enjoy making plans and taking action right away over leaving issues unresolved. 
@@ -838,7 +978,7 @@ INTJs base their conclusions on reason, logic, and unbiased analysis. Efficiency
       
    Introverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs have a tendency to be reticent and may relish alone time or intimate gatherings of close friends.
@@ -851,7 +991,7 @@ INTJs base their conclusions on reason, logic, and unbiased analysis. Efficiency
    
    Intuitive
    </h4>
-   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+   <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
    
    <h6 className='info' >
@@ -863,7 +1003,7 @@ INTJs favor concentrating on patterns, possibilities, and abstract concepts. The
    
    Thinking 
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
    <h6 className='info' >
    INTPs base their conclusions on reason, logic, and unbiased analysis. When solving problems, they emphasize efficacy and may put it ahead of feelings.
@@ -875,7 +1015,7 @@ INTJs favor concentrating on patterns, possibilities, and abstract concepts. The
    
    Perceiving  
    </h4> 
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
 The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs frequently have an open mind and prefer to keep their alternatives open than making firm decisions.
@@ -897,7 +1037,7 @@ The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs 
      
   Introverted  
   </h4>
-  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
   <h6 className='info' >
   This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs have a tendency to be reticent and may relish alone time or intimate gatherings of close friends.
@@ -910,7 +1050,7 @@ The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs 
   
   Sensing
   </h4>
-  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
   
   <h6 className='info' >
@@ -922,7 +1062,7 @@ The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs 
   
   Feeling 
   </h4>
-  <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+  <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
   <h6 className='info' >
 As opposed to the "Thinking" preference, ISFJs frequently base their decisions on moral principles, empathy for others, and an awareness of how those decisions may affect them. They value peaceful relationships and are sympathetic.
@@ -934,7 +1074,7 @@ As opposed to the "Thinking" preference, ISFJs frequently base their decisions o
   
   Judging  
   </h4> 
-  <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+  <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
   
   <h6 className='info' >
   Judging element denotes a propensity for structure and organization.ISFJs like to have schedules and plans, and they work hard to see things through.
@@ -959,7 +1099,7 @@ As opposed to the "Thinking" preference, ISFJs frequently base their decisions o
       
    Introverted  
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
    <h6 className='info' >
    This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs have a tendency to be reticent and may relish alone time or intimate gatherings of close friends.
@@ -972,7 +1112,7 @@ As opposed to the "Thinking" preference, ISFJs frequently base their decisions o
    
    Sensing
    </h4>
-   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
    
    <h6 className='info' >
@@ -984,7 +1124,7 @@ ISTPs tend to concentrate on specifics and real-world situations, in contrast to
    
    Feeling 
    </h4>
-   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
  
    <h6 className='info' >
 ISFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They cherish others' and their own sincerity and are sympathetic. 
@@ -996,7 +1136,7 @@ ISFPs base their decisions on their moral principles, their capacity for empathy
    
    Perceiving  
    </h4> 
-   <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+   <ProgressBar completed = {50} bgColor = "grey" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
    
    <h6 className='info' >
    The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs frequently have an open mind and prefer to keep their alternatives open than making firm decisions.
@@ -1016,7 +1156,7 @@ ISFPs base their decisions on their moral principles, their capacity for empathy
        
     Extroverted  
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
     
     <h6 className='info' >
     This character trait denotes that the individual derives the majority of their energy from the environment, other people, and activities. ENFJs typically have an outgoing personality and love connecting with people.
@@ -1028,7 +1168,7 @@ ISFPs base their decisions on their moral principles, their capacity for empathy
     
     Intuitive
     </h4>
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
 
     
     <h6 className='info' >
@@ -1040,7 +1180,7 @@ ENFJs gravitate towards patterns, possibilities, and abstract concepts. They are
     
     Feeling 
     </h4>
-    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+    <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
 
     <h6 className='info' >
 ENFPs base their decisions on their moral principles, their capacity for empathy, and their awareness of other people's feelings. They value peaceful relationships and are sympathetic.
@@ -1053,7 +1193,7 @@ ENFPs base their decisions on their moral principles, their capacity for empathy
     
     Judging  
     </h4> 
-    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress'  />
+    <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'  />
     
     <h6 className='info' >
 The perceiving element denotes a tendency for adaptation and flexibility. ENFPs frequently relish spontaneity and could favor maintaining a range of possibilities.
@@ -1073,7 +1213,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
         
         Introverted 
      </h4>
-     <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}   className='progress'   />
+     <ProgressBar completed = {80} bgColor = "green" animateOnRender = {true} isLabelVisible = {true}   className='progress exclude-image'   />
      
      
      <h6 className='info' >This character's primary source of energy is their inner world of ideas, reflections, and thoughts. ISTPs tend to be reticent and may relish alone time or intimate gatherings of close friends.</h6>
@@ -1082,7 +1222,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
      
      Sensing
      </h4>
-      <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}  className='progress' />
+      <ProgressBar completed = {40} bgColor = "red" animateOnRender = {true}  isLabelVisible = {true}  className='progress exclude-image' />
      
      
      <h6 className='info' > ISTPs tend to concentrate on specific and real-world situations, in contrast to the "Intuitive" preference. They are perceptive and adept at navigating the immediate, material world.</h6>
@@ -1091,7 +1231,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
      
      Thinking
      </h4>
-      <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}  className='progress'  />
+      <ProgressBar completed = {70} bgColor = "orange" animateOnRender = {true} isLabelVisible = {true}  className='progress exclude-image'  />
      
      <h6 className='info' >ISTPs base their conclusions on reason, logic, and unbiased analysis. When solving problems, they emphasize efficacy and may put it ahead of feelings.</h6>
      
@@ -1099,7 +1239,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
      
      Judging
      </h4> 
-     <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true} className='progress' />
+     <ProgressBar completed = {60} bgColor = "magenta" animateOnRender = {true} isLabelVisible = {true} className='progress exclude-image' />
      
      <h6 className='info' >The perceiving aspect suggests a tendency for adaptation and flexibility. ISTPs frequently have an open mind and prefer to keep their alternatives open than making firm decisions.</h6>
      
@@ -1108,17 +1248,26 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
   
   )} 
 </div>
+
 </Col>
 
 
 
 </Row>
 
+
+
+{/* rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr */}
+
+
+
+
+
 <Row className='conc' >
 {personalityType === "ESTP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user2' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 16.2% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1129,7 +1278,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ESFJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 14.8% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1140,7 +1289,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ESFP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 10.9% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1152,7 +1301,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ESTJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 9.5% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1163,7 +1312,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ENFP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 6.9% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1174,7 +1323,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ISFJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 6.5% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1187,7 +1336,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ISTJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 5.9% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1198,7 +1347,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ISFP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 5.3% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1210,7 +1359,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ENTP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 5.3% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1221,7 +1370,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ISTP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 4.9% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1232,7 +1381,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "INFP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 4.0% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1244,7 +1393,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "INTP" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 3.0% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1255,7 +1404,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ENFJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 2.4% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1267,7 +1416,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "INTJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 1.9% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1279,7 +1428,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "ENTJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 1.4% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1291,7 +1440,7 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 {personalityType === "INFJ" && (  
  <div>
 
-<h4  className='user1 txt' > {user.nickname}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
+<h4  className='user1 txt' > {user.name}!</h4> <h4 className='user1'>Do you know,</h4> <h4 className='user1 ' >study shows that</h4> 
 <h4 className='user1 clr'> 1.2% </h4>
 <h4 className='user1'>of the world population has </h4><h4 className='type user1'  > {personalityType} </h4><h4  className='user1'>personality type.</h4>
 
@@ -1300,8 +1449,9 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 )}
 </Row>
 
-
-{/* rowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwajdjxbjcbidbcdbucbduivbjdzbvbxjvbjkbjxbvjxbvjbxjvbxv */}
+  
+{/* </div> */}
+{/* rowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww*/}
 
 <Row className='rowww' >
 
@@ -1312,7 +1462,6 @@ The perceiving element denotes a tendency for adaptation and flexibility. ENFPs 
 
 
 <Row className='roww'>
-{/* <div className='conclusion' > */}
 
 {personalityType === "ESTP" && (  
  <div   className='enclose' >
@@ -1482,20 +1631,24 @@ You have a confident and strategic personality as an ENTJ, which affects your ta
 
 <h2  className='inter'> Interview Analysis</h2>
 
-<div  style={{backgroundColor:'aliceblue' }}>
+<div 
+//  style={{backgroundColor:'aliceblue' }}
+ >
           <h4>Your Emotions Throughout the Interview:</h4>
           <ul className='emotion emotion-columns' >
             {allEmotions.map((emotion, index) => (
               <li key={index}>{emotion}</li>
             ))}
           </ul>
+        
+        </div>
+
         <div style={{display:'flex' , textAlign:'center' , justifyContent:'center'}}>  <h3>Average Emotion:</h3>  
         <h3 style={{color:'teal' }}>
         {averageEmotion} 
         </h3>
         </div>
-        </div>
-        
+
         </div>
       )}
 </div>
@@ -1510,18 +1663,25 @@ Do you want to know how to improve your personality? Do check our personality in
 </Row>
 
 
+{/* pdf generate div  */}
+</div>    
+{/* pdf generate div  */}
 
+<div class='gapp'>
 
+<Row>
+{/* share */}
+<Col md={6}>
+<button class="button-89"  onClick={share} >Share my Report</button>
+</Col>
+{/* screenshot report  */}
+<Col md={6}>
+      <button class='button-89 dawn' onClick={handlePdfDownload}>Download Report</button>
+      </Col>
 
+</Row>
 
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -1612,11 +1772,12 @@ Do you want to know how to improve your personality? Do check our personality in
 
  
     </div>
+
+
+    </div>
   );
 };
 
 
 
 export default Result;
-
-

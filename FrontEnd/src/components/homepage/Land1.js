@@ -44,7 +44,7 @@ function Home2() {
     <Row id='r3' >
 
 <Col md={5} >
-    <MDBCard>
+    <MDBCard className='blog_card' >
       <MDBCardBody>
         <MDBCardTitle>AI-Powered Analysis</MDBCardTitle>
         <MDBCardText>
@@ -61,7 +61,7 @@ function Home2() {
 <Col md={5}>
 
 <div className='crd2' >
-<MDBCard>
+<MDBCard className='blog_card' >
       <MDBCardBody>
         <MDBCardTitle>Video Interview</MDBCardTitle>
         <MDBCardText>
@@ -80,7 +80,7 @@ function Home2() {
 <Row  id='r4'>
 
 
-<MDBCard>
+<MDBCard className='blog_card33' >
       <MDBCardBody>
         <MDBCardTitle>Detailed Report</MDBCardTitle>
         <MDBCardText>
