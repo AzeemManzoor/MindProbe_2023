@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
  import './Blog.css';
 
 
-const Blog = () => {
+const Blog3 = () => {
 
 
   return (
@@ -93,4 +93,4 @@ Embark on this enlightening journey, and let MindProbe be your guide to unveilin
 };
 
 
-export default Blog;
+export default Blog3;

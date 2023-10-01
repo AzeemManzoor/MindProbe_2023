@@ -69,6 +69,7 @@ return (
 
       <div class="menu">
 
+<<<<<<< HEAD
         <li className='list1 txt'><a href="/">Home</a></li>
         <li className='list2'><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
         {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li className='list3'>Report</li></a>}
@@ -76,6 +77,16 @@ return (
         <li className='list5 txt'><a href="/about">AboutUs</a></li>
         <li className='list6 txt'><a href="/contactUs">ContactUs</a></li>
         <li className='list7 txt'><a href="/FAQ's">FAQ's</a></li>
+=======
+        <li><a href="/">Home</a></li>
+        <li><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
+        {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>Report</li></a>}
+        <li><a href="/about">AboutUs</a></li>
+        <li><a href="/contactUs">ContactUs</a></li>
+        <li><a href="/FAQ's">FAQ's</a></li>
+        <li><a href="/userprofile">UserProfile</a></li>
+<li></li>
+>>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
 {isAuthenticated && (
   <div>
 <text className='list8' > 
