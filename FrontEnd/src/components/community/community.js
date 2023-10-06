@@ -93,7 +93,7 @@ const Community = () => {
       ) : (
         <div>
           <h2 className='table-h1' >MindProbe Community</h2>
-          <div className="table-responsive">
+          {/* <div className="table-responsive">
             <table className="table">
               <thead>
                 <tr>
@@ -118,10 +118,26 @@ const Community = () => {
                 ))}
               </tbody>
             </table>
+          </div> */}
+
+<div className="user-cardc">
+      {data.map((item, index) => (
+        <div className="cardc" key={index}>
+          <div className="cardc-body">
+            <img src={item.Picture} alt={`User ${index + 1}`} className="user-image" />
+            <div className="user-info">
+              <h3>{item.Name}</h3>
+              <p> <b>Email:</b> {item.userId}</p>
+              <p><b>Personality Type:</b> {item.PERSONALITY_TYPE}</p>
+              <p><b>Emotion:</b> {item.average_emotion}</p>
+            </div>
           </div>
-          {showRemoveButton && <button class='button-89 gapp' onClick={removeData}>Remove My Report</button>}
         </div>
 
+      ))}
+    </div>
+          {showRemoveButton && <button class='button-89 gapp' onClick={removeData}>Remove My Report</button>}
+          </div>
       )}
     </div>
 

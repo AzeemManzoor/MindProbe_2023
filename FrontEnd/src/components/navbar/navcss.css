@@ -1,3 +1,54 @@
+.dropdown {
+  position: relative;
+  /* display: inline-block; */
+  display: block;
+
+}
+
+.dropdown-button {
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color:  #009688;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover {
+  background-color:  #066e64;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .navbar {
   display: flex;
@@ -167,12 +218,17 @@ font-size: 20px;
 
 }
 
+.flist{
 
-/* .list1{
+margin-top: 13px;
 
+}
 
+.list1{
 
-} */
+font-size: 20px;
+
+}
 
 .list2{
 
@@ -201,7 +257,10 @@ font-size: 20px;
   margin-top: -10px   ;
 
 }
+.list7{
+  margin-top: 15px   ;
 
+}
 .list5{
 
   margin-bottom: -10px;

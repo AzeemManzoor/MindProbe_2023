@@ -17,6 +17,7 @@ import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
 import Home4 from './components/homepage/AboutUs'
 import ContactForm from './components/contact/contact'
+import SignInPage from './components/Auth/signin'
 import Test2 from "./components/assessment/test2";
 import Test3 from "./components/assessment/test3";
 import Test4 from "./components/assessment/test4";
@@ -25,23 +26,16 @@ import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
-import Blog1 from "./components/Blog/Blog1"
-import Blog2 from "./components/Blog/Blog2"
-import Blog3 from "./components/Blog/Blog3"
+import Blog1 from "./components/blog/blog1"
+import Blog2 from "./components/blog/blog2"
+import Blog3 from "./components/blog/blog3"
 import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
 import Insights from "./components/insights/insights"
-<<<<<<< HEAD
 import Profile from "./components/profile/profile";
 import NotFound from "./components/Page_Not_Found/NotFound";
 import Community from "./components/community/community";
-=======
-import NotFound from "./components/Page_Not_Found/NotFound";
-import UserProfile from "./components/UserProfile/UserProfile";
-
-
->>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
 
 
 
@@ -128,17 +122,11 @@ function App() {
             <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
             <Route exact path="/pre-report" element={<Video/>} />      
             <Route exact path="/insights" element={<Insights/>} />      
-<<<<<<< HEAD
            <Route exact path="/profile" element ={<Profile/>} />
            <Route exact path="/profile" element ={<Profile/>} />
            <Route path="*" element={<NotFound />} /> 
            <Route exact path="/Community" element ={<Community/>} />
            
-=======
-            <Route exact path="/insights" element={<Insights/>} /> 
-            <Route exact path="/userprofile" element={<UserProfile/>} /> 
-            <Route path="*" element={<NotFound />} />     
->>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
 
 
            

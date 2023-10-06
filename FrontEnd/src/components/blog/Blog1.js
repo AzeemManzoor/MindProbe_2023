@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
  import './Blog.css';
 
 
-const Blog1 = () => {
+const Blog = () => {
 
 
   return (
@@ -91,4 +91,4 @@ However, it is essential to approach such technology with caution and ensure tha
 };
 
 
-export default Blog1;
+export default Blog;

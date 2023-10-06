@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
  import './Blog.css';
 
 
-const Blog2 = () => {
+const Blog = () => {
 
 
   return (
@@ -83,4 +83,4 @@ The fusion of technology and psychology has paved the way for innovative approac
 };
 
 
-export default Blog2;
+export default Blog;
