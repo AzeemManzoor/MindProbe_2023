@@ -38,11 +38,18 @@ import NotFound from "./components/Page_Not_Found/NotFound";
 import Community from "./components/community/community";
 
 
+import ChatComponent from "./components/chat/chat"
+
+
+
+
+
+
 
 function App() {
 
   const [showResult, setShowResult] = useState(false);
-
+  const { isAuthenticated } = useAuth0();
 
 
   const { user } = useAuth0(); // Get the authenticated user information from useAuth0
@@ -91,7 +98,11 @@ function App() {
 
 
 
+  const [reviews, setReviews] = useState([]);
 
+  const handleReviewSubmit = (reviewData) => {
+    setReviews([...reviews , reviewData]);
+  };
 
 
   return (
@@ -126,11 +137,22 @@ function App() {
            <Route exact path="/profile" element ={<Profile/>} />
            <Route path="*" element={<NotFound />} /> 
            <Route exact path="/Community" element ={<Community/>} />
-           
+
+       
+  
+           {/* <Route exact path="/chat" element ={<ChatComponent/>} /> */}
 
 
-           
-            
+
+
+
+
+
+
+
+
+
+
   </Routes>    
 </Router>
     
@@ -138,10 +160,7 @@ function App() {
 
 
 
-   
-
-
-
+<ChatComponent/>
 <Footer/>
 
 

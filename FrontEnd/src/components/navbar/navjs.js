@@ -94,20 +94,6 @@ return (
  </div>
 )}
 
-{/* <li className='txt'><a href="/FAQ's">FAQ's</a></li> */}
-
-
-{/* {isAuthenticated && (
-  <div>
-<li className='list7 txt'><a href="/FAQ's">FAQ's</a></li>
-
- </div>
-)} */}
-
-
-
-
-
 
 
 
@@ -116,6 +102,20 @@ return (
           ) : (            
 <li className='list7 txt'><a href="/FAQ's">FAQ's</a></li>
           )}
+
+
+<div className='gapi'>
+{isAuthenticated && (
+<text 
+  className='usersname'
+  > 
+Welcome <span className='user'>{user.name} </span>
+</text>
+)}
+</div>
+
+
+
 
 {isAuthenticated && (
   <div className='image' >

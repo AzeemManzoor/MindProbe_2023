@@ -22,7 +22,7 @@ const Type = mongoose.model('Type', { PERSONALITY_TYPE: String ,average_emotion:
 const Share = mongoose.model('Share', { 
   // PERSONALITY_TYPE: String ,average_emotion: String , all_emotions:[String]
   });
-
+  // mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {

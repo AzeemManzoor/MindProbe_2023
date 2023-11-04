@@ -178,7 +178,6 @@ const Result = () => {
       if (userId) {
         // Check if the user's data is already in the shares_collection
         const response = await axios.post('http://localhost:5005/checkSharedData', { userId });
-  
         if (response.data.shared) {
           toast.success('Your Report is already shared');
           await axios.post('http://localhost:5005/transferData', { userId });
