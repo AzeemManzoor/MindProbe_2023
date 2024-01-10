@@ -4,12 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import community from '../community/community.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import ChatPage from '../chat/chat'
-import { Link } from 'react-router-dom';
 
-import { useRef } from 'react';
-import io from 'socket.io-client';
-// import '../chat/chat.css';
  
 const Community = ({ }) => {
     const [loading, setLoading] = useState(false);
@@ -95,10 +90,6 @@ const Community = ({ }) => {
               <p> <b>Email:</b> {item.userId}</p>
               <p><b>Personality Type:</b> {item.PERSONALITY_TYPE}</p>
               <p><b>Emotion:</b> {item.average_emotion}</p>
-
-
-
-
             </div>
           </div>
         </div>

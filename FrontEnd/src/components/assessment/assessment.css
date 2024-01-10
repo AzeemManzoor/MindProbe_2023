@@ -17,7 +17,7 @@
 .videoz{
 /* height:500px;
 width:1000px; */
-/* pointer-events: none; */
+pointer-events: none;
 max-width: 100%; 
 height: auto;
 width: auto; 

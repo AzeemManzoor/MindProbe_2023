@@ -2,7 +2,7 @@ import React from "react";
 import {useState , useEffect} from "react";
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
-import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,13 +11,11 @@ import {
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-
 import  { NavbarProvider} from './components/navbar/NavbarContext'
 import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
-import Home4 from './components/homepage/AboutUs'
 import ContactForm from './components/contact/contact'
-import SignInPage from './components/Auth/signin'
+import SignInPage from './components/Auth/signin';
 import Test2 from "./components/assessment/test2";
 import Test3 from "./components/assessment/test3";
 import Test4 from "./components/assessment/test4";
@@ -36,13 +34,11 @@ import Insights from "./components/insights/insights"
 import Profile from "./components/profile/profile";
 import NotFound from "./components/Page_Not_Found/NotFound";
 import Community from "./components/community/community";
+import ChatComponent from "./components/chat/chat";
+import ReviewForm from './components/reviews/review'
+import ReviewsList from './components/reviews/review-list.js'
 
-
-import ChatComponent from "./components/chat/chat"
-
-
-
-
+import AboutSection from "./components/about/aboutus.js"
 
 
 
@@ -117,7 +113,7 @@ function App() {
     <Router>
 <Routes>
             <Route exact path="/" element={<Home/>} /> 
-            <Route exact path="/about" element={<Home4/>} />         
+            <Route exact path="/about" element={<AboutSection/>} />         
             <Route exact path="/contactUs" element={<ContactForm/>} />         
             <Route exact path="/FAQ's" element={<Faq/>} />         
             <Route exact path="/Assessment" element={<Assessment/>} />         
@@ -137,16 +133,15 @@ function App() {
            <Route exact path="/profile" element ={<Profile/>} />
            <Route path="*" element={<NotFound />} /> 
            <Route exact path="/Community" element ={<Community/>} />
-
-       
-  
-           {/* <Route exact path="/chat" element ={<ChatComponent/>} /> */}
-
+           <Route exact path="/reviews" element={<ReviewForm/>} />
+           <Route exact path="/review" element ={<ReviewForm/>} />
+           <Route exact path="/User-reviews" element ={<ReviewsList/>} />
 
 
+           
 
 
-
+           
 
 
 

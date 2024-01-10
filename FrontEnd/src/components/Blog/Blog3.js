@@ -21,7 +21,7 @@ const Blog = () => {
      
    
     <div className="blog-container">
-        <div className="set">   <img src={require('../../Assets/ai3.jpg')} alt="Random" /></div>
+        <div className="set">   <img src={require('../../Assets/ai3.png')} alt="Random" /></div>
          <div className="center">
       <h1 className="blog-title">Detailed Report</h1>
       <div className="blog-content">

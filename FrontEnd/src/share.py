@@ -7,6 +7,10 @@ from pymongo import MongoClient
 app = Flask(__name__)
 CORS(app)
 # Simulated in-memory database for demonstration
+# uri = "mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/mydatabase?retryWrites=true&w=majority"
+# client = MongoClient(uri)   
+# db = client.get_database('test')
+
 client = MongoClient("mongodb://localhost:27017/mydatabase")
 db = client.get_database('mydatabase')
 types_collection = db.types

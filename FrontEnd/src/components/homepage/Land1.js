@@ -28,7 +28,7 @@ function Home2() {
     return (
 <div className='land1' >
 <Row className='yup' >
-<div className='head3'>
+<div >
                 <h3 style={{ paddingTop: 50 }} className="heading">
                 OUR FEATURES
                 </h3>

@@ -22,15 +22,15 @@ const Type = mongoose.model('Type', { PERSONALITY_TYPE: String ,average_emotion:
 const Share = mongoose.model('Share', { 
   // PERSONALITY_TYPE: String ,average_emotion: String , all_emotions:[String]
   });
-  // mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+
+  mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+  // mongoose.connect('mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
   console.log('Connected to MongoDB');
-// change
 app.post('/answer', (req, res) => {
   const {  userId, Name , Picture, answers,all_emotions,average_emotions } = req.body;
   const newAnswer = new Answer({ userId,Name, Picture,answers,all_emotions,average_emotions });

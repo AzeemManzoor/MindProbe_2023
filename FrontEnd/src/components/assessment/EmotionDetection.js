@@ -157,27 +157,33 @@ const EmotionDetection = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const socket = useRef(null);
 
-  const runMachineLearning = async () => {
-        try {
-          // Make a POST request to the Flask API endpoint
-          const response = await axios.post('http://localhost:5000/api/model');
-          console.log('Machine learning process completed!');
-          console.log(response.data); // Log the response data
-    
-          // Process the response data or update the UI accordingly
-          if (response.status === 200) {
-            // Redirect to Page3
-            window.location.href = '/Assessment/report';
-            // '/Assessment/report';
-          } else {
-            // Handle error (e.g., show error message)
-          }
-        } catch (error) {
-          console.error('Error executing machine learning process:', error);
-          // Handle the error and display an error message
-        }
-      };
+  const { user, isAuthenticated ,getAccessTokenSilently} = useAuth0();
 
+ 
+  const runMachineLearning = async () => {
+    if (isAuthenticated && user && user.email) {
+      try {
+        const userId = user.email;
+        console.log(userId);
+        // Make a POST request to the Flask API endpoint
+        const response = await axios.post(`http://localhost:5000/api/model/${userId}`);
+        console.log('Machine learning process completed!');
+        console.log(response.data); // Log the response data
+  
+        // Process the response data or update the UI accordingly
+        if (response.status === 200) {
+          // Redirect to Page3
+          window.location.href = '/Assessment/report';
+          // '/Assessment/report';
+        } else {
+          // Handle error (e.g., show error message)
+        }
+      } catch (error) {
+        console.error('Error executing machine learning process:', error);
+        // Handle the error and display an error message
+      }
+    }
+  };
 
   const closePopup = () => {
     setIsPopupOpen(false);
@@ -204,45 +210,7 @@ const EmotionDetection = () => {
     };
   }, []);
 
-  // const startEmotionAnalysis = async () => {
-  //   setMuted(false);
-  //   setShowVideo(true);
-  //   setButtonVisible(false);
-  //   try {
-  //     await axios.post('http://localhost:5001/analyze_webcam');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // const startEmotionAnalysis = async () => {
-  //   setMuted(false);
-  //   if (videoRef.current) {
-  //     videoRef.current.play();
-  //   }
-  //   setButtonVisible(false); // Hide the button
-  //   try {
-  //     const accessToken = ' tcTFi0A7CNQqb6sdECc6gFqvmy6eb64z'; // Replace this with the actual access token
 
-  //     // Send the user ID along with the request to the Flask backend using the authorization header
-  //     await fetch(`http://localhost:5007/analyze_webcam`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Authorization': `Bearer ${accessToken}`
-  //       }
-  //     });
-
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  //       /* remove video after time */
-  //       const timeout = setTimeout(() => {
-  //         setShowVideo(false);
-  //       }, 66000); //1 minute in milliseconds 60000
-  //       return () => clearTimeout(timeout);
-  // };
-
-
-  const {  isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   const startEmotionAnalysis = async () => {
     setMuted(false);
@@ -273,7 +241,7 @@ const EmotionDetection = () => {
     /* remove video after time */
     const timeout = setTimeout(() => {
       setShowVideo(false);
-    }, 66000); // 1 minute in milliseconds (60000)
+    }, 626400); // 10 minute in milliseconds (60000)
     return () => clearTimeout(timeout);
   };
   
@@ -317,7 +285,7 @@ const EmotionDetection = () => {
 
 
 
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
 
   useEffect(() => {
     axios
@@ -356,7 +324,7 @@ const EmotionDetection = () => {
              <p>Please sit in the bright room</p>
             <p>Face towards the front camera</p>
             <p>Don't refresh the page when you start the interview</p>
-            <p>There is no option to pause the interview</p>
+            <p>You can also stop the interview</p>
              <p>The duration of interview will be 10 minutes</p>       
                   <button onClick={closePopup}>Close</button>
          </div>
@@ -384,7 +352,7 @@ const EmotionDetection = () => {
           </div>
           {!buttonVisible && (
             <button className="ac-btn3 marg" onClick={stopEmotionAnalysis}>
-              Stop Assessment
+              Stop Interview
             </button>
           )}
         </div>

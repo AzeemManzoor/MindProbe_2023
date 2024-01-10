@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import { useAuth0 } from '@auth0/auth0-react';
-import './ChatComponent.css'; // Import the CSS file
+import './ChatComponent.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const socket = io('http://localhost:9000');
 
@@ -56,12 +58,10 @@ const ChatComponent = ( ) => {
     if (e.key === 'Enter') {
       scrollToBottom();
       sendMessage();
-    
     }
   };
 
   const scrollToBottom = () => {
-
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => {
@@ -84,6 +84,7 @@ const ChatComponent = ( ) => {
 
   const toggleChat = () => {
     setIsVisible(!isVisible);
+    toast.success('Messages will be reset every week');
 
    };
 

@@ -130,13 +130,13 @@ Welcome <span className='user'>{user.name} </span>
 <button  className='loginBtn'
 onClick={() => logout({logoutParams: { returnTo: window.location.origin } })}
 >
-Log Out
+Sign Out
 </button>
   </li>
 
           ) : (            
 <li>
-<button className='loginBtn' onClick={() => loginWithRedirect()} >Log In</button>      
+<button className='loginBtn' onClick={() => loginWithRedirect()} >Sign In</button>      
         </li>
           )}
       </div>

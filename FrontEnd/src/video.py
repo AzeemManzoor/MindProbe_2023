@@ -15,8 +15,12 @@ CORS(app)
 socketio = SocketIO(app, cors_allowed_origins='*')
 
 # MongoDB setup
+# uri = "mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/mydatabase?retryWrites=true&w=majority"
+# client = MongoClient(uri)   
+# db = client.get_database('test')
 client = MongoClient('mongodb://localhost:27017/')
 db = client['mydatabase']
+
 collection = db['answers']
 
 # Initialize MTCNN face detector
@@ -44,8 +48,8 @@ def process_video(stop_event, user_id):
         return
 
     resize_factor = 0.5
-    video_duration = 60
-    skip_frames = 3
+    video_duration = 600 # 
+    skip_frames = 3  
     start_time = time.time()
     emotions=[]
     frame_count = 0  # Initialize frame_count
