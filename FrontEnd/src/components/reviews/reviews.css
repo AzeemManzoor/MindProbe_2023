@@ -1,0 +1,46 @@
+/* Add this CSS to your existing styles or create a new CSS file */
+
+/* Review Form Container */
+.review-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Heading */
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Star Ratings */
+  .star-ratings {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  /* Textarea for Review */
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  /* Submit Button */
+  .btn-sub {
+    background-color: #19426e;
+    color: white;
+    width:150px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+height:40px
+  }
+  

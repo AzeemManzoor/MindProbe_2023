@@ -4,8 +4,8 @@ import '../homepage/home.css'
 
 import Home2 from './Land1.js';
 import Home3 from './Land2.js';
-import Home4 from './AboutUs.js';
 import Team from './team.js';
+import AboutSection from "../about/aboutus.js"
 import video from '../../Assets/video.mp4'
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -77,7 +77,7 @@ function Home() {
     <Home2/>
     <Home3/>
     <Team/>
-    <Home4/>
+    <AboutSection/>
       </div>
     );
   }

@@ -65,7 +65,7 @@ const Test5 = () => {
 
       if (response.status === 200) {
         // Redirect to Page3
-        // window.location.href = '/Assessment/Page5';
+        window.location.href = '/pre-report';
         toast.success('Congratulations! You have completed the assessment. Now click on the Submission Button.');
         setIsDisabled(true);
 
@@ -76,6 +76,9 @@ const Test5 = () => {
     } catch (error) {
       // Handle error (e.g., show error message)
     }
+
+
+    
   };
 
  
@@ -180,7 +183,7 @@ const Test5 = () => {
     ))}
     <input
       id='submitButton'
-      value='Submit'
+      value='Submission'
       type='submit'
       className='ac-btn'
       onClick={handleSubmit}
@@ -188,11 +191,12 @@ const Test5 = () => {
   </form>
 </div>
 
+{/* <button>go</button> */}
 
-<div  className="btn-div">
+{/* <div  className="btn-div">
 <a href='/pre-report' > <button  type="submit" className="ac-btn2"
 >Submission</button></a>
-</div> 
+</div>  */}
 </div>
   );
 };

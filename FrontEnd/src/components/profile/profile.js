@@ -2,11 +2,9 @@ import React from 'react'
 import profile from '../profile/profile.css'
 import { useAuth0, User,isAuthenticated } from '@auth0/auth0-react';
 import axios from 'axios';
-
 import { useState, useEffect } from 'react';
 
 const Profile = () => {
-   
   const { user, isAuthenticated } = useAuth0();
   const [personalityType, setPersonalityType] = useState('');
   useEffect(() => {
@@ -121,10 +119,6 @@ className='user-email'
 
  </div>
 )}
-
-
-
-
  </div>
 )}
 

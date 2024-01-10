@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import navcss from '../navbar/navcss.css'
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
@@ -57,6 +57,9 @@ useEffect(() => {
 
 
 
+
+
+
 return (
     <nav class="navbar">
 
@@ -69,32 +72,50 @@ return (
 
       <div class="menu">
 
-<<<<<<< HEAD
         <li className='list1 txt'><a href="/">Home</a></li>
         <li className='list2'><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
         {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li className='list3'>Report</li></a>}
-        {navbarItems.includes('INSIGHTS') && <a href="/insights" > <li className='list4'>Insights</li></a>}        
-        <li className='list5 txt'><a href="/about">AboutUs</a></li>
-        <li className='list6 txt'><a href="/contactUs">ContactUs</a></li>
-        <li className='list7 txt'><a href="/FAQ's">FAQ's</a></li>
-=======
-        <li><a href="/">Home</a></li>
-        <li><button  onClick={handleButtonClick} id='click' >Assessment</button></li>
-        {navbarItems.includes('REPORT') && <a href="/Assessment/report" > <li>Report</li></a>}
-        <li><a href="/about">AboutUs</a></li>
-        <li><a href="/contactUs">ContactUs</a></li>
-        <li><a href="/FAQ's">FAQ's</a></li>
-        <li><a href="/userprofile">UserProfile</a></li>
-<li></li>
->>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
-{isAuthenticated && (
-  <div>
-<text className='list8' > 
-Welcome <span className='user'>{user.name} </span>
-</text>
+        {navbarItems.includes('INSIGHTS') && <a href="/insights" > <li className='list4'>Insights</li></a>} 
+<div class="dropdown">
+        <li class="dropdown-button list1">Contact</li>
+        <div class="dropdown-menu">
+        <div class="dropdown-menu-item"><a href="/contactUs">ContactUs</a></div>
+        <div class="dropdown-menu-item"><a href="/about">AboutUs</a></div>
+        </div>
+</div>
 
+
+
+
+
+    {isAuthenticated && (
+  <div>
+        <li className='flist txt'><a href="/Community">Community</a></li> 
  </div>
 )}
+
+
+
+
+{ isAuthenticated ? (      
+<li className='txt'><a href="/FAQ's">FAQ's</a></li>
+          ) : (            
+<li className='list7 txt'><a href="/FAQ's">FAQ's</a></li>
+          )}
+
+
+<div className='gapi'>
+{isAuthenticated && (
+<text 
+  className='usersname'
+  > 
+Welcome <span className='user'>{user.name} </span>
+</text>
+)}
+</div>
+
+
+
 
 {isAuthenticated && (
   <div className='image' >
@@ -109,13 +130,13 @@ Welcome <span className='user'>{user.name} </span>
 <button  className='loginBtn'
 onClick={() => logout({logoutParams: { returnTo: window.location.origin } })}
 >
-Log Out
+Sign Out
 </button>
   </li>
 
           ) : (            
 <li>
-<button className='loginBtn' onClick={() => loginWithRedirect()} >Log In</button>      
+<button className='loginBtn' onClick={() => loginWithRedirect()} >Sign In</button>      
         </li>
           )}
       </div>

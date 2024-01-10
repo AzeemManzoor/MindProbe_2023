@@ -2,7 +2,7 @@ import React from "react";
 import {useState , useEffect} from "react";
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
-import { useAuth0 } from '@auth0/auth0-react'; // Import the useAuth0 hook
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,12 +11,11 @@ import {
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-
 import  { NavbarProvider} from './components/navbar/NavbarContext'
 import Navbar from './components/navbar/navjs.js'
 import Home from './components/homepage/home.js';
-import Home4 from './components/homepage/AboutUs'
 import ContactForm from './components/contact/contact'
+import SignInPage from './components/Auth/signin';
 import Test2 from "./components/assessment/test2";
 import Test3 from "./components/assessment/test3";
 import Test4 from "./components/assessment/test4";
@@ -25,30 +24,28 @@ import Assessment from './components/assessment/assessment'
 import Faq from "./components/faq/faq";
 import Footer from './components/footer/footer.js';
 import Result from "./components/assessment/result";
-import Blog1 from "./components/Blog/Blog1"
-import Blog2 from "./components/Blog/Blog2"
-import Blog3 from "./components/Blog/Blog3"
+import Blog1 from "./components/blog/blog1"
+import Blog2 from "./components/blog/blog2"
+import Blog3 from "./components/blog/blog3"
 import EmotionDetection from "./components/assessment/EmotionDetection"
 import PRE from "./components/assessment/preAsses"
 import Video from "./components/assessment/pre-report";
 import Insights from "./components/insights/insights"
-<<<<<<< HEAD
 import Profile from "./components/profile/profile";
 import NotFound from "./components/Page_Not_Found/NotFound";
 import Community from "./components/community/community";
-=======
-import NotFound from "./components/Page_Not_Found/NotFound";
-import UserProfile from "./components/UserProfile/UserProfile";
+import ChatComponent from "./components/chat/chat";
+import ReviewForm from './components/reviews/review'
+import ReviewsList from './components/reviews/review-list.js'
 
-
->>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
+import AboutSection from "./components/about/aboutus.js"
 
 
 
 function App() {
 
   const [showResult, setShowResult] = useState(false);
-
+  const { isAuthenticated } = useAuth0();
 
 
   const { user } = useAuth0(); // Get the authenticated user information from useAuth0
@@ -97,7 +94,11 @@ function App() {
 
 
 
+  const [reviews, setReviews] = useState([]);
 
+  const handleReviewSubmit = (reviewData) => {
+    setReviews([...reviews , reviewData]);
+  };
 
 
   return (
@@ -112,7 +113,7 @@ function App() {
     <Router>
 <Routes>
             <Route exact path="/" element={<Home/>} /> 
-            <Route exact path="/about" element={<Home4/>} />         
+            <Route exact path="/about" element={<AboutSection/>} />         
             <Route exact path="/contactUs" element={<ContactForm/>} />         
             <Route exact path="/FAQ's" element={<Faq/>} />         
             <Route exact path="/Assessment" element={<Assessment/>} />         
@@ -128,21 +129,25 @@ function App() {
             <Route exact path="/Video-assessment" element={<EmotionDetection/>} />      
             <Route exact path="/pre-report" element={<Video/>} />      
             <Route exact path="/insights" element={<Insights/>} />      
-<<<<<<< HEAD
            <Route exact path="/profile" element ={<Profile/>} />
            <Route exact path="/profile" element ={<Profile/>} />
            <Route path="*" element={<NotFound />} /> 
            <Route exact path="/Community" element ={<Community/>} />
-           
-=======
-            <Route exact path="/insights" element={<Insights/>} /> 
-            <Route exact path="/userprofile" element={<UserProfile/>} /> 
-            <Route path="*" element={<NotFound />} />     
->>>>>>> 650696d460f1451c6f6d3ca3b728aca8bf50097b
+           <Route exact path="/reviews" element={<ReviewForm/>} />
+           <Route exact path="/review" element ={<ReviewForm/>} />
+           <Route exact path="/User-reviews" element ={<ReviewsList/>} />
 
 
            
-            
+
+
+           
+
+
+
+
+
+
   </Routes>    
 </Router>
     
@@ -150,10 +155,7 @@ function App() {
 
 
 
-   
-
-
-
+<ChatComponent/>
 <Footer/>
 
 

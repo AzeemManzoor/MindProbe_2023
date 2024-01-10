@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
  import './Blog.css';
 
 
-const Blog3 = () => {
+const Blog = () => {
 
 
   return (
@@ -21,7 +21,7 @@ const Blog3 = () => {
      
    
     <div className="blog-container">
-        <div className="set">   <img src={require('../../Assets/ai3.jpg')} alt="Random" /></div>
+        <div className="set">   <img src={require('../../Assets/ai3.png')} alt="Random" /></div>
          <div className="center">
       <h1 className="blog-title">Detailed Report</h1>
       <div className="blog-content">
@@ -93,4 +93,4 @@ Embark on this enlightening journey, and let MindProbe be your guide to unveilin
 };
 
 
-export default Blog3;
+export default Blog;

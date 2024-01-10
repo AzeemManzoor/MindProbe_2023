@@ -25,12 +25,12 @@ const Share = mongoose.model('Share', {
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+  mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+  // mongoose.connect('mongodb+srv://MindPROBE:muazijaz0336048@cluster0.vb4xrck.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
   console.log('Connected to MongoDB');
-// change
 app.post('/answer', (req, res) => {
   const {  userId, Name , Picture, answers,all_emotions,average_emotions } = req.body;
   const newAnswer = new Answer({ userId,Name, Picture,answers,all_emotions,average_emotions });

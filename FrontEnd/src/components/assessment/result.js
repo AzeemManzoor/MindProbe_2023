@@ -12,27 +12,12 @@ import Profile from '../profile/profile'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const renderTime = ({ remainingTime }) => {
-  if (remainingTime === 0) {
-    return <div className="timer">DONE...</div>;
-  }
-
-  return (
-    <div className="timer">
-      <div className="text">Remaining</div>
-      <div className="value">{remainingTime}</div>
-      <div className="text">seconds</div>
-    </div>
-  );
-};
 
 
 
 const Result = () => {
 
- 
-
-
+  const [isFetching, setIsFetching] = useState(true);
   const { user, isAuthenticated } = useAuth0();
   const [personalityType, setPersonalityType] = useState('');
   const { addNavbarItem } = useNavbar();
@@ -42,6 +27,7 @@ const Result = () => {
         try {
           const response = await axios.get('http://localhost:4000/personalityTypes');
           // console.log('API Response:', response.data);
+          setIsFetching(false);
           const matchingUser = response.data.find(data => data.userId === user.email);
           if (matchingUser) {
             setPersonalityType(matchingUser.PERSONALITY_TYPE);
@@ -91,31 +77,6 @@ const Result = () => {
   }, [isAuthenticated, user]);
   
   
-
-
-
-
-
-
-
-
-
-
-  const [isPopupOpen, setIsPopupOpen] = useState(true); // Set to true initially
-  const closePopup = () => {
-    setIsPopupOpen(false);
-  };
-
-  // You can also use useEffect to automatically close the popup after a certain time
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      closePopup();
-    }, 11000); // Close the popup after 8000 (mili)seconds (adjust as needed)
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-
   const divRef = useRef(null);
   const handlePdfDownload = () => {
     const divElement = divRef.current;
@@ -155,20 +116,6 @@ const Result = () => {
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
   const [loading, setLoading] = useState(false);
   const share = async () => {
     setLoading(true);
@@ -178,7 +125,6 @@ const Result = () => {
       if (userId) {
         // Check if the user's data is already in the shares_collection
         const response = await axios.post('http://localhost:5005/checkSharedData', { userId });
-  
         if (response.data.shared) {
           toast.success('Your Report is already shared');
           await axios.post('http://localhost:5005/transferData', { userId });
@@ -201,80 +147,20 @@ const Result = () => {
   };
  
   
-  
-  
-  
-  
-  // const share = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const userId = sessionStorage.getItem('userId');
-
-  //     if (userId) {
-  //       // Call the backend API to transfer data
-  //       await axios.post('http://localhost:5005/transferData', { userId });
-  //       // Data transfer successful
-  //       alert('User Report has been shared with the Community');
-  //     } else {
-  //       alert('User ID not found');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error transferring data:', error);
-  //   } finally {
-  //     setLoading(false);
-
-  //   }
-  // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
   return (
 <div className='wrap'>
 <ToastContainer />
-    <div className='res'>       
-{/* 
-{isPopupOpen && (
+
+{isFetching ? (
+
+<div>
         <div className="popup1">
           <div className="popup1-content1">
 <div>
-
-
 <h2>Please Wait...</h2>
-
-<div className="timerr">
-      <div className="timer-wrapper">
-        <CountdownCircleTimer
-          isPlaying
-          duration={10}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-          onComplete={() => [true, 1000]}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-      </div>
-
-    </div>
     <p className="info2">
         We are getting your Report...
       </p>
@@ -282,10 +168,18 @@ const Result = () => {
 </div>
           </div>
         </div>
-      )}
- */}
+
+</div>
+      
 
 
+
+) : (
+
+<div>
+
+
+<div className='res'>       
 <div 
       ref={divRef}
        > 
@@ -1685,93 +1579,27 @@ Do you want to know how to improve your personality? Do check our personality in
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
     </div>
+
+</div>       
+)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 
 
     </div>

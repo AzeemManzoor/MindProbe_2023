@@ -11,23 +11,10 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 
 
-const renderTime = ({ remainingTime }) => {
-  if (remainingTime === 0) {
-    return <div className="timer">DONE...</div>;
-  }
-
-  return (
-    <div className="timer">
-      <div className="text">Remaining</div>
-      <div className="value">{remainingTime}</div>
-      <div className="text">seconds</div>
-    </div>
-  );
-};
 
 
 const Insights = () => {
-
+    const [isFetching, setIsFetching] = useState(true);
     const { user, isAuthenticated } = useAuth0();
     const [personalityType, setPersonalityType] = useState('');
     useEffect(() => {
@@ -36,6 +23,7 @@ const Insights = () => {
           // console.log('Logged-in userId:', user.name); // Log the logged-in user's userId
           try {
             const response = await axios.get('http://localhost:4000/personalityTypes');
+            setIsFetching(false);
             // console.log('API Response:', response.data);
             const matchingUser = response.data.find(data => data.userId === user.email);
             if (matchingUser) {
@@ -84,49 +72,21 @@ const Insights = () => {
 
 
 
-    const [isPopupOpen, setIsPopupOpen] = useState(true); // Set to true initially
-    const closePopup = () => {
-      setIsPopupOpen(false);
-    };
-  
-    // You can also use useEffect to automatically close the popup after a certain time
-    useEffect(() => {
-      const timeout = setTimeout(() => {
-        closePopup();
-      }, 11000); // Close the popup after 8000 (mili)seconds (adjust as needed)
-  
-      return () => clearTimeout(timeout);
-    }, []);
-
-
 
 
 
   return (
-    <div className='inss1' >
-<div className='inss'   >
 
-{isPopupOpen && (
-        <div className="popup1">
-          <div className="popup1-content1">
+    <div className='inss1' >
+{isFetching ? (
+
 <div>
 
 
+        <div className="popup1">
+          <div className="popup1-content1">
+<div>
 <h2>Please Wait...</h2>
-
-<div className="timerr">
-      <div className="timer-wrapper">
-        <CountdownCircleTimer
-          isPlaying
-          duration={10}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-          onComplete={() => [true, 1000]}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-      </div>
-
-    </div>
     <p className="info2">
         We are getting your Insights...
       </p>
@@ -134,11 +94,19 @@ const Insights = () => {
 </div>
           </div>
         </div>
-      )}
+      
+
+
+      
+</div>
+     
+) : (
+
+<div>
 
 
 
-
+<div className='inss'   >
 
 
 <div className='wrap1'>
@@ -157,7 +125,6 @@ const Insights = () => {
 
       <h3 className='type' >INFP : The Healer</h3> 
     </Row>
-
 
 
 <Row>
@@ -1511,6 +1478,16 @@ Show appreciation and affection for your loved ones through your actions
 
 </div>
 </div>
+
+
+</div>       
+)}
+
+
+
+
+
+
     </div>
   )
 }
