@@ -4,7 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import './ChatComponent.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const socket = io('http://localhost:9000');
